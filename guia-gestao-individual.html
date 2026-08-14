@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Keeta · Guia de Gestão Individual — SMBX Santos</title>
+<style>
+  :root {
+    --bg: #F5F4F0;
+    --card: #FFFFFF;
+    --border: #E6E3DC;
+    --border2: #EDE9E1;
+    --text: #2C2B28;
+    --sub: #8C8880;
+    --muted: #B8B4AC;
+    --line: #D9D5CC;
+    --green: #4A7C59;
+    --greenBg: #EDF3EF;
+    --greenLight: #C6DDD0;
+    --red: #B05555;
+    --redBg: #F5ECEC;
+    --amber: #B8813A;
+    --amberBg: #F5EFE4;
+    --blue: #4A6899;
+    --blueBg: #EBF0F8;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    min-height: 100vh;
+    color: var(--text);
+    font-family: 'DM Sans', 'Segoe UI', -apple-system, sans-serif;
+    padding: 28px 32px;
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #F5F4F0; }
+  ::-webkit-scrollbar-thumb { background: #E6E3DC; border-radius: 2px; }
+
+  .header { margin-bottom: 24px; }
+  .header-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .logo {
+    width: 24px; height: 24px; border-radius: 6px; background: var(--text);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 900; color: #fff;
+  }
+  .kicker {
+    font-size: 10px; font-weight: 700; color: var(--sub);
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  h1.title {
+    font-size: 26px; font-weight: 800; color: var(--text);
+    letter-spacing: -0.03em;
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.1;
+  }
+  .subtitle { font-size: 11px; color: var(--sub); margin-top: 4px; }
+
+  .tag {
+    font-size: 9px; font-weight: 700;
+    border-radius: 4px; padding: 3px 8px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    white-space: nowrap; display: inline-block;
+  }
+
+  .tabbar {
+    display: flex; gap: 2px; margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .tabbar button {
+    background: none; border: none; padding: 10px 20px; cursor: pointer;
+    font-size: 12px; font-weight: 700;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px; transition: all .15s;
+    font-family: inherit;
+  }
+  .tabbar button.active {
+    color: var(--text);
+    border-bottom: 2px solid var(--text);
+  }
+  .tab-group-label {
+    font-size: 9px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .profile-header { border-top: 3px solid var(--accent); }
+  .profile-row {
+    display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;
+    gap: 12px; flex-wrap: wrap;
+  }
+  h2.name {
+    font-size: 22px; font-weight: 800; color: var(--text);
+    font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.03em;
+  }
+  .role-line { font-size: 11px; color: var(--sub); margin-top: 2px; }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+
+  .summary-text { font-size: 12px; color: var(--text); line-height: 1.7; margin-bottom: 12px; }
+  .section-title {
+    font-size: 9px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+  }
+
+  .bigfive-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .bigfive-bar .lbl { width: 90px; font-size: 10px; font-weight: 600; color: var(--sub); }
+  .bigfive-bar .track { flex: 1; height: 6px; background: var(--border2); border-radius: 99px; overflow: hidden; }
+  .bigfive-bar .fill { height: 100%; border-radius: 99px; }
+  .bigfive-bar .val {
+    width: 28px; font-size: 10px; font-weight: 700; color: var(--text);
+    font-family: 'DM Mono', monospace; text-align: right;
+  }
+
+  .callout { border-radius: 8px; padding: 10px 14px; }
+  .callout .ct-label {
+    font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;
+  }
+  .callout .ct-text { font-size: 11px; color: var(--text); line-height: 1.5; }
+  .super { background: var(--greenBg); border: 1px solid var(--greenLight); }
+  .super .ct-label { color: var(--green); }
+  .blind { background: var(--redBg); border: 1px solid var(--border2); }
+  .blind .ct-label { color: var(--red); }
+
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .section-head {
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .section-desc { font-size: 11px; color: var(--sub); margin-bottom: 12px; }
+
+  .insight {
+    border-radius: 8px; padding: 10px 14px; margin-bottom: 8px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .insight .i-text { font-size: 12px; color: var(--text); line-height: 1.6; flex: 1; }
+  .insight.funciona { background: var(--greenBg); border: 1px solid var(--greenLight); }
+  .insight.cuidado { background: var(--amberBg); border: 1px solid var(--border2); }
+  .insight.acao { background: var(--blueBg); border: 1px solid var(--border2); }
+  .insight.risco { background: var(--redBg); border: 1px solid var(--border2); }
+
+  .pending-card { text-align: center; }
+  .pending-card .icon { font-size: 32px; margin-bottom: 12px; }
+  .pending-card .t { font-size: 16px; font-weight: 700; color: var(--red); margin-bottom: 8px; }
+  .pending-card .d {
+    font-size: 12px; color: var(--sub); line-height: 1.6;
+    max-width: 460px; margin: 0 auto;
+  }
+  .pending-tags { margin-top: 16px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
+  details.history {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px; margin-bottom: 16px;
+  }
+  details.history summary {
+    cursor: pointer; font-size: 12px; font-weight: 700; color: var(--sub);
+    list-style: none;
+  }
+  details.history summary::before { content: "▸ "; color: var(--muted); }
+  details.history[open] summary::before { content: "▾ "; }
+  details.history .hist-inner { margin-top: 16px; }
+
+  .footer {
+    margin-top: 36px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: var(--muted); flex-wrap: wrap; gap: 8px;
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+const P = {
+  bg: "#F5F4F0", card: "#FFFFFF", border: "#E6E3DC", border2: "#EDE9E1",
+  text: "#2C2B28", sub: "#8C8880", muted: "#B8B4AC", line: "#D9D5CC",
+  green: "#4A7C59", greenBg: "#EDF3EF", greenLight: "#C6DDD0",
+  red: "#B05555", redBg: "#F5ECEC",
+  amber: "#B8813A", amberBg: "#F5EFE4",
+  blue: "#4A6899", blueBg: "#EBF0F8",
+};
+
+const INSIGHT_META = {
+  funciona: { label: "Funciona", color: P.green, bg: P.greenBg },
+  cuidado:  { label: "Cuidado",  color: P.amber, bg: P.amberBg },
+  acao:     { label: "Ação",    color: P.blue,  bg: P.blueBg },
+  risco:    { label: "Risco",   color: P.red,   bg: P.redBg },
+};
+
+// ============ TIME ATUAL (julho 2026 em diante) ============
+const currentTeam = [
+  {
+    id: "vinicius",
+    name: "Vinicius Guimarães",
+    initials: "VG",
+    color: P.amber,
+    mbti: "ENTJ-A",
+    mbtiLabel: "Comandante",
+    disc: "A confirmar",
+    bigfive: null,
+    pending: ["DISC", "Big Five"],
+    source: "16personalities.com",
+    profile: {
+      summary: "Vinicius é ENTJ-A (Comandante Assertivo) — o arquétipo do líder natural, com visão estratégica, assertividade e forte orientação a resultado. O sufixo Assertivo (A) indica autoconfiança alta e baixa reatividade ao estresse: ele tende a assumir o controle, ir direto ao ponto e buscar eficiência no processo comercial. O complemento de DISC e Big Five ainda está pendente para fechar o diagnóstico (as análises abaixo são baseadas exclusivamente no MBTI confirmado).",
+      superpower: "Combinar visão estratégica e execução. O ENTJ-A enxerga o todo — onde o restaurante pode chegar em pedidos e presença na região — e tem energia para conduzir a negociação até o fechamento sem se perder nos detalhes.",
+      blindspot: "Pode ser percebido como impositivo ou impaciente. A tendência natural do ENTJ é, diante da resistência do dono, empurrar a decisão com mais pressão em vez de mudar a abordagem. Empatia na entrega da mensagem costuma ser o principal ponto de desenvolvimento."
+    },
+    commercial: [
+      { type: "funciona", text: "Prospecção direta e com autoridade. Transmite segurança de imediato — donos de restaurante tendem a confiar rápido em quem fala com domínio e objetividade." },
+      { type: "funciona", text: "Visão estratégica. É forte em vender o futuro do restaurante (potencial de pedidos, alcance da região, crescimento) e não só as features do app." },
+      { type: "cuidado", text: "Pode forçar demais no convencimento. Quando o dono resiste, o ENTJ tende a insistir com mais pressão em vez de trocar o argumento — e a impaciência com objeções repetidas pode soar como arrogância." },
+      { type: "cuidado", text: "Tendência a 'resolver logo'. Pode acelerar etapas que exigem paciência (aguardar a decisão do dono, alinhar com sócios, respeitar o tempo do lead) e acabar queimando oportunidades." },
+      { type: "acao", text: "Treinar troca de abordagem: quando o dono disser 'não' pela 2ª vez, mudar de argumento em vez de repetir mais alto. Role-play de objeções semanalmente." }
+    ],
+    leadership: [
+      { type: "funciona", text: "Feedback direto e objetivo. Ele não precisa de rodeios — prefere saber exatamente o que está errado e o que precisa mudar. Perde respeito por quem 'passa a mão na cabeça'." },
+      { type: "funciona", text: "Autonomia com metas claras. O ENTJ-A precisa sentir controle. Defina o resultado esperado e deixe ele escolher o caminho — microgerenciar frustra rápido." },
+      { type: "funciona", text: "Desafio intelectual. Ele precisa sentir que está aprendendo e crescendo. Envolva-o em discussões de estratégia da operação, não só em execução de visitas." },
+      { type: "cuidado", text: "Não corrija em público. A correção diante dos colegas vira confronto com um ENTJ. Leve o ajuste para o 1:1." },
+      { type: "cuidado", text: "Pode tentar 'liderar' os outros BDs mesmo sem ser BDM. A assertividade alta faz ele assumir controle naturalmente — canalize isso delegando responsabilidades, não combatendo." },
+      { type: "acao", text: "Use-o como referência técnica/estratégica para os BDs mais novos. Ele se sente valorizado e você direciona a liderança natural dele de forma construtiva." }
+    ],
+    risks: [
+      { type: "risco", text: "Rotina e processo repetitivo desmotivam rápido. Se o dia a dia virar só visita-padrão, ele perde o engajamento. Precisa de novidade e desafio." },
+      { type: "risco", text: "Em semanas de muita rejeição, a impaciência pode virar rispidez com restaurantes ou colegas. Monitore o humor em metas apertadas." },
+      { type: "acao", text: "Check-in rápido 1x por semana (5 min). Pergunte 'o que está te travando?' — ele prefere resolver problemas a falar de sentimentos." }
+    ]
+  },
+  {
+    id: "natalia",
+    name: "Natalia Almeida",
+    initials: "NA",
+    color: P.blue,
+    mbti: "ENTJ-A",
+    mbtiLabel: "Comandante",
+    disc: "Thinker",
+    bigfive: { Neuroticismo: 38, Extroversão: 93, Abertura: 65, Amabilidade: 93, Consciência: 116 },
+    pending: [],
+    source: "16personalities.com + myDISCprofile + bigfive-test.com",
+    profile: {
+      summary: "Natalia é ENTJ-A (Comandante Assertivo) com DISC Thinker (Analítico) — uma combinação rara e poderosa. O ENTJ traz liderança natural, visão estratégica e assertividade. O Thinker adiciona meticulosidade, orientação a dados e cuidado com detalhes. No Big Five, a Consciência recorde (116) mostra alguém extremamente organizada, responsável e orientada a processo. O Neuroticismo muito baixo (38) a torna a mais emocionalmente estável do time. Extroversão alta (93) + Afabilidade alta (93) criam uma líder que é ao mesmo tempo assertiva e agradável — ela conduz sem ser rude.",
+      superpower: "Consegue liderar com precisão. A combinação de visão estratégica (ENTJ) + meticulosidade (Thinker) + Consciência 116 faz dela alguém que não só define onde ir, mas também garante que cada passo seja dado corretamente. É a BD mais confiável para processos complexos.",
+      blindspot: "A abertura moderada (65) combinada com o Thinker pode fazer dela alguém menos flexível a abordagens novas ou improvisações. Ela pode preferer o método testado ao experimento inédito. Em situações que exigem pivotar rápido, ela pode hesitar."
+    },
+    commercial: [
+      { type: "funciona", text: "Na prospecção, transmite autoridade COM dados. Diferente do ENTJ puro que convence pela presença, Natalia apoia o argumento com números, cases e lógica — o que aumenta drasticamente a credibilidade com donos analíticos." },
+      { type: "funciona", text: "Nas explicações técnicas (comissão, logística, contrato), é imbatível. Thinker + Consciência 116 = ela domina os detalhes e não deixa passar nada. O restaurante sente que está em boas mãos técnicas." },
+      { type: "funciona", text: "O follow-up é o melhor do time. Ela não esquece de nada. Checklists, lembretes, documentação — tudo fica registrado e organizado." },
+      { type: "cuidado", text: "Pode 'perder' leads mais impulsivos ou emocionais. Donos que decidem pelo feeling podem achar ela 'muito técnica' ou 'fria'. Ela precisa adaptar o tom quando sentir que o dono quer conexão, não dados." },
+      { type: "cuidado", text: "A abertura 65 + Thinker = tendência a seguir o script. Se o dono sair do roteiro esperado, ela pode travar ou tentar voltar ao script ao invés de navegar a conversa." },
+      { type: "acao", text: "Treine improvisação: role-plays onde o dono muda de assunto inesperadamente. Pratique pivotar de técnico para emocional e vice-versa." }
+    ],
+    leadership: [
+      { type: "funciona", text: "Feedback estruturado e com exemplos concretos. Ela valoriza precisão — 'na visita X, quando você fez Y, o resultado foi Z' funciona melhor que 'você precisa melhorar'." },
+      { type: "funciona", text: "Dê autonomia em processos que ela pode otimizar. Consciência 116 = ela VAI criar um sistema melhor se você deixar. Peça: 'como você organizaria o follow-up do time?'" },
+      { type: "funciona", text: "Reconheça a consistência, não só os fechamentos. Ela pode se sentir invisível se você só elogia quem vende mais. Valorize: 'esse mês nenhum restaurante seu reclamou — isso é raro e importa'." },
+      { type: "cuidado", text: "Não surpreenda com mudanças de última hora. Neuroticismo baixo (38) a torna estável, mas o Thinker não gosta de imprevisibilidade. Mudanças súbitas de processo a desestabilizam mais que aos outros." },
+      { type: "cuidado", text: "Pode tentar 'perfeccionizar' demais. Consciência 116 = ela pode gastar tempo excessivo em detalhes que não impactam o resultado. Cuidado com análise-paralisia." },
+      { type: "acao", text: "Estabeleça um 'timebox' para análise: 'você tem 30 min para revisar esse contrato, depois envia'. Issa liberta ela da busca pela perfeição infinita." }
+    ],
+    risks: [
+      { type: "risco", text: "Se o processo for caótico ou mudar constantemente sem comunicação clara, ela pode se desmotivar. Thinker + alta Consciência precisam de previsibilidade." },
+      { type: "risco", text: "A combinação de abertura moderada (65) com alta Consciência pode criar resistência a novas abordagens comerciais. Se o time pivotar de estratégia, ela pode ser a última a adaptar." },
+      { type: "acao", text: "Sempre que houver mudança de processo, explique o PORQUÊ antes do O QUÊ. Thinkers aceitam mudança quando entendem a lógica por trás." }
+    ]
+  },
+  {
+    id: "marcelo",
+    name: "Marcelo Evangelista",
+    initials: "ME",
+    color: P.green,
+    mbti: "ENFP",
+    mbtiLabel: "Ativista",
+    disc: "Equilibrado",
+    bigfive: { Neuroticismo: 84, Extroversão: 104, Abertura: 95, Amabilidade: 78, Consciência: 74 },
+    pending: [],
+    source: "16personalities.com + myDISCprofile + bigfive-test.com",
+    profile: {
+      summary: "Marcelo é ENFP (Ativista) com DISC Equilibrado — o perfil mais energético e adaptável do time. O ENFP traz entusiasmo, criatividade e genuína preocupação com as pessoas. O DISC Equilibrado significa que ele não tem um estilo dominante fixo: consegue alternar entre abordagens diretas, persuasivas, analíticas ou de apoio conforme a situação exige. No Big Five, a Extroversão muito alta (104) + Abertura alta (95) + Neuroticismo alto (84) criam alguém intensamente social, criativo e emocionalmente expressivo. É o BD que vai 'sentir' o restaurante antes de vender para ele.",
+      superpower: "Adaptabilidade social e criatividade. Consegue ler o ambiente em segundos e ajustar o tom da conversa instantaneamente. O DISC Equilibrado + ENFP faz dele um 'camaleão comercial' — funciona com todo tipo de dono de restaurante.",
+      blindspot: "Neuroticismo alto (84) + Consciência moderada (74) = pode oscilar muito de humor e produtividade. Dias bons são excelentes; dias ruins podem ser muito ruins. Sem estrutura externa, a consistência sofre."
+    },
+    commercial: [
+      { type: "funciona", text: "Na prospecção, é o mais criativo do time. Vai encontrar abordagens que ninguém pensou, vai se conectar emocionalmente com o dono do restaurante e vai transmitir entusiasmo genuíno pelo produto." },
+      { type: "funciona", text: "O DISC Equilibrado permite que ele adapte o estilo de venda ao perfil do dono. Com um dono analítico, ele fala dados; com um dono emocional, ele conta histórias. Poucos BDs fazem essa troca naturalmente." },
+      { type: "funciona", text: "Em relacionamento de longo prazo, é excelente. ENFP se preocupa de verdade com o sucesso do restaurante — não é só venda, é parceria. O dono sente isso." },
+      { type: "cuidado", text: "O neuroticismo alto (84) faz ele sentir rejeição de forma intensa. Um 'não' do dono pode afetar o humor por horas. Em semanas de alta rejeição, precisa de atenção especial." },
+      { type: "cuidado", text: "Consciência 74 = a parte burocrática (CRM, relatórios, follow-ups estruturados) pode ser negligenciada. Ele prefere a conversa ao formulário." },
+      { type: "acao", text: "Crie um ritual diário de 10 min para atualização de CRM — faça junto no início do dia. Não deixe para 'depois', porque depois não vem." }
+    ],
+    leadership: [
+      { type: "funciona", text: "Reconhecimento emocional funciona melhor que reconhecimento racional. 'Marcelo, seu entusiasmo contagia o time' vale mais que 'Marcelo, você bateu a meta'." },
+      { type: "funciona", text: "Dê liberdade para testar abordagens novas. ENFP morre de tédio com scripts rígidos. Deixe ele improvisar dentro de um framework (ex: 'toca esses 3 pontos, mas o caminho é seu')." },
+      { type: "funciona", text: "Feedback com cuidado. Neuroticismo alto = ele já é autocrítico demais. Comece pelo que está bom, seja específico no que mudar, e termine com encorajamento." },
+      { type: "cuidado", text: "Não compare com Natalia ou Vinicius. ENTJ-A e ENFP são polos opostos — um é o executador confiante, o outro é o criativo sensível. Comparação destrói a confiança do Marcelo." },
+      { type: "cuidado", text: "O DISC Equilibrado pode parecer 'falta de personalidade' em excesso. Se ele adaptar DEMAIS, pode parecer inconsistente para o restaurante. Precisa de um 'núcleo' claro de identidade comercial." },
+      { type: "acao", text: "Ajude-o a definir seu 'superpoder único': qual é a UMA coisa que só ele faz no time? Isso dá identidade e reduz a sensação de ser 'genérico'." }
+    ],
+    risks: [
+      { type: "risco", text: "Maior risco de burnout do time. Neuroticismo 84 + ENFP + alta Extroversão = ele gasta muita energia emocional nas visitas e pode esgotar sem perceber." },
+      { type: "risco", text: "Sem estrutura, a produtividade oscila muito. Dias de alta energia = muita visita e fechamento; dias de baixa = procrastinação e CRM atrasado." },
+      { type: "acao", text: "Estruture a semana com 'âncoras': segunda = planejamento, quarta = check-in rápido, sexta = revisão. Ele precisa de corrimão, não de microgestão." },
+      { type: "acao", text: "Nos dias de muita rejeição, mande uma mensagem curta: 'Vi que hoje tá puxado. Amanhã é outro dia.' O neuroticismo alto precisa saber que o líder está vendo sem julgar." }
+    ]
+  }
+];
+
+// ============ EQUIPE ANTERIOR (até junho 2026) ============
+const previousTeam = [
+  {
+    id: "victor",
+    name: "Victor Vasques",
+    initials: "VV",
+    color: P.amber,
+    mbti: "ENTJ-A",
+    mbtiLabel: "Comandante",
+    disc: "Técnico",
+    bigfive: { Neuroticismo: 51, Extroversão: 100, Abertura: 110, Amabilidade: 94, Consciência: 97 },
+    pending: [],
+    profile: {
+      summary: "Victor é o perfil clássico de líder natural com mente analítica. O ENTJ-A traz visão estratégica e assertividade máxima. O DISC Técnico adiciona uma camada rara: ele não só quer liderar, como quer entender profundamente os sistemas antes de agir. No Big Five, a combinação de extroversão altíssima (100) com abertura recorde (110) e neuroticismo baixo (51) mostra alguém que se joga em situações novas com confiança e sem medo.",
+      superpower: "Consegue entender tecnicamente o produto E vender a visão estratégica ao dono do restaurante ao mesmo tempo. Poucos BDs fazem as duas coisas.",
+      blindspot: "Modéstia baixíssima (8) + raiva alta (13) = quando frustrado, pode ser impositivo ou parecer arrogante com o restaurante. Não aceita bem ser contrariado."
+    },
+    commercial: [
+      { type: "funciona", text: "Na prospecção, vai direto ao ponto e transmite autoridade. Donos de restaurante confiam rápido nele porque ele fala com segurança e domínio técnico." },
+      { type: "funciona", text: "Nas explicações técnicas (comissão, logística, app), é o melhor do time. O DISC Técnico faz ele querer entender antes de explicar, então não enrola." },
+      { type: "cuidado", text: "No convencimento, pode forçar demais. Se o dono resiste, Victor tende a insistir com mais pressão ao invés de mudar a abordagem. A raiva alta faz ele perder a paciência com objeções repetidas." },
+      { type: "acao", text: "Treine com ele: quando o dono diz 'não' pela 2ª vez, mudar de argumento ao invés de repetir mais alto. Role-play de objeções semanalmente." }
+    ],
+    leadership: [
+      { type: "funciona", text: "Feedback direto e objetivo. Não precisa de rodeios — ele prefere saber exatamente o que está errado e o que precisa mudar. Perde respeito por líderes que 'passam a mão na cabeça'." },
+      { type: "funciona", text: "Dê autonomia com metas claras. ENTJ-A precisa sentir que tem controle. Microgerenciar Victor vai frustrá-lo rapidamente. Defina o resultado esperado e deixe ele escolher o caminho." },
+      { type: "funciona", text: "Desafie intelectualmente. Com intelecto 20/20 no Big Five, ele precisa sentir que está aprendendo e crescendo. Envolva-o em discussões de estratégia da operação." },
+      { type: "cuidado", text: "Não corrija ele na frente de outros BDs. Autoconsciência baixa (5) não significa que ele não liga — significa que ele não mostra. Com modéstia baixa, uma correção pública vira confronto." },
+      { type: "cuidado", text: "Ele pode tentar 'liderar' os outros BDs mesmo sem ser BDM. A assertividade 20/20 faz ele naturalmente assumir controle. Use isso a seu favor delegando responsabilidades, não combatendo." },
+      { type: "acao", text: "Coloque Victor como 'buddy' técnico dos BDs mais novos. Ele se sente valorizado e você canaliza a liderança natural dele de forma construtiva." }
+    ],
+    risks: [
+      { type: "risco", text: "Se sentir que não está sendo desafiado ou que o trabalho é repetitivo, vai desmotivar rápido. Abertura 110 = precisa de novidade. Rotina pura mata o Victor." },
+      { type: "risco", text: "Em dias ruins (muita rejeição), a raiva alta pode fazer ele ser ríspido com restaurantes ou colegas. Monitore o humor dele em semanas de meta apertada." },
+      { type: "acao", text: "Check-in rápido 1x por semana (5 min, não precisa ser formal). Pergunte: 'O que está te travando?' — ele prefere resolver problemas a falar de sentimentos." }
+    ]
+  },
+  {
+    id: "rafael",
+    name: "Rafael Caetano",
+    initials: "RC",
+    color: P.green,
+    mbti: "ENFJ-A",
+    mbtiLabel: "Protagonista",
+    disc: "A confirmar",
+    bigfive: { Neuroticismo: 46, Extroversão: 96, Abertura: 98, Amabilidade: 92, Consciência: 86 },
+    pending: [],
+    profile: {
+      summary: "Rafael é o BD mais 'humano' do time. O ENFJ-A é o perfil que naturalmente se preocupa com as pessoas e cria conexões genuínas. No Big Five, a combinação de simpatia máxima (20), emoções positivas máximas (20) e moralidade altíssima (19) cria alguém que conquista pela empatia. Amabilidade alta (92) + neuroticismo muito baixo (46) = emocionalmente estável e agradável de conviver.",
+      superpower: "Cria rapport instantâneo. É o BD que o dono do restaurante vai ligar no WhatsApp fora do horário porque gostou dele. Relacionamento de longo prazo é o forte dele.",
+      blindspot: "Modéstia baixa (8) combinada com cooperação altíssima (18) cria uma tensão: ele sabe que é bom, mas evita conflito. Pode ceder demais na negociação para manter a relação boa."
+    },
+    commercial: [
+      { type: "funciona", text: "Na prospecção, ele aquece o lead como ninguém. Donos de restaurante se abrem com ele rapidamente. Entende as dores do negócio porque ouve de verdade." },
+      { type: "funciona", text: "No convencimento, usa storytelling natural. ENFJ-A conecta benefícios do produto com a realidade emocional do dono ('imagina seu restaurante aparecendo pra 50 mil pessoas nessa região')." },
+      { type: "cuidado", text: "Na explicação técnica, pode simplificar demais. Intelecto neutro (12) e imaginação baixa (11) no Big Five = ele prefere falar de pessoas, não de sistemas. Se o dono perguntar detalhes técnicos complexos, Rafael pode travar." },
+      { type: "cuidado", text: "Cooperação 18/20 = ele pode aceitar condições ruins para não 'estragar' o relacionamento. Cuidado com descontos ou concessões excessivas." },
+      { type: "acao", text: "Crie um 'cheat sheet' técnico para ele. 5 perguntas técnicas mais comuns + respostas prontas. Ele não precisa dominar tudo, só ter segurança nas respostas mais frequentes." }
+    ],
+    leadership: [
+      { type: "funciona", text: "Reconhecimento público funciona muito bem. Emoções positivas 20/20 = ele se alimenta de energia positiva. Elogie na frente do time quando ele fechar uma boa negociação." },
+      { type: "funciona", text: "Feedback construtivo, nunca destrutivo. ENFJ-A processa críticas internamente mesmo parecendo que levou numa boa. Seja específico: 'nessa negociação X, tente Y na próxima vez' ao invés de 'você precisa melhorar em negociação'." },
+      { type: "funciona", text: "Envolva-o no onboarding de novos BDs. Ele é o mentor natural do time — se sente realizado ajudando outros (altruísmo 15) e melhora a cultura." },
+      { type: "cuidado", text: "Não confunda simpatia com falta de ambição. Busca por realização 15 e atividade 13 = ele quer crescer, mas no ritmo dele. Pressão excessiva por resultado seco sem contexto humano o desmotiva." },
+      { type: "acao", text: "No 1:1, comece perguntando como ele está se sentindo com o time antes de entrar em números. Ele performa melhor quando se sente cuidado como pessoa." }
+    ],
+    risks: [
+      { type: "risco", text: "Pode se tornar 'amigo' do restaurante ao invés de parceiro comercial. A linha é tênue — se ele evitar cobrar resultados ou renegociar termos por medo de afetar a relação, o resultado sofre." },
+      { type: "risco", text: "Cautela baixa (11) = pode tomar decisões rápidas na negociação sem pensar nas consequências. Aceitar coisas que depois são difíceis de reverter." },
+      { type: "acao", text: "Revise com ele as 3 primeiras negociações fechadas. Identifique juntos se ele cedeu demais em algum ponto e crie um 'piso' claro de condições mínimas aceitáveis." }
+    ]
+  },
+  {
+    id: "milena",
+    name: "Milena Silva",
+    initials: "MS",
+    color: P.blue,
+    mbti: "ENFJ-A",
+    mbtiLabel: "Protagonista",
+    disc: "A confirmar",
+    bigfive: { Neuroticismo: 59, Extroversão: 80, Abertura: 74, Amabilidade: 92, Consciência: 86 },
+    pending: [],
+    profile: {
+      summary: "Milena é ENFJ-A como o Rafael, mas com uma configuração bem diferente no Big Five. Extroversão mais moderada (80 vs 96 do Rafael), abertura mais baixa (74), e neuroticismo um pouco mais alto (59). Isso cria uma BD mais cautelosa, metódica e consistente. Cooperação altíssima (18) + moralidade alta (18) = pessoa extremamente confiável e ética.",
+      superpower: "Consistência e confiabilidade. Não é a que vai fechar o deal mais rápido, mas é a que nunca vai queimar um lead ou criar problema com restaurante. Dever alto (16) = cumpre o que promete.",
+      blindspot: "Imaginação baixa (11) + cautela baixa (11) é uma combinação curiosa: ela não é muito criativa nas abordagens E ao mesmo tempo pode agir sem pensar muito. Precisa de scripts e processos claros."
+    },
+    commercial: [
+      { type: "funciona", text: "Na prospecção, transmite confiança e seriedade. Donos de restaurante mais conservadores ou desconfiados vão se sentir seguros com ela. Não é agressiva, é consistente." },
+      { type: "funciona", text: "No convencimento, a cooperação alta faz ela ser excelente em negociações ganha-ganha. Ela encontra naturalmente o ponto que funciona para os dois lados." },
+      { type: "cuidado", text: "Nas explicações técnicas, abertura e intelecto mais moderados significam que ela pode não ter a mesma fluência que Victor. Se a conversa ficar muito técnica ou abstrata, ela pode perder segurança." },
+      { type: "cuidado", text: "Gregários baixo (11) combinado com extroversão menor sugere que visitas em volume alto podem ser mais desgastantes para ela. Monitore o cansaço." },
+      { type: "acao", text: "Dê a Milena as contas que exigem relacionamento longo e confiança — restaurantes de bairro, negócios familiares. Ela brilha no acompanhamento, não na 'conquista relâmpago'." }
+    ],
+    leadership: [
+      { type: "funciona", text: "Feedback estruturado e previsível. Marque 1:1 fixo, com pauta clara. Ela performa melhor quando sabe o que esperar. Surpresas a desestabilizam mais que os outros (neuroticismo 59 = o mais alto do time)." },
+      { type: "funciona", text: "Valorize a consistência, não só os picos. Ela pode se sentir invisível se você só elogia quem fecha mais. Reconheça: 'Milena, nenhum restaurante seu reclamou esse mês — isso é raro e importa muito'." },
+      { type: "funciona", text: "Delegue tarefas de processo e organização para ela. Dever 16 + cooperação 18 = ela vai criar os controles que o time precisa e vai gostar de fazer isso." },
+      { type: "cuidado", text: "Neuroticismo mais alto que o resto do time. Em semanas de pressão, cheque se ela não está internalizando estresse. Ela não vai te dizer — autoconsciência baixa (11) faz ela subestimar o próprio desgaste." },
+      { type: "acao", text: "Pareie ela com Victor nas primeiras semanas em contas mais técnicas. Ela aprende por observação e ele gosta de ensinar. Funciona para os dois." }
+    ],
+    risks: [
+      { type: "risco", text: "Se a meta for muito agressiva sem suporte, o neuroticismo mais alto pode virar ansiedade (12 neutro). Ela é a mais suscetível do time a pressão mal calibrada." },
+      { type: "risco", text: "Imaginação baixa = pode ficar 'presa' em uma abordagem que não funciona sem conseguir pivotar sozinha. Precisa de mais coaching ativo que os outros." },
+      { type: "acao", text: "Na primeira semana, faça pelo menos 2 visitas acompanhadas com ela. Não para avaliar — para ela te ver negociando e absorver abordagens que pode replicar." }
+    ]
+  },
+  {
+    id: "lucas",
+    name: "Lucas Gonçalo Lippi",
+    initials: "LL",
+    color: P.amber,
+    mbti: "ENTP-T",
+    mbtiLabel: "Inovador",
+    disc: "A confirmar",
+    bigfive: { Neuroticismo: 68, Extroversão: 87, Abertura: 86, Amabilidade: 76, Consciência: 95 },
+    pending: [],
+    profile: {
+      summary: "Lucas é o perfil mais complexo do time. O ENTP-T (Turbulento) é radicalmente diferente dos outros 3 — ele é o único T (turbulento ao invés de assertivo) e o único P (perceptivo ao invés de julgador). Isso significa que ele questiona mais, duvida mais de si, e é mais flexível/improvisador. No Big Five, neuroticismo mais alto (68) com vulnerabilidade alta (15) e imoderação alta (15) mostram alguém com muita energia mas que pode se desregular sob pressão.",
+      superpower: "Criatividade e adaptabilidade. ENTP + imaginação 20/20 + intelecto 17 = ele inventa abordagens novas que ninguém pensou. É o BD que vai achar um jeito diferente de convencer aquele restaurante que todos já tentaram.",
+      blindspot: "O -T (turbulento) significa que ele duvida de si mesmo. Combinado com vulnerabilidade 15 e imoderação 15, dias de muita rejeição podem gerar uma espiral: desânimo → impulsividade → decisões ruins → mais desânimo."
+    },
+    commercial: [
+      { type: "funciona", text: "Na prospecção, é o mais criativo. Vai encontrar leads que os outros não pensaram, vai abordar de formas inusitadas, vai adaptar o pitch em tempo real. Imaginação 20 + aventureirismo 13 = nunca faz a mesma coisa duas vezes." },
+      { type: "funciona", text: "No convencimento, usa argumentação lógica sofisticada. ENTP adora debater — se o dono traz objeções, Lucas vai gostar do desafio e construir contra-argumentos elaborados." },
+      { type: "cuidado", text: "Organização neutra (12) + autodisciplina baixa (10) = a parte burocrática do processo pode ser negligenciada. Relatórios, follow-ups estruturados, atualização de CRM — ele vai procrastinar." },
+      { type: "cuidado", text: "Confiança baixa no Big Five (8/20) = ele pode ser excessivamente desconfiado com donos de restaurante, o que atrasa o fechamento. Pode interpretar hesitação como má fé." },
+      { type: "acao", text: "Crie checkpoints de processo obrigatórios (ex: 'antes de ir embora do restaurante, atualiza o status no CRM'). Ele precisa de gatilhos externos porque a autodisciplina interna é limitada." }
+    ],
+    leadership: [
+      { type: "funciona", text: "Debate intelectual. ENTP precisa questionar para se engajar. Se você disser 'faça assim', ele resiste. Se disser 'o que você acha que funciona aqui?', ele se envolve e executa melhor." },
+      { type: "funciona", text: "Feedback frequente e honesto, mas com cuidado no tom. O -T (turbulento) faz ele já ser autocrítico demais. Reforce primeiro o que está bom antes de corrigir. Proporção 3:1 (3 positivos para 1 correção)." },
+      { type: "funciona", text: "Dê espaço para ele propor ideias novas. Se ele sugerir uma abordagem diferente para um restaurante, deixe testar (dentro do razoável). ENTPs que não podem inovar ficam apáticos." },
+      { type: "cuidado", text: "Não compare ele com Victor publicamente. São perfis opostos — Victor é o executador confiante, Lucas é o criativo inseguro. Comparação vai destruir a autoconfiança do Lucas." },
+      { type: "cuidado", text: "Cooperação altíssima (20) + amabilidade mais baixa que os outros (76) = ele quer harmonia mas pode ser mais seco/direto. Pode parecer 'frio' mas na verdade está tentando ajudar do jeito dele." },
+      { type: "acao", text: "Nos dias de muita rejeição, mande uma mensagem curta: 'Vi que hoje tá puxado. Amanhã é outro dia.' O -T precisa saber que o líder está vendo sem estar julgando." }
+    ],
+    risks: [
+      { type: "risco", text: "Vulnerabilidade 15 + Imoderação 15 = em momentos de estresse, pode tomar decisões impulsivas (prometer algo ao restaurante que não pode cumprir, desistir de um lead bom cedo demais)." },
+      { type: "risco", text: "É o BD com maior risco de burnout. Neuroticismo 68 (maior do time) + turbulência do ENTP-T = ele se cobra muito e esconde. Se ficar quieto demais, é sinal de alerta." },
+      { type: "risco", text: "Autodisciplina 10/20 é a mais baixa do time. Se não tiver processo estruturado, a produtividade oscila muito de dia para dia." },
+      { type: "acao", text: "Estruture a semana dele mais que dos outros: segunda = planejamento juntos, quarta = check-in rápido, sexta = revisão. Ele precisa de 'corrimão', não de microgestão." }
+    ]
+  },
+  {
+    id: "douglas",
+    name: "Douglas Araujo",
+    initials: "DA",
+    color: P.red,
+    mbti: null,
+    mbtiLabel: null,
+    disc: "A confirmar",
+    bigfive: null,
+    pending: ["MBTI", "DISC", "Big Five"],
+    profile: null
+  }
+];
+
+// ============ STATE ============
+let currentTab = "vinicius";
+let prevTab = "victor";
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+function tag(label, color, bg) {
+  bg = bg || "transparent";
+  return `<span class="tag" style="color:${color};background:${bg}">${esc(label)}</span>`;
+}
+
+function insight(item) {
+  const m = INSIGHT_META[item.type] || INSIGHT_META.cuidado;
+  return `<div class="insight ${item.type}">
+    ${tag(m.label, m.color)}
+    <div class="i-text">${esc(item.text)}</div>
+  </div>`;
+}
+
+function bigfiveBars(bigfive) {
+  const max = 120;
+  return Object.entries(bigfive).map(([k, v]) => {
+    const ratio = v / max;
+    const color = ratio >= 0.7 ? P.green : ratio >= 0.5 ? P.amber : P.blue;
+    const w = Math.min(ratio * 100, 100);
+    return `<div class="bigfive-bar">
+      <div class="lbl">${esc(k)}</div>
+      <div class="track"><div class="fill" style="width:${w}%;background:${color}"></div></div>
+      <div class="val">${v}</div>
+    </div>`;
+  }).join("");
+}
+
+function pendingCard(bd) {
+  const testNames = bd.pending.map(t => {
+    const color = P.red, bg = P.redBg;
+    return `<span class="tag" style="color:${color};background:${bg}">${esc(t)} Pendente</span>`;
+  }).join(" ");
+  return `<div class="card pending-card">
+    <div class="icon">🧩</div>
+    <div class="t">${esc(bd.name)} — Sem testes</div>
+    <div class="d">${esc(bd.name.split(" ")[0])} ainda não enviou os testes de perfil. Cobrar o envio para completar o mapeamento do time e gerar a análise individual.</div>
+    <div class="pending-tags">${testNames}</div>
+  </div>`;
+}
+
+function profileCard(bd) {
+  const badges = [];
+  if (bd.mbti) badges.push(tag(bd.mbti, P.text, P.bg));
+  if (bd.mbtiLabel) badges.push(tag(bd.mbtiLabel, P.sub, P.bg));
+  if (bd.disc) badges.push(tag(bd.disc, P.blue, P.blueBg));
+
+  const bigfiveSection = bd.bigfive
+    ? `<div>
+        <div class="section-title">Big Five (scores totais por domínio)</div>
+        ${bigfiveBars(bd.bigfive)}
+      </div>`
+    : `<div>
+        <div class="section-title">Big Five</div>
+        <div style="font-size:11px;color:${P.sub};line-height:1.6">${tag("Pendente", P.red, P.redBg)} Resultado não enviado. A triangulação completa (MBTI + DISC + Big Five) ficará disponível quando o teste for enviado.</div>
+      </div>`;
+
+  const sourceNote = bd.source
+    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">Fonte: ${esc(bd.source)}</div>`
+    : "";
+
+  const pendingNote = bd.pending && bd.pending.length
+    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">Pendente: ${bd.pending.map(esc).join(", ")}</div>`
+    : "";
+
+  return `
+    <div class="card profile-header" style="--accent:${bd.color}">
+      <div class="profile-row">
+        <div>
+          <h2 class="name">${esc(bd.name)}</h2>
+          <p class="role-line">BD · SMBX Santos</p>
+        </div>
+        <div class="badges">${badges.join("")}</div>
+      </div>
+
+      <div class="grid2">
+        <div class="summary-text">${esc(bd.profile.summary)}</div>
+        ${bigfiveSection}
+      </div>
+
+      <div class="grid2" style="margin-top:12px">
+        <div class="callout super">
+          <div class="ct-label">Superpoder</div>
+          <div class="ct-text">${esc(bd.profile.superpower)}</div>
+        </div>
+        <div class="callout blind">
+          <div class="ct-label">Ponto Cego</div>
+          <div class="ct-text">${esc(bd.profile.blindspot)}</div>
+        </div>
+      </div>
+      ${sourceNote}${pendingNote}
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>📊</span> Performance no Ciclo Comercial</div>
+      <p class="section-desc">Prospecção → Convencimento → Explicação Técnica</p>
+      ${bd.commercial.map(insight).join("")}
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>🎯</span> Como Liderar Este BD</div>
+      <p class="section-desc">Feedback, motivação, delegação e acompanhamento</p>
+      ${bd.leadership.map(insight).join("")}
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>⚡</span> Riscos e Ações Preventivas</div>
+      <p class="section-desc">Sinais de alerta e o que fazer antes que vire problema</p>
+      ${bd.risks.map(insight).join("")}
+    </div>`;
+}
+
+function tabbar(items, activeId) {
+  return `<div class="tabbar">${items.map(b => {
+    const cls = b.id === activeId ? "active" : "";
+    return `<button class="${cls}" data-id="${b.id}">${esc(b.name.split(" ")[0])}</button>`;
+  }).join("")}</div>`;
+}
+
+function render() {
+  const app = document.getElementById("app");
+  const cur = currentTeam.find(b => b.id === currentTab);
+  const prev = previousTeam.find(b => b.id === prevTab);
+
+  const curContent = cur && cur.profile ? profileCard(cur) : pendingCard(cur);
+  const prevContent = prev && prev.profile ? profileCard(prev) : pendingCard(prev);
+
+  app.innerHTML = `
+    <div class="header">
+      <div class="header-top">
+        <div class="logo">K</div>
+        <span class="kicker">Keeta Delivery · SMBX Santos · Análise de Perfis</span>
+      </div>
+      <h1 class="title">Guia de Gestão Individual</h1>
+      <p class="subtitle">Como liderar cada BD no ciclo comercial — baseado em MBTI + DISC + Big Five</p>
+    </div>
+
+    <div class="tab-group-label">Time atual · julho 2026 em diante</div>
+    ${tabbar(currentTeam, currentTab)}
+
+    ${curContent}
+
+    <details class="history">
+      <summary>Equipe anterior (até junho 2026) — Victor, Rafael, Milena, Lucas, Douglas</summary>
+      <div class="hist-inner">
+        ${tabbar(previousTeam, prevTab)}
+        ${prevContent}
+      </div>
+    </details>
+
+    <div class="footer">
+      <span>Keeta Delivery · SMBX Santos · Gestão Comercial</span>
+      <span>Atualizado em agosto 2026</span>
+    </div>`;
+
+  // Wire tab clicks
+  app.querySelectorAll(".tabbar button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-id");
+      // Determine which tabbar this button belongs to by checking parent context
+      const isCurrent = btn.parentElement === app.querySelectorAll(".tabbar")[0];
+      if (isCurrent) { currentTab = id; } else { prevTab = id; }
+      render();
+    });
+  });
+}
+
+render();
+</script>
+</body>
+</html>
