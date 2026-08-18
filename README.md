@@ -6,14 +6,21 @@ Dashboard interativo para gestão individual de Business Developers (BDs) do tim
 
 | BD | MBTI | DISC | Big Five | Status |
 |---|---|---|---|---|
-| Vinicius Guimarães | ENTJ-A (Comandante) | A confirmar | Pendente | 🟡 Parcial |
+| Vinicius Guimarães | ENTJ-A (Comandante) | A confirmar | ✅ Completo | 🟡 Parcial (DISC pendente) |
 | Natalia Almeida | ENTJ-A (Comandante) | Thinker (Analítico) | ✅ Completo | 🟢 Completo |
 | Marcelo Evangelista | ENFP (Ativista) | Equilibrado | ✅ Completo | 🟢 Completo |
 
+### Gestão — BDM / Gerente
+
+| Perfil | MBTI | DISC | Big Five | Status |
+|---|---|---|---|---|
+| Caio Guijarro | ENFJ-A (Protagonista) | Thinker (Pensador) | ✅ Completo | 🟢 Completo |
+
 ### Fontes dos testes
-- **Vinicius**: [16personalities](https://www.16personalities.com/br/perfis/e065f8ec6ce9a) — DISC e Big Five pendentes
+- **Vinicius**: [16personalities](https://www.16personalities.com/br/perfis/e065f8ec6ce9a) · [bigfive-test](https://bigfive-test.com/result/6a84a9a444b60e5d65a0d4ae) — DISC pendente
 - **Natalia**: [16personalities](https://www.16personalities.com/br/resultados/entj-a/f/ogypaz0hp) · [myDISCprofile](https://www.mydiscprofile.com/pt-br/personality-report.php?id=1645225017) · [bigfive-test](https://bigfive-test.com/pt-br/result/6a7f64d0114cb9939c68b40a)
 - **Marcelo**: [16personalities ENFP](https://www.16personalities.com/br/personalidade-enfp) · [myDISCprofile](https://www.mydiscprofile.com/pt-br/personality-report.php?id=1667444714) · [bigfive-test](https://bigfive-test.com/pt-br/result/6a7f67cc114cb9939c68b42b)
+- **Caio (BDM)**: [16personalities ENFJ-A](https://www.16personalities.com/br/resultados/enfj-a/m/hqguu9zas) · [myDISCprofile](https://www.mydiscprofile.com/pt-br/personality-report.php?id=1667439085) · [bigfive-test](https://bigfive-test.com/pt-br/result/6a84af9c79b9b5a0fa18694f)
 
 ## Equipe anterior (até junho/2026)
 

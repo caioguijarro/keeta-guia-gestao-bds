@@ -198,6 +198,48 @@ const INSIGHT_META = {
   risco:    { label: "Risco",   color: P.red,   bg: P.redBg },
 };
 
+// ============ GESTÃO — BDM / GERENTE DO TIME ============
+const manager = {
+  id: "caio",
+  name: "Caio Guijarro",
+  initials: "CG",
+  color: P.text,
+  role: "BDM / Gerente",
+  mbti: "ENFJ-A",
+  mbtiLabel: "Protagonista",
+  disc: "Thinker",
+  bigfive: { Neuroticismo: 40, Extroversão: 82, Abertura: 74, Amabilidade: 101, Consciência: 96 },
+  pending: [],
+  source: "16personalities.com + myDISCprofile + bigfive-test.com",
+  profile: {
+    summary: "Caio é ENFJ-A (Protagonista) com DISC Thinker (Pensador, ritmo ponderado) e um Big Five marcante: Amabilidade altíssima (101), Consciência alta (96), Extroversão alta (82), Abertura moderada (74) e Neuroticismo baixo (40). É um líder que une empatia e estrutura — o ENFJ inspira e cuida das pessoas, enquanto a Consciência 96 garante processo, follow-up e previsibilidade. O Neuroticismo 40 o mantém calmo sob pressão. O DISC Thinker adiciona um traço deliberativo: ele planeja antes de agir e valoriza o trabalho em equipe. Ele é o contraponto do próprio time: lidera uma equipe com dois ENTJ-A (Comandante) e um ENFP (Ativista) sendo ele mesmo um Protagonista orientado a pessoas — e é justamente a Amabilidade 101 que mantém esse grupo de perfis fortes funcionando junto.",
+    superpower: "Conectar, inspirar e estruturar ao mesmo tempo. A Amabilidade 101 + ENFJ fazem cada BD sentir que tem um líder que se importa de verdade — o engajamento vem de lealdade, não de medo. E a Consciência 96 garante que essa empatia venha acompanhada de organização, rituais e follow-up. É um líder que acolhe E entrega.",
+    blindspot: "A combinação Amabilidade 101 + ENFJ + Thinker pode gerar evitação de conflito. Ele tende a adiar conversas difíceis (feedback duro, cobrança firme de meta, decisões de desligamento) para preservar a harmonia. O Thinker reforça o padrão: em vez de agir decididamente, ele pode 'pensar mais um pouco' e perder a janela de ação."
+  },
+  style: [
+    { type: "funciona", text: "Liderança por conexão e confiança. ENFJ + Amabilidade 101 fazem cada BD se sentir visto e valorizado. O time rende mais por lealdade ao líder do que por pressão — o que gera engajamento de longo prazo e baixa rotatividade." },
+    { type: "funciona", text: "Gestão com estrutura. Consciência 96 + Thinker = processos, rituais e follow-up bem organizados. O time trabalha num ambiente previsível, o que reduz ansiedade e aumenta a consistência." },
+    { type: "funciona", text: "Calma sob pressão. Neuroticismo 40 faz dele uma âncora de estabilidade em semanas de meta apertada. O time não herda o pânico do líder — um ativo raro e valioso em vendas." },
+    { type: "cuidado", text: "Amabilidade 101 pode virar 'chefe bonzinho demais'. O risco de suavizar feedbacks que precisavam ser duros, de tolerar performance mediana para não gerar desconforto, e de cobrar menos do que a meta exige." },
+    { type: "cuidado", text: "Thinker + ENFJ = decisão lenta em situações que exigem rapidez. A tendência a 'considerar e planejar' pode atrasar decisões que deveriam ser imediatas (pivotar abordagem, cortar um lead frio, realocar um BD)." },
+    { type: "acao", text: "Instale um 'gatilho de decisão': ao notar que está adiando uma conversa difícil, agende-a em até 24h. Treinar 'clareza gentil' — ser direto COM cuidado — é o músculo que ele mais precisa desenvolver." }
+  ],
+  self: [
+    { type: "funciona", text: "Proteja blocos de reflexão estratégica. Thinker + ENFJ rendem mais com tempo reservado para pensar (revisar funil, preparar 1:1s, planejar o desenvolvimento de cada BD). Sem isso, ele vira 'bombeiro' apagando incêndio." },
+    { type: "funciona", text: "Transforme o cuidado em ritual. Use a Consciência 96 para criar rotinas fixas (1:1 semanal, revisão de CRM, follow-up de leads) que tornem a atenção às pessoas algo sistemático, não um esforço hercúleo ocasional." },
+    { type: "funciona", text: "Delegue a cobrança técnica e use sua força no desenvolvimento. Você não precisa ser o 'carrasco': use o peer accountability entre BDs (Natalia para processo, Vinicius para estratégia) e reserve sua energia para coaching e crescimento." },
+    { type: "cuidado", text: "Risco do 'super-herói emocional': Amabilidade 101 + ENFJ fazem ele absorver o estresse de todo o time. Sem válvula de escape (mentor, pares, reflexão), acumula a carga emocional dos outros sem processar a própria." },
+    { type: "cuidado", text: "O Thinker pode virar 'análise-paralisia' em gestão de pessoas. Quando um BD claramente não performa, ele pode adiar a conversa esperando 'mais dados' em vez de agir." },
+    { type: "acao", text: "Agende um check-in quinzenal com seu gestor ou um par de confiança para calibrar conversas difíceis antes de tê-las. Um 'ensaio' reduz a ansiedade e aumenta a clareza." }
+  ],
+  risks: [
+    { type: "risco", text: "Burnout por 'cuidar de todo mundo'. ENFJ + Amabilidade 101 + a responsabilidade de gerir uma equipe de perfis fortes = ele coloca as necessidades do time acima das próprias. O desgaste emocional é o maior risco." },
+    { type: "risco", text: "Desequilíbrio entre firmeza e empatia. Se pender demais para a empatia, a meta sofre; se forçar uma dureza artificial, pode soar inautêntico e perder a confiança do time. O meio-termo é o desafio central." },
+    { type: "risco", text: "Decisão lenta em janelas que fecham rápido. O Thinker quer dados antes de agir, mas em vendas há momentos que não esperam. Adiar pode custar fechamentos ou a credibilidade do time." },
+    { type: "acao", text: "Mantenha uma 'lista de conversas adiadas' visível e resolva pelo menos UMA por semana. Conversas difíceis frequentes, em doses pequenas, tornam cada uma delas mais leve." }
+  ]
+};
+
 // ============ TIME ATUAL (julho 2026 em diante) ============
 const currentTeam = [
   {
@@ -593,6 +635,70 @@ function profileCard(bd) {
     </div>`;
 }
 
+function managerCard(bd) {
+  const badges = [];
+  if (bd.mbti) badges.push(tag(bd.mbti, P.text, P.bg));
+  if (bd.mbtiLabel) badges.push(tag(bd.mbtiLabel, P.sub, P.bg));
+  if (bd.disc) badges.push(tag(bd.disc, P.blue, P.blueBg));
+
+  const bigfiveSection = bd.bigfive
+    ? `<div>
+        <div class="section-title">Big Five (scores totais por domínio)</div>
+        ${bigfiveBars(bd.bigfive)}
+      </div>`
+    : "";
+
+  const sourceNote = bd.source
+    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">Fonte: ${esc(bd.source)}</div>`
+    : "";
+
+  return `
+    <div class="card profile-header" style="--accent:${bd.color}">
+      <div class="profile-row">
+        <div>
+          <h2 class="name">${esc(bd.name)}</h2>
+          <p class="role-line">${esc(bd.role)} · SMBX Santos</p>
+        </div>
+        <div class="badges">${badges.join("")}</div>
+      </div>
+
+      <div class="grid2">
+        <div class="summary-text">${esc(bd.profile.summary)}</div>
+        ${bigfiveSection}
+      </div>
+
+      <div class="grid2" style="margin-top:12px">
+        <div class="callout super">
+          <div class="ct-label">Superpoder</div>
+          <div class="ct-text">${esc(bd.profile.superpower)}</div>
+        </div>
+        <div class="callout blind">
+          <div class="ct-label">Ponto Cego</div>
+          <div class="ct-text">${esc(bd.profile.blindspot)}</div>
+        </div>
+      </div>
+      ${sourceNote}
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>🧭</span> Estilo de Liderança</div>
+      <p class="section-desc">Como ele lidera naturalmente — pontos fortes e armadilhas</p>
+      ${bd.style.map(insight).join("")}
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>🪞</span> Como Gerenciar a Si Mesmo</div>
+      <p class="section-desc">Autogestão, rituais e descanso</p>
+      ${bd.self.map(insight).join("")}
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span>⚠️</span> Riscos e Pontos de Atenção como Líder</div>
+      <p class="section-desc">Sinais de alerta e o que fazer antes que vire problema</p>
+      ${bd.risks.map(insight).join("")}
+    </div>`;
+}
+
 function tabbar(items, activeId) {
   return `<div class="tabbar">${items.map(b => {
     const cls = b.id === activeId ? "active" : "";
@@ -617,6 +723,9 @@ function render() {
       <h1 class="title">Guia de Gestão Individual</h1>
       <p class="subtitle">Como liderar cada BD no ciclo comercial — baseado em MBTI + DISC + Big Five</p>
     </div>
+
+    <div class="tab-group-label">Gestão · BDM / Gerente do time</div>
+    ${managerCard(manager)}
 
     <div class="tab-group-label">Time atual · julho 2026 em diante</div>
     ${tabbar(currentTeam, currentTab)}
