@@ -19,11 +19,19 @@ Dashboard interativo para gestão individual de Business Developers (BDs) do tim
 
 Victor Vasques, Rafael Caetano, Milena Silva, Lucas Gonçalo Lippi e Douglas Araujo — perfis preservados na seção "Equipe anterior" do dashboard.
 
+## Arquivos
+
+- `guia-gestao-individual.html` — Dashboard interativo de perfis dos BDs (MBTI + DISC + Big Five)
+- `playbook-negociacao-b2b.html` — Playbook de 9 táticas de negociação B2B porta a porta, adaptado para Food Delivery / Keeta, com conexão aos perfis dos BDs
+
 ## Como usar
 
-Abra o arquivo `guia-gestao-individual.html` diretamente no navegador. É um arquivo único em HTML/CSS/JS vanilla — não requer build, servidor ou dependências externas (exceto as fontes do Google, carregadas via CDN).
+Abra qualquer arquivo `.html` diretamente no navegador. São arquivos únicos em HTML/CSS/JS vanilla — não requerem build, servidor ou dependências externas (exceto as fontes do Google, carregadas via CDN).
 
-## Estrutura do guia (por BD)
+- **Guia de Gestão Individual** (`guia-gestao-individual.html`): selecione a aba do BD para ver perfil, superpoder, ponto cego, e orientações por fase do ciclo comercial.
+- **Playbook de Negociação** (`playbook-negociacao-b2b.html`): navegue pelos 9 módulos de táticas de negociação B2B. Ao final, veja o mapa de quem usa cada tática com mais naturalidade com base no perfil de cada BD.
+
+## Estrutura do guia de gestão (por BD)
 
 - **Resumo do perfil** — triangulação dos 3 testes
 - **Superpoder** — o que este BD faz melhor que os outros

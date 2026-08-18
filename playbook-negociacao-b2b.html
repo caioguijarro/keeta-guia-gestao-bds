@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Keeta · Playbook de Negociação B2B — Porta a Porta</title>
+<style>
+  :root {
+    --bg: #F5F4F0;
+    --card: #FFFFFF;
+    --border: #E6E3DC;
+    --border2: #EDE9E1;
+    --text: #2C2B28;
+    --sub: #8C8880;
+    --muted: #B8B4AC;
+    --line: #D9D5CC;
+    --green: #4A7C59;
+    --greenBg: #EDF3EF;
+    --greenLight: #C6DDD0;
+    --red: #B05555;
+    --redBg: #F5ECEC;
+    --amber: #B8813A;
+    --amberBg: #F5EFE4;
+    --blue: #4A6899;
+    --blueBg: #EBF0F8;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    min-height: 100vh;
+    color: var(--text);
+    font-family: 'DM Sans', 'Segoe UI', -apple-system, sans-serif;
+    padding: 28px 32px;
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #F5F4F0; }
+  ::-webkit-scrollbar-thumb { background: #E6E3DC; border-radius: 2px; }
+
+  .header { margin-bottom: 24px; }
+  .header-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .logo {
+    width: 24px; height: 24px; border-radius: 6px; background: var(--text);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 900; color: #fff;
+  }
+  .kicker {
+    font-size: 10px; font-weight: 700; color: var(--sub);
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  h1.title {
+    font-size: 26px; font-weight: 800; color: var(--text);
+    letter-spacing: -0.03em;
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.1;
+  }
+  .subtitle { font-size: 11px; color: var(--sub); margin-top: 4px; }
+
+  .tag {
+    font-size: 9px; font-weight: 700;
+    border-radius: 4px; padding: 3px 8px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    white-space: nowrap; display: inline-block;
+  }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .card-accent { border-top: 3px solid var(--accent); }
+
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .section-head {
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .section-desc { font-size: 11px; color: var(--sub); margin-bottom: 12px; line-height: 1.6; }
+  .section h2 {
+    font-size: 18px; font-weight: 800; color: var(--text);
+    font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .section h3 {
+    font-size: 13px; font-weight: 700; color: var(--text);
+    margin-top: 14px; margin-bottom: 6px;
+  }
+  .section p, .section li {
+    font-size: 12px; color: var(--text); line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .section ul { margin-left: 18px; margin-bottom: 8px; }
+  .section ul li { margin-bottom: 4px; }
+
+  .tactic-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px; margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .tactic-card h4 {
+    font-size: 13px; font-weight: 800; color: var(--text);
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tactic-number {
+    width: 22px; height: 22px; border-radius: 99px;
+    background: var(--text); color: #fff;
+    font-size: 10px; font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .tactic-meta {
+    display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;
+  }
+  .tactic-body { font-size: 12px; color: var(--text); line-height: 1.7; }
+  .tactic-body strong { color: var(--text); }
+  .example-box {
+    background: var(--blueBg); border: 1px solid var(--border2); border-radius: 8px;
+    padding: 10px 14px; margin-top: 10px; font-size: 11px; color: var(--text); line-height: 1.6;
+  }
+  .example-box .label {
+    font-size: 9px; font-weight: 700; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;
+  }
+  .example-box em {
+    font-style: normal; color: var(--green); font-weight: 700;
+  }
+  .warning-box {
+    background: var(--redBg); border: 1px solid var(--border2); border-radius: 8px;
+    padding: 10px 14px; margin-top: 10px; font-size: 11px; color: var(--text); line-height: 1.6;
+  }
+  .warning-box .label {
+    font-size: 9px; font-weight: 700; color: var(--red);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;
+  }
+
+  .bd-match {
+    display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;
+  }
+  .bd-match .bd-chip {
+    font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 99px;
+    background: var(--greenBg); color: var(--green); border: 1px solid var(--greenLight);
+  }
+  .bd-match .bd-chip.warn {
+    background: var(--amberBg); color: var(--amber); border: 1px solid var(--border2);
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+
+  .footer {
+    margin-top: 36px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: var(--muted); flex-wrap: wrap; gap: 8px;
+  }
+
+  .toc {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 16px;
+  }
+  .toc-title {
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;
+  }
+  .toc ul { list-style: none; margin: 0; padding: 0; }
+  .toc li { font-size: 11px; color: var(--sub); line-height: 2; }
+  .toc li a { color: var(--text); text-decoration: none; font-weight: 600; }
+  .toc li a:hover { text-decoration: underline; }
+  .toc li span { color: var(--muted); margin-left: 4px; }
+
+  .module-header {
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="logo">K</div>
+    <span class="kicker">Keeta Delivery · SMBX Santos · Playbook Comercial</span>
+  </div>
+  <h1 class="title">Playbook de Negociação B2B</h1>
+  <p class="subtitle">Venda porta a porta de software de Food Delivery — 9 táticas aplicadas ao contexto Keeta</p>
+</div>
+
+<div class="toc">
+  <div class="toc-title">Índice</div>
+  <ul>
+    <li><a href="#contexto">Contexto Keeta</a> <span>— O que muda quando o produto é delivery?</span></li>
+    <li><a href="#m1">Módulo 1: Preparo e Base do Poder</a> <span>— BATNA + Ancoragem</span></li>
+    <li><a href="#m2">Módulo 2: Coleta de Informações</a> <span>— Espelhamento + Policial Bom/Mau</span></li>
+    <li><a href="#m3">Módulo 3: Avançando Valores</a> <span>— Concessão, Cortina de Fumaça, Reação, Silêncio</span></li>
+    <li><a href="#m4">Módulo 4: Fechamento</a> <span>— Ultimato</span></li>
+    <li><a href="#perfis">Conexão com os Perfis dos BDs</a> <span>— Quem usa o que melhor?</span></li>
+  </ul>
+</div>
+
+<!-- INTRO -->
+<div class="card card-accent" style="--accent:#4A6899">
+  <h2 style="font-size:18px;font-weight:800;font-family:'Playfair Display',serif;margin-bottom:10px">O que muda quando o produto é delivery?</h2>
+  <p style="font-size:12px;color:var(--text);line-height:1.7;margin-bottom:10px">
+    A negociação B2B de software de Food Delivery não é como vender um SaaS genérico. O restaurante já conhece o problema (entregas, comissões, apps), já conhece os competidores (iFood, Uber Eats, Rappi) e já tem uma posição emocional formada sobre o tema. Isso muda tudo:
+  </p>
+  <ul style="font-size:12px;color:var(--text);line-height:1.7;margin-left:18px;margin-bottom:10px">
+    <li><strong>O dono do restaurante já tem ancoragem.</strong> Ele sabe quanto paga de comissão no iFood. Sua primeira pergunta é "quanto vocês cobram?" — e isso é uma armadilha.</li>
+    <li><strong>O dono já tem BATNA.</strong> O iFood é o padrão. O próprio delivery é uma alternativa. Você precisa mudar o jogo, não jogar no jogo dele.</li>
+    <li><strong>A decisão é emocional, mas racionalizada.</strong> O dono decide pelo medo ("e se der errado?") ou pela ganância ("e se eu ganhar mais?"), mas justifica com números. Suas táticas precisam operar nos dois níveis.</li>
+    <li><strong>O ciclo é curto e repetitivo.</strong> Você não tem 3 reuniões. Tem 15 min na porta do balcão. A técnica precisa ser rápida e natural.</li>
+  </ul>
+  <p style="font-size:11px;color:var(--sub);line-height:1.6">
+    Este playbook adapta 9 táticas clássicas de negociação (baseadas no treinamento de Thiago Concer) ao contexto específico de venda porta a porta de plataforma de delivery para restaurantes. Cada tática inclui: o que é, como funciona, exemplo aplicado ao Keeta, e qual BD do time SMBX Santos a executa com mais naturalidade.
+  </p>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="section">
+  <div class="section-head">🏛️ Módulo 1: Preparo e Base do Poder</div>
+  <p class="section-desc">Antes de falar de comissão, você precisa estabelecer quem manda na mesa. Essas duas táticas definem o poder antes do primeiro número.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">1</span> BATNA / MAPAN — A Tática de Ouro</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Poder</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Preparo</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> BATNA = "Best Alternative to a Negotiated Agreement". É o seu plano B se essa negociação falhar. Quanto melhor o seu plano B, mais poder você tem para dizer não.<br><br>
+      <strong>No contexto Keeta:</strong> O BATNA do restaurante é o iFood. O BATNA do BD é o próximo restaurante na rua. Mas o BATNA de verdade é sobre <em>valor percebido</em>, não sobre existir ou não existir. Se o dono acredita que "iFood é o único jeito", o BATNA dele é fraco (ele não conhece alternativas). Se o dono já sabe que Keeta entrega mais pedidos no bairro dele, o BATNA dele mudou.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li>Antes de bater na porta, mapeie 3 dados: quantos restaurantes daquele bairro já estão no Keeta? Qual o ticket médio deles? Qual a taxa de crescimento de pedidos nos últimos 30 dias? Isso é o seu poder de barganha.</li>
+        <li>Nunca entre sem saber a alternativa do dono. Se ele já está no iFood, pergunte: "Como está indo com a comissão deles?" — descubra se ele está insatisfeito (BATNA fraco dele) ou satisfeito (você precisa mudar o jogo).</li>
+        <li>O seu limite mínimo não é comissão. É o mínimo de pedidos que você precisa gerar para que a conta seja lucrativa para o restaurante. Se ele não consegue fazer X pedidos/mês, não é cliente. Saiba esse número antes.</li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — BATNA do BD</div>
+      "Dono, eu passei aqui semana passada no Seu Zé da esquina. Eles entraram com 12% de comissão e já estão com 340 pedidos no primeiro mês. O vizinho deles, o Bar do João, entrou semana retrasada e já dobrou. Se você quiser, eu passo de novo daqui a 15 dias — mas eu só tenho vaga para mais 3 restaurantes nesse bairro esse mês."<br><br>
+      <em>→ O BD criou um BATNA artificial (vagas limitadas) e social proof (vizinhos que deram certo). O dono agora sente que perde algo se não entrar.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Natalia (Thinker + dados)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + estratégia)</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">2</span> Ancoragem — Quem Diz o Primeiro Número Ganha</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Abertura</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Psicologia</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> O cérebro humano usa a primeira informação recebida como referência para todo o resto. Se o dono disser "eu pago 12% no iFood", ele ancorou a negociação em 12%. Tudo acima disso parece caro; tudo abaixo parece barato.<br><br>
+      <strong>No contexto Keeta:</strong> O dono vai tentar ancorar em comissão. Você precisa ancorar em <em>valor</em>. Não deixe a conversa começar com "quanto vocês cobram?". Comece com "quanto o senhor fatura por mês em delivery?" — agora a ancoragem é receita, não comissão.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li><strong>Ancorar para cima no valor:</strong> "Restaurantes do seu porte na região costumam faturar entre 8 e 12 mil por mês em delivery. A gente já viu casos de 20 mil no primeiro trimestre." Agora a comissão de 15% é sobre 10 mil (1.500), não sobre 3 mil (450). O número da comissão ficou pequeno.</li>
+        <li><strong>Ancorar no problema:</strong> "A gente viu que restaurantes que ficam só no iFood perdem em média 30% da margem em comissão + taxa de entrega. Com a Keeta, a gente devolve parte disso." Agora a ancoragem é perda, não preço.</li>
+        <li><strong>Se o dono ancorar primeiro:</strong> "Eu pago 12% no iFood." Responda com reframe: "E quanto o senhor <em>lucra</em> de cada 100 reais que entra por lá?" Desancore da comissão e ancore na lucratividade.</li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Ancoragem de Valor</div>
+      Dono: "Quanto vocês cobram de comissão?"<br>
+      BD: "Depende do quanto a gente consegue fazer o senhor vender. Restaurantes parecidos com o seu na região faturam entre 8 e 12 mil por mês só em delivery. Se a gente entregar 10 mil, e o senhor pagar 15%, são 1.500 reais. O iFood cobra 12% mais taxa de entrega — e entrega quanto pro senhor hoje?"<br><br>
+      <em>→ O BD ancorou em 10 mil de faturamento (não em 12% vs 15%). Agora a diferença de comissão é irrelevante comparada à diferença de volume.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + visão)</span>
+      <span class="bd-chip">Natalia (dados + estrutura)</span>
+    </div>
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="section">
+  <div class="section-head">🕵️ Módulo 2: Coleta de Informações</div>
+  <p class="section-desc">Antes de vender, você precisa saber o que vender. O restaurante não vai te contar suas dores de graça — você precisa extrair sem parecer um interrogatório.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">3</span> Espelhamento — A Última Palavra dele é a Pergunta</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Descoberta</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Emocional</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> Repita as últimas palavras que o cliente disse, com um tom de leve dúvida/pergunta. O ser humano odeia lacunas na comunicação e tende a se explicar. Enquanto ele se explica, entrega o real motivo da objeção, o gargalo escondido e o limite real.<br><br>
+      <strong>No contexto Keeta:</strong> O restaurante vai dizer coisas genéricas: "não tenho tempo", "já uso o iFood", "não tenho motoboy". O espelhamento transforma objeção de superfície em dor real.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li>Dono: "Não tenho tempo pra isso agora." → BD: "Não tem tempo agora?" (silêncio) → Dono: "É, minha cozinha já tá lotada com os pedidos do iFood e ainda tenho que cuidar do salão." <em>→ Descoberta: o problema não é tempo, é capacidade de cozinha.</em></li>
+        <li>Dono: "Já uso o iFood." → BD: "Já usa o iFood?" → Dono: "É, mas a comissão tá me matando. E ainda tem os cancelamentos que eles não reembolsam." <em>→ Descoberta: o problema não é "já tenho app", é insatisfação com a comissão e política de cancelamento.</em></li>
+        <li>Dono: "Não tenho motoboy." → BD: "Não tem motoboy?" → Dono: "É, contratar é caro e demitir é mais caro ainda. E se não tiver pedido, fico pagando salário pra nada." <em>→ Descoberta: o problema é risco de custo fixo, não falta de entregador.</em></li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Espelhamento + Descoberta Real</div>
+      Dono: "A comissão de vocês é alta."<br>
+      BD: "É alta?" (silêncio)<br>
+      Dono: "É, eu pago 12% no iFood e ainda sai taxa de entrega. Se eu pagar 15% aqui, vai comer meu lucro."<br>
+      BD: "Vai comer seu lucro?"<br>
+      Dono: "É, porque meu lucro em delivery é baixo. O delivery do salão é lucrativo, mas do app o ticket médio é pequeno e a comissão come tudo."<br><br>
+      <em>→ Descoberta real: o problema não é a comissão em si, é o ticket médio baixo. Solução: mostrar como a Keeta aumenta o ticket médio (promoções, combos, upsell no app).</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Marcelo (ENFP + empatia + espontaneidade)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + escuta ativa)</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">4</span> Policial Bom e Policial Mau — O Aliado vs. O Sistema</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Emocional</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Relacionamento</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> Crie uma figura de autoridade que é o "vilão" (gerente, comitê, política da empresa). Você se posiciona como o aliado do cliente. "O sistema não deixou, mas eu vou brigar por você." Isso gera reciprocidade e empatia — o cliente se sente grato a você, não irritado com a condição.<br><br>
+      <strong>No contexto Keeta:</strong> O dono do restaurante precisa sentir que você está do lado dele contra a burocracia. O Keeta (como empresa) pode ser o "mau" — você é o "bom" que faz a ponte.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li>"A política padrão é 15% de comissão + taxa de entrega. Mas eu vou falar com meu gerente — você é o terceiro restaurante da rua que entra esse mês e a gente tá com meta de ocupar o bairro. Vou ver se consigo um plano de lançamento para novos parceiros." <em>→ Você é o aliado; a "política padrão" é o mau.</em></li>
+        <li>"O sistema de onboarding exige que o restaurante tenha pelo menos 2 dias de teste com taxa zero. Eu sei que você quer começar logo, mas o comitê de qualidade não aprova sem isso. Vou acelerar o seu processo para amanhã." <em>→ O "comitê de qualidade" é o mau; você é o herói que acelera.</em></li>
+        <li>"O prazo mínimo de contrato é 6 meses. Mas eu vi que seu restaurante tem potencial — vou pedir uma exceção para 3 meses, com reavaliação. Não prometo, mas vou brigar por isso." <em>→ O contrato é o mau; você é o advogado dele.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Cuidado</div>
+        Nunca crie um "vilão" que não existe. Se você disser "vou falar com meu gerente" e voltar com um desconto que já estava previsto, o dono vai sentir que foi manipulado. Use apenas para condições que realmente precisam de aprovação ou para regras que de fato existem.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Good Cop / Bad Cop</div>
+      Dono: "Mas 15% é muito. O iFood cobra 12."<br>
+      BD: "Eu sei, dono. Se dependesse de mim, a gente cobrava 10% de todo mundo. Mas a política de comissão é definida pelo time de revenue — e eles não abrem mão dos 15% para restaurantes novos. <em>Mas</em>... eu vi que a gente tem um programa de lançamento para bairros novos. Seu bairro é novo pra gente. Vou submeter seu cadastro lá. Se aprovarem, pode ser 12% nos primeiros 3 meses. Não garanto, mas vou brigar."<br><br>
+      <em>→ O dono agora vê você como aliado, não como vendedor. A comissão de 15% deixou de ser "seu preço" e virou "regra da empresa que você está ajudando ele a furar".</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Marcelo (ENFP + empatia genuína)</span>
+      <span class="bd-chip">Natalia (Thinker + credibilidade técnica)</span>
+      <span class="bd-chip warn">Vinicius precisa cuidar — ENTJ-A pode parecer autoritário demais</span>
+    </div>
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="section">
+  <div class="section-head">⚖️ Módulo 3: Avançando Valores e Condições</div>
+  <p class="section-desc">A proposta está na mesa. O pedido de desconto apareceu. É aqui que a maioria dos BDs perde dinheiro. Essas 4 táticas impedem que você deixe valor na mesa.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">5</span> Concessão com Troca — Nunca Ceda de Graça</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Valor</span>
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Negociação</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> A regra de ouro: nunca ceda nada de graça. Todo movimento seu precisa custar um movimento do cliente. Se você dá um desconto sem pedir nada em troca, o cliente aprende que objeção = prêmio.<br><br>
+      <strong>No contexto Keeta:</strong> O dono vai pedir desconto na comissão, prazo maior, taxa de entrega menor, ou exclusividade. Cada vez que você ceder, exija algo proporcional em troca.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li>"Quer 12% ao invés de 15%? Perfeito. Então preciso que o senhor use a Keeta como canal exclusivo de delivery por 90 dias. Se a gente não bater o volume do iFood nesse período, o senhor volta lá e eu não cobro nada. Se bater, o senhor fica e a gente conversa a comissão." <em>→ Troca: desconto por exclusividade + compromisso de resultado.</em></li>
+        <li>"Quer prazo de pagamento de 30 dias em vez de 15? Posso fazer. Mas preciso que o senhor assine o contrato hoje e comece o onboarding amanhã. O prazo só vale para quem entra essa semana." <em>→ Troca: prazo por velocidade de fechamento.</em></li>
+        <li>"Quer taxa de entrega menor? A gente pode reduzir de 3 reais para 2 reais. Mas o senhor precisa aceitar que os pedidos abaixo de 25 reais vêm com taxa de 4 reais. A gente compensa o volume baixo." <em>→ Troca: taxa menor para pedidos grandes, taxa maior para pedidos pequenos.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Erro Comum</div>
+        "Tá bom, eu faço 12% para você." Sem troca. O dono aprende que basta chorar. Na próxima vez, ele vai pedir 10%. E na outra, 8%. Você ensinou o cliente a negociar contra você.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Concessão com Troca</div>
+      Dono: "Se você fizer 12% de comissão, eu fecho hoje."<br>
+      BD: "12% eu consigo. Mas aí preciso de duas coisas: primeiro, o senhor entra com exclusividade de delivery por 90 dias — sem iFood, sem Rappi. Segundo, se em 90 dias a gente não entregar pelo menos 300 pedidos, eu devolvo a diferença de comissão e o senhor sai sem multa. Se entregar, a gente conversa a renovação. Fechado?"<br><br>
+      <em>→ O BD não deu desconto. Ele vendeu um pacote de risco compartilhado. O dono sente que está fazendo um deal, não recebendo esmola.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Natalia (Thinker + lógica + estrutura)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + controle)</span>
+      <span class="bd-chip">Marcelo (ENFP + criatividade nas trocas)</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">6</span> Cortina de Fumaça — O Pedi Grande para Ganhar o Médio</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Estratégia</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Psicologia</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> Peça algo maior do que o necessário, sabendo que a outra parte provavelmente vai recusar. Quando ela recusar, ofereça o que você realmente queria desde o início. A pessoa fica constrangida por ter dito "não" uma vez, e interpreta sua segunda oferta como uma concessão sua. Ela se sente na obrigação de aceitar.<br><br>
+      <strong>No contexto Keeta:</strong> Útil para condições que o dono resiste naturalmente: contrato longo, exclusividade, pagamento antecipado, taxa de onboarding.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li>"Para a Keeta, o modelo ideal é exclusividade total por 12 meses. Sem outros apps. É assim que a gente consegue investir em marketing pro restaurante. O senhor topa?" <em>→ Dono provavelmente diz não. Você espera.</em> "Tá bom, então vamos de 6 meses de exclusividade, com reavaliação no 4º mês. É o mínimo que a gente precisa para justificar o investimento em SEO local." <em>→ O dono aceita 6 meses achando que você cedeu. Na verdade, 6 meses era o seu alvo.</em></li>
+        <li>"A taxa de onboarding é 500 reais — inclui fotografia profissional, configuração do cardápio e treinamento da equipe." <em>→ Dono: "500 reais? Não tenho isso agora."</em> "Entendo. Posso fazer uma cortesia: a gente absorve os 500 reais, mas aí o prazo mínimo é 6 meses ao invés de 3. Funciona?" <em>→ O dono aceita 6 meses (seu alvo real) em troca de "ganhar" 500 reais.</em></li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Cortina de Fumaça</div>
+      BD: "Dono, a Keeta tem um modelo de parceria premium: 12 meses de exclusividade, 15% de comissão, e a gente investe em campanha de marketing digital pro restaurante. É o pacote que a gente usa pros caras que faturam mais. O senhor topa entrar nesse?"<br>
+      Dono: "Nossa, 12 meses é muito. E eu não posso sair do iFood."<br>
+      BD: "Justo. Olha, eu não posso abrir mão da exclusividade total — é política do pacote premium. Mas o que eu posso fazer é um plano de transição: 6 meses de exclusividade, e aí a gente revê. A comissão cai para 12% se o senhor bater 200 pedidos no primeiro mês. E eu consigo incluir a campanha de marketing mesmo assim. É o máximo que eu consigo sem subir pro comitê."<br><br>
+      <em>→ O "pacote premium" era a cortina de fumaça. O plano real de transição (6 meses + 12% + campanha) era o objetivo desde o início. O dono aceita porque sente que você fez uma concessão e que ele "ganhou" da empresa.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Natalia (Thinker + planejamento estratégico)</span>
+      <span class="bd-chip">Marcelo (ENFP + criatividade + improvisação)</span>
+      <span class="bd-chip warn">Vinicius pode usar, mas cuidado com a assertividade — pode soar como imposição</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">7</span> Reação Estratégica — A Expressão que Plantou Dúvida</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Emocional</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Não-verbal</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> Quando o cliente lança um valor ou uma objeção muito baixa, não argumente de imediato. Apenas reaja fisicamente — uma expressão de espanto, um sobressalto, uma pausa. Planta uma semente de dúvida na cabeça dele. Ele começa a justificar o valor ou recuar, sem você dizer uma palavra.<br><br>
+      <strong>No contexto Keeta:</strong> O dono vai subestimar o valor da plataforma, subestimar o potencial de pedidos, ou propor uma comissão absurdamente baixa. A reação estratégica é mais poderosa que qualquer argumento.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li>Dono: "Eu só pago comissão se a gente fizer mais de 5 mil por mês. Abaixo disso, não pago nada." → BD: (expressão de espanto, silêncio de 3 segundos, sobe uma sobrancelha) → Dono: "...ou, sei lá, pelo menos uma taxa fixa menor." <em>→ O dono já recuou sozinho.</em></li>
+        <li>Dono: "O iFood me dá 10% de comissão e ainda me dá crédito de marketing." → BD: (olha para baixo, suspira levemente, balança a cabeça) → Dono: "...mas é verdade que a comissão deles subiu esse mês. E o crédito é só para os primeiros 3 meses." <em>→ O dono começou a desconstruir o próprio argumento.</em></li>
+        <li>Dono: "Meu restaurante não tem demanda pra delivery." → BD: (olha para o salão cheio, olha de volta para o dono, não diz nada) → Dono: "...bom, o salão tá cheio, mas delivery é diferente. Não sei se o pessoal do bairro pede." <em>→ O dono já admite que há demanda potencial.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Cuidado</div>
+        A reação precisa ser genuína, não teatral. Se o dono sentir que você está "fazendo teatro", a tática vira manipulação e quebra a confiança. Pratique no espelho — a reação é micro (meio segundo de espanto) e logo seguida de silêncio. Não é uma careta.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Reação Estratégica</div>
+      Dono: "Então, eu pago 8% de comissão, e a Keeta paga a entrega. Se não, não tem negócio."<br>
+      BD: (pausa, olha pro dono, sobe uma sobrancelha, respira fundo, olha pro celular)<br>
+      Dono: "...tá, talvez 8% seja pouco. Mas 10% é o máximo que eu pago em delivery."<br>
+      BD: "Entendo. 10% é o máximo que o senhor paga em delivery hoje. <em>(silêncio)</em> E quanto o senhor fatura em delivery hoje?"<br>
+      Dono: "Uns 2, 3 mil por mês."<br>
+      BD: "2 a 3 mil. E quanto o senhor fatura no salão?"<br>
+      Dono: "Uns 15, 20 mil."<br>
+      BD: "Então o senhor tá deixando 85% da receita fora do delivery. Com 10% de comissão, a gente consegue fazer o senhor faturar 8 mil em delivery no primeiro trimestre. O senhor prefere pagar 10% de 3 mil, ou 15% de 8 mil?"<br><br>
+      <em>→ A reação estratégica fez o dono recuar de 8% para 10% sozinho. Depois, o BD usou ancoragem para reframe: não é sobre comissão, é sobre volume.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + presença + autoridade)</span>
+      <span class="bd-chip">Marcelo (ENFP + expressividade emocional genuína)</span>
+      <span class="bd-chip warn">Natalia pode parecer muito controlada — precisa praticar o "silêncio com espanto"</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">8</span> Silêncio Estratégico — O Vazio que Vende</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Fechamento</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Disciplina</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> Imediatamente após apresentar sua proposta de preço ou condição, cale-se. Não justifique, não encha linguiça, não tente convencer. Apenas espere. O desconforto do silêncio fará o cliente falar — e frequentemente ele "negocia contra si mesmo", aceitando a proposta ou revelando informações valiosas para quebrar a tensão.<br><br>
+      <strong>No contexto Keeta:</strong> O momento mais crítico é após apresentar a comissão + condições. A maioria dos BDs destrói o fechamento porque não aguenta 5 segundos de silêncio e começa a justificar, a descontar, a ceder.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li>Apresente a proposta completa: "Então, a proposta é: 15% de comissão, taxa de entrega de 3 reais, contrato de 6 meses com reavaliação no 4º. A gente começa amanhã com o onboarding e fotos. O senhor topa?" → <strong>Cale-se. Conte até 10.</strong></li>
+        <li>Se o dono disser "vou pensar", não aceite de imediato. Responda: "Justo. O que especificamente o senhor quer pensar?" → <strong>Cale-se.</strong></li>
+        <li>Se o dono disser "é caro", não justifique. Responda: "É caro." (espelhamento) → <strong>Cale-se.</strong></li>
+        <li>Se o dono disser "preciso falar com meu sócio", responda: "Claro. Quando o senhor acha que consegue uma resposta?" → <strong>Cale-se.</strong></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Erro Fatal</div>
+        "A comissão é 15%, mas olha, a gente tem um desconto de lançamento, e a gente pode parcelar, e eu posso falar com meu gerente, e a gente pode incluir marketing, e..." <em>→ Você destruiu o silêncio e mostrou que a proposta era flexível. O dono agora sabe que 15% era apenas o ponto de partida.</em>
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Silêncio Estratégico</div>
+      BD: "Dono, a proposta é essa: 15% de comissão, taxa de entrega de 3 reais, contrato de 6 meses. A gente começa amanhã com fotos e configuração do cardápio. O senhor topa?"<br>
+      (Silêncio. BD não diz nada. Olha para o dono. Mantém contato visual. Não move a mão. Não olha pro celular.)<br>
+      Dono: "...15% é um pouco acima do que eu pago."<br>
+      (Silêncio.)<br>
+      Dono: "...mas se a gente bater 200 pedidos no primeiro mês, a gente conversa a comissão, né?"<br>
+      BD: "Conversa."<br>
+      (Silêncio.)<br>
+      Dono: "Tá bom, então. Vamos começar amanhã."<br><br>
+      <em>→ O dono negociou contra si mesmo. O BD não cedeu nada. O silêncio criou o desconforto que forçou o dono a buscar uma saída — e a saída foi "sim".</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Natalia (Thinker + disciplina + controle emocional)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + autoridade + confortável no poder)</span>
+      <span class="bd-chip warn">Marcelo (ENFP) sofre — neuroticismo alto + extroversão alta fazem o silêncio ser doloroso. Precisa treinar.</span>
+    </div>
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="section">
+  <div class="section-head">🔒 Módulo 4: Fechamento</div>
+  <p class="section-desc">A tática mais arriscada. Use apenas quando todas as outras falharam e quando você está genuinamente preparado para perder a venda.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">9</span> Ultimato — A Linha Final</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--red);background:var(--redBg)">Risco</span>
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Último Recurso</span>
+    </div>
+    <div class="tactic-body">
+      <strong>O que é:</strong> Traçar uma linha final clara e não negociável: "Eu realmente cheguei no meu limite. Infelizmente a decisão está em suas mãos, não consigo mudar mais nada." O ultimato força o outro lado a tomar uma decisão. Mas é a tática mais arriscada: se você der um ultimato e depois voltar atrás, perde toda a credibilidade para sempre.<br><br>
+      <strong>No contexto Keeta:</strong> Use apenas em situações muito específicas: (1) o dono está decidido mas está protelando, (2) você já fez todas as concessões possíveis, (3) o dono está testando seus limites, (4) você está genuinamente disposto a ir embora.<br><br>
+      <strong>Como usar:</strong>
+      <ul>
+        <li><strong>Ultimato de tempo:</strong> "Essa taxa de onboarding zero é válida só até sexta-feira. Depois disso, o valor volta para 500 reais. Não é marketing, é controle de qualidade — a gente só consegue fazer onboarding de 3 restaurantes por semana. Se o senhor não começar essa semana, a próxima vaga é daqui a 15 dias." <em>→ Verdadeiro, específico, com consequência real.</em></li>
+        <li><strong>Ultimato de condição:</strong> "Dono, eu já fui até o limite do que eu posso aprovar sem subir pro comitê: 12% de comissão, 6 meses de contrato, taxa de entrega de 3 reais. Se o senhor não topar isso, eu realmente não consigo fazer mais nada. Vou ter que deixar a proposta com o senhor e seguir para o próximo restaurante." <em>→ Você está disposto a ir embora. E vai.</em></li>
+        <li><strong>Ultimato de valor:</strong> "Com 15% de comissão, a gente consegue manter o restaurante lucrativo e investir em marketing. Abaixo de 15%, a conta não fecha para a Keeta — e a gente não abre conta que não fecha. Eu queria muito ter o senhor com a gente, mas se 15% não funciona, não tem jeito." <em>→ Ultimato baseado em lógica de negócio, não em poder do vendedor.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Regra de Ouro do Ultimato</div>
+        NUNCA use como blefe. Se você disser "esse é o meu limite" e o dono disser "tá bom, então não fecha", você precisa estar pronto para levantar e ir embora. Se você voltar com "peraí, deixa eu ver mais uma coisa", destruiu sua credibilidade para sempre. O dono nunca mais vai acreditar em nenhum limite seu.
+      </div>
+      <div class="warning-box">
+        <div class="label">Quando NÃO usar</div>
+        Não use ultimato no primeiro contato. Não use com donos que já mostraram interesse mas precisam de tempo. Não use com restaurantes que são estratégicos para o bairro (vizinho de uma conta grande). Não use quando você está desesperado pela venda. O ultimato só funciona quando você genuinamente não precisa daquela venda.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Exemplo Keeta — Ultimato Bem Aplicado</div>
+      (Após 3 visitas, 2 contra-propostas, e todas as concessões feitas.)<br><br>
+      BD: "Dono, eu já fiz tudo que eu podia: comissão de 12% nos primeiros 3 meses, taxa de onboarding zero, campanha de marketing incluída, e a gente começa na segunda-feira. Eu subi isso pro meu gerente e ele aprovou como exceção. Se o senhor não topar agora, eu preciso seguir para o próximo restaurante da rua — eles já estão esperando. Eu realmente queria que fosse o senhor, mas a decisão é sua."<br>
+      (Silêncio. O BD começa a guardar o tablet.)<br>
+      Dono: "Espera. Tá bom, 12% nos 3 primeiros meses. Mas se bater 300 pedidos, a gente cai pra 10%."<br>
+      BD: "Se bater 300 pedidos no primeiro mês, a gente conversa a comissão. É o máximo que eu consigo. O senhor topa ou não topa?"<br>
+      Dono: "Topo. Vamos começar segunda."<br><br>
+      <em>→ O BD usou o ultimato como fechamento de uma negociação longa, não como abertura. Estava genuinamente disposto a ir embora (começou a guardar o tablet). O dono sentiu que a oportunidade estava escapando e fechou.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + confiança + assertividade)</span>
+      <span class="bd-chip">Natalia (Thinker + planejamento + só usa quando calculou)</span>
+      <span class="bd-chip warn">Marcelo (ENFP) — neuroticismo alto + receio de rejeição torna o ultimato arriscado. Usar só com muito treino.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONEXÃO COM PERFIS -->
+<div id="perfis" class="section" style="border-top:3px solid var(--text)">
+  <div class="section-head">🎯 Conexão com os Perfis dos BDs</div>
+  <p class="section-desc">Cada BD do time SMBX Santos tem um perfil natural que o predispõe a usar algumas táticas com mais facilidade e outras com mais dificuldade. Abaixo, o mapa de quem usa o que melhor — e o que cada um precisa desenvolver.</p>
+
+  <div class="grid2">
+    <div class="tactic-card" style="border-top:3px solid var(--amber)">
+      <h4>Vinicius Guimarães — ENTJ-A</h4>
+      <div class="tactic-meta">
+        <span class="tag" style="color:var(--green);background:var(--greenBg)">Superpoder</span>
+      </div>
+      <div class="tactic-body">
+        <strong>Táticas naturais:</strong> Ancoragem, Reação Estratégica, Ultimato, BATNA (visão estratégica). Vinicius transmite autoridade naturalmente. O dono do restaurante sente que está falando com quem manda — e isso é o ideal para ancorar valores, reagir com espanto, e traçar limites finais.<br><br>
+        <strong>Ponto de desenvolvimento:</strong> Espelhamento, Silêncio Estratégico, Policial Bom/Mau. O ENTJ-A tende a querer resolver o problema com mais pressão (falar mais, argumentar mais, insistir mais). O espelhamento e o silêncio exigem contencão — e isso não é natural para ele. Precisa treinar: calar, ouvir, e deixar o dono falar.<br><br>
+        <strong>Tática de risco:</strong> Ultimato. Vinicius tem a confiança para usar, mas precisa ter certeza absoluta de que está disposto a ir embora. Se usar como blefe, destrói a credibilidade.
+      </div>
+    </div>
+    <div class="tactic-card" style="border-top:3px solid var(--blue)">
+      <h4>Natalia Almeida — ENTJ-A + Thinker</h4>
+      <div class="tactic-meta">
+        <span class="tag" style="color:var(--green);background:var(--greenBg)">Superpoder</span>
+      </div>
+      <div class="tactic-body">
+        <strong>Táticas naturais:</strong> BATNA, Ancoragem com dados, Concessão com Troca, Silêncio Estratégico, Cortina de Fumaça. Natalia é a negociadora mais completa do time. O Thinker + Consciência 116 + baixo Neuroticismo (38) criam alguém que planeja, controla emoções, e sustenta silêncio sem sofrer. Ela é a ideal para negociações complexas com donos analíticos.<br><br>
+        <strong>Ponto de desenvolvimento:</strong> Espelhamento, Reação Estratégica. O Thinker pode parecer muito controlado — o espelhamento requer espontaneidade, e a reação estratégica requer expressividade emocional. Natalia precisa praticar deixar o controle de lado por alguns segundos.<br><br>
+        <strong>Tática de risco:</strong> Policial Bom/Mau. Pode soar muito técnica. O dono precisa sentir que ela é aliada, não que está usando um script. Usar com cuidado no tom.
+      </div>
+    </div>
+  </div>
+
+  <div class="tactic-card" style="border-top:3px solid var(--green); margin-top:16px">
+    <h4>Marcelo Evangelista — ENFP + Equilibrado</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Superpoder</span>
+    </div>
+    <div class="tactic-body">
+      <strong>Táticas naturais:</strong> Espelhamento, Policial Bom/Mau, Concessão com Troca (criativa), Cortina de Fumaça. Marcelo é o mestre da adaptação social. O ENFP + DISC Equilibrado + Extroversão 104 fazem dele um camaleão natural: ele lê o dono em segundos, espelha sem parecer forçado, e cria a sensação de aliado genuíno. A Cortina de Fumaça é perfeita para ele — criativo, improvisador, e o dono nunca sente que está sendo manipulado.<br><br>
+      <strong>Ponto de desenvolvimento:</strong> Silêncio Estratégico, Ultimato, Reação Estratégica. O neuroticismo alto (84) + extroversão muito alta (104) + ENFP fazem o silêncio ser doloroso para Marcelo. Ele precisa falar, preencher o vazio, justificar. O ultimato é ainda mais difícil — o ENFP odeia rejeição e o neuroticismo alto amplifica o medo de perder a venda. Treino intensivo de "contar até 10" e "levantar e ir embora" são essenciais.<br><br>
+      <strong>Tática de risco:</strong> Concessão sem Troca. Marcelo é cooperativo demais (ENFP + Afabilidade 78). Pode ceder para manter a relação boa. Precisa de script claro: antes de ceder, sempre perguntar "e o que o senhor me dá em troca?"
+    </div>
+  </div>
+
+  <div class="tactic-card" style="margin-top:16px">
+    <h4>Resumo: Mapa de Táticas por BD</h4>
+    <div class="tactic-body">
+      <table style="width:100%;font-size:11px;border-collapse:collapse;margin-top:8px">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border)">
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Tática</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Vinicius (ENTJ-A)</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Natalia (ENTJ-A + Thinker)</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Marcelo (ENFP + Equilibrado)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">1. BATNA</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Natural</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Precisa de estrutura</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">2. Ancoragem</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (com dados)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">3. Espelhamento</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Precisa treinar</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Precisa soltar o controle</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">4. Bom/Mau</td>
+            <td style="padding:6px 4px">⭐⭐ Pode soar autoritário</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">5. Concessão</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Criativo, mas cuidado com ceder</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">6. Cortina de Fumaça</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (planejada)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (improvisada)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">7. Reação</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Precisa treinar expressão</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (genuína)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">8. Silêncio</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+            <td style="padding:6px 4px">⭐⭐ Precisa treinar muito</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px">9. Ultimato</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (cuidado com blefe)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (só quando calculado)</td>
+            <td style="padding:6px 4px">⭐⭐ Risco de desautorização</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Keeta Delivery · SMBX Santos · Playbook Comercial</span>
+  <span>Atualizado em agosto 2026</span>
+</div>
+
+</body>
+</html>
