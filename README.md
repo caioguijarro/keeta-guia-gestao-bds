@@ -28,17 +28,18 @@ Victor Vasques, Rafael Caetano, Milena Silva, Lucas Gonçalo Lippi e Douglas Ara
 
 ## Arquivos
 
-- `guia-gestao-individual.html` — Dashboard interativo de perfis dos BDs (MBTI + DISC + Big Five)
-- `playbook-negociacao-b2b.html` — Playbook de 9 táticas de negociação B2B porta a porta, adaptado para Food Delivery / Keeta, com conexão aos perfis dos BDs
+- `guia-gestao-individual.html` — **Arquivo unificado**: Gestão Individual + Playbook de Negociação B2B cruzados. Contém perfis dos BDs (MBTI + DISC + Big Five) e, para cada perfil, as táticas de negociação recomendadas. Também inclui o Playbook Completo com as 9 táticas, exemplos Keeta e mapa de cruzamento por BD.
+- `playbook-negociacao-b2b.html` — Playbook standalone de 9 táticas de negociação B2B porta a porta, adaptado para Food Delivery / Keeta (referência separada).
 
 ## Como usar
 
-Abra qualquer arquivo `.html` diretamente no navegador. São arquivos únicos em HTML/CSS/JS vanilla — não requerem build, servidor ou dependências externas (exceto as fontes do Google, carregadas via CDN).
+Abra o arquivo `.html` diretamente no navegador. Arquivo único em HTML/CSS/JS vanilla — não requer build, servidor ou dependências externas (exceto as fontes do Google, carregadas via CDN).
 
-- **Guia de Gestão Individual** (`guia-gestao-individual.html`): selecione a aba do BD para ver perfil, superpoder, ponto cego, e orientações por fase do ciclo comercial.
-- **Playbook de Negociação** (`playbook-negociacao-b2b.html`): navegue pelos 9 módulos de táticas de negociação B2B. Ao final, veja o mapa de quem usa cada tática com mais naturalidade com base no perfil de cada BD.
+No **Guia Completo** (`guia-gestao-individual.html`):
+- Use a aba **Gestão Individual** para navegar pelos perfis do time. Cada BD tem: perfil triangulado, superpoder, ponto cego, orientações de gestão e uma nova seção "Playbook de Negociação — Táticas para este perfil" que cruza o perfil com as 9 táticas.
+- Use a aba **Playbook Completo** para ler as 9 táticas de negociação B2B com exemplos aplicados ao Keeta, contexto de Food Delivery e o mapa de quem usa cada tática com mais naturalidade.
 
-## Estrutura do guia de gestão (por BD)
+## Estrutura do guia (por BD)
 
 - **Resumo do perfil** — triangulação dos 3 testes
 - **Superpoder** — o que este BD faz melhor que os outros
@@ -46,6 +47,7 @@ Abra qualquer arquivo `.html` diretamente no navegador. São arquivos únicos em
 - **Performance no ciclo comercial** — prospecção, convencimento, explicação técnica
 - **Como liderar este BD** — feedback, motivação, delegação, acompanhamento
 - **Riscos e ações preventivas** — sinais de alerta e o que fazer antes que vire problema
+- **Playbook de Negociação — Táticas para este perfil** — cruzamento do perfil com as 9 táticas do playbook B2B (táticas naturais, para desenvolver e de risco)
 
 ---
 
