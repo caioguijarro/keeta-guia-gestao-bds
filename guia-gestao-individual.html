@@ -208,33 +208,33 @@ const currentTeam = [
     mbti: "ENTJ-A",
     mbtiLabel: "Comandante",
     disc: "A confirmar",
-    bigfive: null,
-    pending: ["DISC", "Big Five"],
-    source: "16personalities.com",
+    bigfive: { Neuroticismo: 52, Extroversão: 88, Abertura: 76, Amabilidade: 89, Consciência: 66 },
+    pending: ["DISC"],
+    source: "16personalities.com + bigfive-test.com",
     profile: {
-      summary: "Vinicius é ENTJ-A (Comandante Assertivo) — o arquétipo do líder natural, com visão estratégica, assertividade e forte orientação a resultado. O sufixo Assertivo (A) indica autoconfiança alta e baixa reatividade ao estresse: ele tende a assumir o controle, ir direto ao ponto e buscar eficiência no processo comercial. O complemento de DISC e Big Five ainda está pendente para fechar o diagnóstico (as análises abaixo são baseadas exclusivamente no MBTI confirmado).",
-      superpower: "Combinar visão estratégica e execução. O ENTJ-A enxerga o todo — onde o restaurante pode chegar em pedidos e presença na região — e tem energia para conduzir a negociação até o fechamento sem se perder nos detalhes.",
-      blindspot: "Pode ser percebido como impositivo ou impaciente. A tendência natural do ENTJ é, diante da resistência do dono, empurrar a decisão com mais pressão em vez de mudar a abordagem. Empatia na entrega da mensagem costuma ser o principal ponto de desenvolvimento."
+      summary: "Vinicius é ENTJ-A (Comandante Assertivo) com o Big Five já mapeado: extroversão alta (88), amabilidade alta (89), abertura moderada-alta (76), neuroticismo moderado (52) e consciência moderada (66). O quadro confirma o arquétipo do líder natural — extrovertido, assertivo e agradável — mas revela uma versão mais equilibrada e menos extrema que o estereótipo do Comandante. A amabilidade 89 mostra um ENTJ mais caloroso e cooperativo do que se imagina: ele conduz a conversa, mas sem rudeza. A consciência 66 (moderada) indica que prioriza velocidade e resultado em vez de processo e papelada. O DISC segue pendente para fechar o diagnóstico por completo.",
+      superpower: "Combinar presença comercial com conexão. ENTJ-A + extroversão 88 + amabilidade 89 fazem dele alguém que transmite autoridade E simpatia ao mesmo tempo — o dono sente que está diante de um líder, mas de alguém agradável de negociar. Ele entra com força e segurança, mas não afasta o cliente.",
+      blindspot: "A consciência moderada (66) combinada com a abertura moderada-alta (76) gera dois pontos de atenção: tendência a pular detalhes de processo e papelada em nome da velocidade (risco de follow-up ou registro frouxo) e menor inclinação a experimentar abordagens radicalmente novas. O risco clássico do ENTJ de soar impositivo é atenuado pela amabilidade 89, mas ainda aparece sob pressão."
     },
     commercial: [
-      { type: "funciona", text: "Prospecção direta e com autoridade. Transmite segurança de imediato — donos de restaurante tendem a confiar rápido em quem fala com domínio e objetividade." },
+      { type: "funciona", text: "Prospecção direta, com autoridade E calor. A amabilidade 89 faz dele um ENTJ raro: donos de restaurante confiam rápido em quem fala com domínio, e ainda se sentem bem acolhidos — ele não gera a fricção do 'comandante frio'." },
       { type: "funciona", text: "Visão estratégica. É forte em vender o futuro do restaurante (potencial de pedidos, alcance da região, crescimento) e não só as features do app." },
-      { type: "cuidado", text: "Pode forçar demais no convencimento. Quando o dono resiste, o ENTJ tende a insistir com mais pressão em vez de trocar o argumento — e a impaciência com objeções repetidas pode soar como arrogância." },
-      { type: "cuidado", text: "Tendência a 'resolver logo'. Pode acelerar etapas que exigem paciência (aguardar a decisão do dono, alinhar com sócios, respeitar o tempo do lead) e acabar queimando oportunidades." },
-      { type: "acao", text: "Treinar troca de abordagem: quando o dono disser 'não' pela 2ª vez, mudar de argumento em vez de repetir mais alto. Role-play de objeções semanalmente." }
+      { type: "cuidado", text: "Tendência a 'resolver logo'. A consciência moderada (66) reforça o perfil de velocidade: ele pode pular etapas de processo — follow-up registrado no CRM, checklist de onboarding, anotação de objeções — em nome de fechar mais rápido." },
+      { type: "cuidado", text: "Sob pressão, pode forçar o convencimento. Mesmo com amabilidade alta, em semanas de meta apertada a impaciência do ENTJ pode aparecer como insistência repetida em vez de troca de argumento." },
+      { type: "acao", text: "Instalar disciplina de follow-up: checklist obrigatório de registro no CRM após cada visita e revisão semanal dos leads parados. Ajuda a compensar a consciência moderada sem microgerenciar." }
     ],
     leadership: [
       { type: "funciona", text: "Feedback direto e objetivo. Ele não precisa de rodeios — prefere saber exatamente o que está errado e o que precisa mudar. Perde respeito por quem 'passa a mão na cabeça'." },
       { type: "funciona", text: "Autonomia com metas claras. O ENTJ-A precisa sentir controle. Defina o resultado esperado e deixe ele escolher o caminho — microgerenciar frustra rápido." },
       { type: "funciona", text: "Desafio intelectual. Ele precisa sentir que está aprendendo e crescendo. Envolva-o em discussões de estratégia da operação, não só em execução de visitas." },
       { type: "cuidado", text: "Não corrija em público. A correção diante dos colegas vira confronto com um ENTJ. Leve o ajuste para o 1:1." },
-      { type: "cuidado", text: "Pode tentar 'liderar' os outros BDs mesmo sem ser BDM. A assertividade alta faz ele assumir controle naturalmente — canalize isso delegando responsabilidades, não combatendo." },
-      { type: "acao", text: "Use-o como referência técnica/estratégica para os BDs mais novos. Ele se sente valorizado e você direciona a liderança natural dele de forma construtiva." }
+      { type: "cuidado", text: "Diferente do Victor (consciência 97), o Vinicius precisa de apoio estrutural em processo. Não presuma que o controle de CRM e o follow-up estão acontecendo — combine um checkpoint de rotina leve." },
+      { type: "acao", text: "Use-o como referência técnica/estratégica para os BDs mais novos E designe um 'parceiro de processo' (ou checklist) para fechar a lacuna da consciência 66." }
     ],
     risks: [
-      { type: "risco", text: "Rotina e processo repetitivo desmotivam rápido. Se o dia a dia virar só visita-padrão, ele perde o engajamento. Precisa de novidade e desafio." },
-      { type: "risco", text: "Em semanas de muita rejeição, a impaciência pode virar rispidez com restaurantes ou colegas. Monitore o humor em metas apertadas." },
-      { type: "acao", text: "Check-in rápido 1x por semana (5 min). Pergunte 'o que está te travando?' — ele prefere resolver problemas a falar de sentimentos." }
+      { type: "risco", text: "A abertura 76 é moderada-alta, não extrema: ele tolera bem a rotina comercial, mas se o dia a dia virar 100% repetitivo sem nenhuma novidade, o engajamento cai. Menos intenso que o Victor, mas ainda presente." },
+      { type: "risco", text: "A consciência 66 é o principal ponto de atenção de gestão. Follow-up esquecido, CRM desatualizado ou onboarding incompleto podem custar fechamentos que ele já tinha 'ganho' na conversa." },
+      { type: "acao", text: "Check-in rápido 1x por semana (5 min) focado em pipeline e follow-up, não em sentimentos. Pergunte 'o que está travando o fechamento?' — ele prefere resolver problemas concretos." }
     ]
   },
   {
