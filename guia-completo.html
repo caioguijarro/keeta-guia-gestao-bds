@@ -273,6 +273,22 @@ const manager = {
   bigfive: { Neuroticismo: 40, Extroversão: 82, Abertura: 74, Amabilidade: 101, Consciência: 96 },
   pending: [],
   source: "16personalities.com + myDISCprofile + bigfive-test.com",
+  playbook: {
+    natural: [
+      { tactic: "BATNA / MAPAN", note: "Thinker + Consciência 96 = mapeia alternativas com precisão e estrutura" },
+      { tactic: "Espelhamento", note: "ENFJ + Amabilidade 101 = empatia genuína, espelha naturalmente" },
+      { tactic: "Concessão com Troca", note: "Amabilidade 101 + Thinker = troca justa, win-win bem articulado" }
+    ],
+    develop: [
+      { tactic: "Silêncio Estratégico", note: "ENFJ + Extroversão 82 = preenche o vazio. Treinar 'contar até 7'" },
+      { tactic: "Ultimato", note: "Amabilidade 101 + evitação de conflito = difícil traçar limite firme. Treinar clareza gentil" },
+      { tactic: "Reação Estratégica", note: "Neuroticismo 40 mantém calmo, mas prefere dialogar a ficar em silêncio espantado" }
+    ],
+    risk: [
+      { tactic: "Policial Bom/Mau", note: "O 'mau' pode soar inautêntico — Amabilidade 101 dificulta postura dura" },
+      { tactic: "Ultimato", note: "Se usar sem convicção genuína, desautoriza por soar 'bonzinho demais'" }
+    ]
+  },
   profile: {
     summary: "Caio é ENFJ-A (Protagonista) com DISC Thinker (Pensador, ritmo ponderado) e um Big Five marcante: Amabilidade altíssima (101), Consciência alta (96), Extroversão alta (82), Abertura moderada (74) e Neuroticismo baixo (40). É um líder que une empatia e estrutura — o ENFJ inspira e cuida das pessoas, enquanto a Consciência 96 garante processo, follow-up e previsibilidade. O Neuroticismo 40 o mantém calmo sob pressão. O DISC Thinker adiciona um traço deliberativo: ele planeja antes de agir e valoriza o trabalho em equipe. Ele é o contraponto do próprio time: lidera uma equipe com dois ENTJ-A (Comandante) e um ENFP (Ativista) sendo ele mesmo um Protagonista orientado a pessoas — e é justamente a Amabilidade 101 que mantém esse grupo de perfis fortes funcionando junto.",
     superpower: "Conectar, inspirar e estruturar ao mesmo tempo. A Amabilidade 101 + ENFJ fazem cada BD sentir que tem um líder que se importa de verdade — o engajamento vem de lealdade, não de medo. E a Consciência 96 garante que essa empatia venha acompanhada de organização, rituais e follow-up. É um líder que acolhe E entrega.",
@@ -865,7 +881,8 @@ function managerCard(bd) {
       <div class="section-head"><span>⚠️</span> Riscos e Pontos de Atenção como Líder</div>
       <p class="section-desc">Sinais de alerta e o que fazer antes que vire problema</p>
       ${bd.risks.map(insight).join("")}
-    </div>`;
+    </div>
+    ${playbookSection(bd)}`;
 }
 
 function playbookSection(bd) {
@@ -969,6 +986,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Natalia (Thinker + dados)</span>
       <span class="bd-chip">Vinicius (ENTJ-A + estratégia)</span>
+      <span class="bd-chip">Caio (Thinker + Consciência 96)</span>
     </div>
   </div>
 
@@ -998,6 +1016,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Vinicius (ENTJ-A + visão)</span>
       <span class="bd-chip">Natalia (dados + estrutura)</span>
+      <span class="bd-chip">Caio (âncora em valor + empatia)</span>
     </div>
   </div>
 </div>
@@ -1036,6 +1055,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Marcelo (ENFP + empatia + espontaneidade)</span>
       <span class="bd-chip">Vinicius (ENTJ-A + escuta ativa)</span>
+      <span class="bd-chip">Caio (ENFJ + Amabilidade 101)</span>
     </div>
   </div>
 
@@ -1069,6 +1089,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Marcelo (ENFP + empatia genuína)</span>
       <span class="bd-chip">Natalia (Thinker + credibilidade técnica)</span>
+      <span class="bd-chip">Caio (ENFJ + aliado natural)</span>
       <span class="bd-chip warn">Vinicius precisa cuidar — ENTJ-A pode parecer autoritário demais</span>
     </div>
   </div>
@@ -1110,6 +1131,7 @@ function renderPlaybook() {
       <span class="bd-chip">Natalia (Thinker + lógica + estrutura)</span>
       <span class="bd-chip">Vinicius (ENTJ-A + controle)</span>
       <span class="bd-chip">Marcelo (ENFP + criatividade nas trocas)</span>
+      <span class="bd-chip">Caio (Amabilidade 101 + win-win)</span>
     </div>
   </div>
 
@@ -1139,6 +1161,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Natalia (Thinker + planejamento estratégico)</span>
       <span class="bd-chip">Marcelo (ENFP + criatividade + improvisação)</span>
+      <span class="bd-chip">Caio (Thinker + planeja bem, mas prefere transparência)</span>
       <span class="bd-chip warn">Vinicius pode usar, mas cuidado com a assertividade — pode soar como imposição</span>
     </div>
   </div>
@@ -1179,6 +1202,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Vinicius (ENTJ-A + presença + autoridade)</span>
       <span class="bd-chip">Marcelo (ENFP + expressividade emocional genuína)</span>
+      <span class="bd-chip">Caio (Neuroticismo 40 = calmo, mas prefere dialogar)</span>
       <span class="bd-chip warn">Natalia pode parecer muito controlada — precisa praticar o "silêncio com espanto"</span>
     </div>
   </div>
@@ -1220,6 +1244,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Natalia (Thinker + disciplina + controle emocional)</span>
       <span class="bd-chip">Vinicius (ENTJ-A + autoridade + confortável no poder)</span>
+      <span class="bd-chip warn">Caio (ENFJ + Extroversão 82) — preenche o vazio. Treinar "contar até 7".</span>
       <span class="bd-chip warn">Marcelo (ENFP) sofre — neuroticismo alto + extroversão alta fazem o silêncio ser doloroso. Precisa treinar.</span>
     </div>
   </div>
@@ -1268,6 +1293,7 @@ function renderPlaybook() {
       <span class="tag" style="color:var(--sub);background:var(--bg)">Natural de:</span>
       <span class="bd-chip">Vinicius (ENTJ-A + confiança + assertividade)</span>
       <span class="bd-chip">Natalia (Thinker + planejamento + só usa quando calculou)</span>
+      <span class="bd-chip warn">Caio (ENFJ + Amabilidade 101) — evita conflito. Só usar se genuinamente disposto a ir embora.</span>
       <span class="bd-chip warn">Marcelo (ENFP) — neuroticismo alto + receio de rejeição torna o ultimato arriscado. Usar só com muito treino.</span>
     </div>
   </div>
@@ -1325,6 +1351,7 @@ function renderPlaybook() {
             <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Vinicius (ENTJ-A)</th>
             <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Natalia (ENTJ-A + Thinker)</th>
             <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Marcelo (ENFP + Equilibrado)</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Caio (ENFJ-A + Thinker)</th>
           </tr>
         </thead>
         <tbody>
@@ -1333,17 +1360,20 @@ function renderPlaybook() {
             <td style="padding:6px 4px">⭐⭐⭐ Natural</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
             <td style="padding:6px 4px">⭐⭐⭐ Precisa de estrutura</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border2)">
             <td style="padding:6px 4px">2. Ancoragem</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (com dados)</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Bom (âncora em valor)</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border2)">
             <td style="padding:6px 4px">3. Espelhamento</td>
             <td style="padding:6px 4px">⭐⭐⭐ Precisa treinar</td>
             <td style="padding:6px 4px">⭐⭐⭐ Precisa soltar o controle</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border2)">
@@ -1351,36 +1381,42 @@ function renderPlaybook() {
             <td style="padding:6px 4px">⭐⭐ Pode soar autoritário</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Bom (cuidado com o 'mau')</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border2)">
             <td style="padding:6px 4px">5. Concessão</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐ Criativo, mas cuidado com ceder</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border2)">
             <td style="padding:6px 4px">6. Cortina de Fumaça</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐ Bom</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (planejada)</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (improvisada)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Bom (prefere transparência)</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border2)">
             <td style="padding:6px 4px">7. Reação</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
             <td style="padding:6px 4px">⭐⭐⭐ Precisa treinar expressão</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (genuína)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Bom (prefere dialogar)</td>
           </tr>
           <tr style="border-bottom:1px solid var(--border2)">
             <td style="padding:6px 4px">8. Silêncio</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente</td>
             <td style="padding:6px 4px">⭐⭐ Precisa treinar muito</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Precisa treinar</td>
           </tr>
           <tr>
             <td style="padding:6px 4px">9. Ultimato</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (cuidado com blefe)</td>
             <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excelente (só quando calculado)</td>
             <td style="padding:6px 4px">⭐⭐ Risco de desautorização</td>
+            <td style="padding:6px 4px">⭐⭐ Risco (evita conflito)</td>
           </tr>
         </tbody>
       </table>
