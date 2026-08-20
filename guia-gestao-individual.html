@@ -254,9 +254,9 @@
 <div id="app"></div>
 
 <script>
-
 /* ========== i18n ========== */
 let currentLang = 'pt';
+
 const translations = {
   pt: {
     // Header / Nav
@@ -265,7 +265,6 @@ const translations = {
     subtitle_profiles: "Como liderar cada BD e quais táticas de negociação usar — MBTI + DISC + Big Five",
     kicker_playbook: "Keeta Delivery · SMBX Santos · Playbook Comercial",
     kicker_profiles: "Keeta Delivery · SMBX Santos · Análise de Perfis",
-    kicker_analysis: "Keeta Delivery · SMBX Santos · Análise de Perfis",
     footer_playbook: "Keeta Delivery · SMBX Santos · Playbook Comercial",
     footer_gestao: "Keeta Delivery · SMBX Santos · Gestão Comercial",
     updated: "Atualizado em agosto 2026",
@@ -276,28 +275,34 @@ const translations = {
     sec_manager: "Gestão · BDM / Gerente do time",
     sec_current: "Time atual · julho 2026 em diante",
     sec_previous: "Equipe anterior (até junho 2026) — Victor, Rafael, Milena, Lucas, Douglas",
+    lbl_playbook_title: "Playbook de Negociação B2B",
+    lbl_taticas: "Táticas de negociação",
+    lbl_playbook_desc: "9 táticas de negociação porta a porta para o time SMBX Santos",
     // Labels
-    lbl_role_manager: "BDM / Gerente Comercial",
-    lbl_role_bd: "Business Development",
-    lbl_mbti: "MBTI",
-    lbl_disc: "DISC",
-    lbl_bigfive: "Big Five",
     lbl_superpoder: "Superpoder",
     lbl_pontocego: "Ponto cego",
-    lbl_comercial: "Comercial",
-    lbl_lideranca: "Liderança",
-    lbl_riscos: "Riscos",
-    lbl_perfil: "Perfil",
-    lbl_resumo: "Resumo",
-    lbl_self: "Autopercepção",
-    lbl_gestor: "Gestor",
-    lbl_taticas: "Táticas de negociação",
-    lbl_mapa: "Resumo: Mapa de Táticas por BD",
-    lbl_playbook_title: "Playbook de Negociação B2B",
-    lbl_playbook_desc: "9 táticas de negociação porta a porta para o time SMBX Santos",
-    lbl_natural: "Natural para este perfil",
-    lbl_develop: "Desenvolver / treinar",
-    lbl_risk: "Risco / cuidado",
+    lbl_role_manager: "BDM / Gerente Comercial",
+    // Static UI
+    sec_comercial: "Performance no Ciclo Comercial",
+    sec_comercial_desc: "Prospecção → Convencimento → Explicação Técnica",
+    sec_lideranca: "Como Liderar Este BD",
+    sec_lideranca_desc: "Feedback, motivação, delegação e acompanhamento",
+    sec_riscos: "Riscos e Ações Preventivas",
+    sec_riscos_desc: "Sinais de alerta e o que fazer antes que vire problema",
+    sec_bigfive: "Big Five (scores totais por domínio)",
+    sec_bigfive_short: "Big Five",
+    sec_estilo: "Estilo de Liderança",
+    sec_estilo_desc: "Como ele lidera naturalmente — pontos fortes e armadilhas",
+    sec_self: "Como Gerenciar a Si Mesmo",
+    sec_self_desc: "Autogestão, rituais e descanso",
+    sec_riscos_lider: "Riscos e Pontos de Atenção como Líder",
+    pendente: "Pendente",
+    fonte: "Fonte:",
+    pendente_prefix: "Pendente:",
+    bigfive_pending: "Resultado não enviado. A triangulação completa (MBTI + DISC + Big Five) ficará disponível quando o teste for enviado.",
+    role_bd_line: "BD · SMBX Santos",
+    sem_testes: "Sem testes",
+    pending_text_name: "ainda não enviou os testes de perfil. Cobrar o envio para completar o mapeamento do time e gerar a análise individual.",
     // Types
     funciona: "Funciona",
     cuidado: "Cuidado",
@@ -305,83 +310,39 @@ const translations = {
     risco: "Risco",
     natural: "Natural",
     desenvolvedor: "Desenvolver",
-    excelente: "Excelente",
-    bom: "Bom",
-    precisa_treinar: "Precisa treinar",
-    precisa_muito: "Precisa treinar muito",
-    pode_sonar: "Pode soar",
-    criativo: "Criativo",
-    planejada: "Planejada",
-    improvisada: "Improvisada",
-    genuina: "Genuína",
-    calculado: "Só quando calculado",
-    blefe: "Cuidado com blefe",
-    desautorizacao: "Risco de desautorização",
-    evita_conflito: "Risco (evita conflito)",
-    precisa_soltar: "Precisa soltar o controle",
-    estrutura: "Precisa de estrutura",
-    ceder: "Criativo, mas cuidado com ceder",
-    expressao: "Precisa treinar expressão",
-    autoritario: "Pode soar autoritário",
-    // Pending card
-    pending_title: "Perfil incompleto",
-    pending_text: "Este perfil ainda não possui dados completos de MBTI, DISC e Big Five. Complete os testes e atualize este card.",
-    pending_tag1: "Pendente: MBTI",
-    pending_tag2: "Pendente: DISC",
-    pending_tag3: "Pendente: Big Five",
-    // Tactic names
-    t_batna: "1. BATNA / MAPAN",
-    t_ancoragem: "2. Ancoragem",
-    t_espelhamento: "3. Espelhamento",
-    t_bom_mau: "4. Policial Bom/Mau",
-    t_concessao: "5. Concessão com Troca",
-    t_cortina: "6. Cortina de Fumaça",
-    t_reacao: "7. Reação Estratégica",
-    t_silencio: "8. Silêncio Estratégico",
-    t_ultimato: "9. Ultimato",
-    // Tactic subtitles
-    ts_batna: "Melhor Alternativa a um Acordo Negociado — o que o dono do restaurante ganha se não fechar com a Keeta.",
-    ts_ancoragem: "Quem dá o primeiro número ancora a conversa. Use isso a favor.",
-    ts_espelhamento: "Repetir de volta o que o outro disse — cria empatia e desarmamento.",
-    ts_bom_mau: "Um BD faz o papel do 'bom policial' (empatia, acolhimento) e outro do 'mau policial' (exigência, risco).",
-    ts_concessao: "Nunca ceda sem pedir algo em troca — isso mantém o valor da proposta.",
-    ts_cortina: "Mudar de assunto estrategicamente quando o outro está ganhando terreno.",
-    ts_reacao: "Reagir de forma controlada a uma provocação — surpreende e desarma o outro lado.",
-    ts_silencio: "Parar de falar após uma oferta ou objeção — o silêncio gera pressão psicológica.",
-    ts_ultimato: "Traçar uma linha final clara — usar com cuidado e só quando for real.",
-    // BD chips prefix
-    bd_chip_warn: "cuidado",
-    // Misc
-    star_natural: "⭐⭐⭐ Natural",
-    star_excelente: "⭐⭐⭐⭐⭐ Excelente",
-    star_excelente_dados: "⭐⭐⭐⭐⭐ Excelente (com dados)",
-    star_bom: "⭐⭐⭐⭐ Bom",
-    star_precisa: "⭐⭐⭐ Precisa treinar",
-    star_precisa_muito: "⭐⭐ Precisa treinar muito",
-    star_pode: "⭐⭐ Pode soar autoritário",
-    star_criativo: "⭐⭐⭐⭐ Criativo, mas cuidado com ceder",
-    star_planejada: "⭐⭐⭐⭐⭐ Excelente (planejada)",
-    star_improvisada: "⭐⭐⭐⭐⭐ Excelente (improvisada)",
-    star_genuina: "⭐⭐⭐⭐⭐ Excelente (genuína)",
-    star_calculado: "⭐⭐⭐⭐⭐ Excelente (só quando calculado)",
-    star_blefe: "⭐⭐⭐⭐⭐ Excelente (cuidado com blefe)",
-    star_desautoriza: "⭐⭐ Risco de desautorização",
-    star_soltar: "⭐⭐⭐ Precisa soltar o controle",
-    star_estrutura: "⭐⭐⭐ Precisa de estrutura",
-    star_evita: "⭐⭐ Risco (evita conflito)",
-    star_expressao: "⭐⭐⭐ Precisa treinar expressão",
-    star_ceder: t("star_criativo"),
-    // Manager specific
-    manager_summary: "Caio é ENFJ-A (Protagonista Assertivo) com DISC Thinker (C+S) e Big Five mapeado. É o arquétipo do líder que lidera por proximidade, não por distância. A combinação ENFJ + Thinker é rara: pensa com profundidade (C+S do Thinker + abertura 82), mas age com calor humano (amabilidade 101 + extroversão 86). A consciência 96 e o traço meticuloso/cuidadoso do Thinker fazem dele um gestor que cobra resultado com consistência e estrutura. A neuroticismo 40 baixa mantém a cabeça fria mesmo sob pressão. Como BDM, precisa tomar cuidado para não absorver demais a ansiedade do time (amabilidade 101 = sensibilidade alta às emoções alheias) e para não se perder em perfeccionismo analítico (Thinker + consciência 96 pode gerar paralisia por análise).",
-    manager_superpower: "Combinar visão estratégica com cuidado genuíno pelo time. Não é só um gestor que entrega número — é alguém que faz os BDs se sentirem vistos. O ENFJ + amabilidade 101 cria um vínculo de confiança que faz o time correr mais. O Thinker + consciência 96 garante que a corrida tenha direção e método.",
-    manager_blindspot: "Paralisia por análise. Thinker + consciência 96 + abertura 82 = tendência a querer entender TUDO antes de decidir. Em um cenário B2B porta a porta, isso pode atrasar ações importantes. Outro ponto: absorção emocional. Amabilidade 101 + ENFJ = sente a frustração do time como se fosse sua. Precisa de fronteiras emocionais claras para não se desgastar.",
-    manager_self_1: "Liderar por proximidade e propósito. Quer que o time se sinta parte de algo maior, não só funcionários cumprindo meta.",
-    manager_self_2: "Estrutura e clareza. Pensa antes de falar e valoriza processos bem desenhados.",
-    manager_self_3: "Resultado com consistência. Não busca spikes — busca previsibilidade e melhoria contínua.",
-    manager_management_1: "Dê contexto, não só tarefas. O ENFJ precisa entender o PORQUÊ. Explica a estratégia por trás da meta e ele engaja sozinho.",
-    manager_management_2: "Mantenha ritmo de 1:1s. O ENFJ + Thinker precisa de espaço para verbalizar o que está pensando. 1:1s regulares são essenciais.",
-    manager_management_3: "Não deixe ele se perder em análise. Quando vir paralisia por análise, intervenha com decisão clara e prazo.",
-  },    vini_summary: "Vinicius é ENTJ-A (Comandante Assertivo) com Big Five mapeado e DISC Finalizador (S+C — Ritmo Ponderado, Perspectiva Detalhes, Foco Eventos). É uma combinação rara: o arquétipo do líder natural (ENTJ-A + extroversão 88) com uma camada de ponderação, cautela e fidelidade ao processo (Finalizador). A amabilidade 89 (Big Five) e os traços solidário/paciente/fidedigno do Finalizador fazem dele um ENTJ mais caloroso e confiável que o estereótipo. Ao mesmo tempo, a consciência 66 moderada e o foco em 'eventos' do Finalizador indicam que ele prioriza execução e resultado em vez de burocracia — é detalhista quando necessário, mas não obcecado por processo. É uma versão mais equilibrada e menos extrema que o Victor (Técnico + abertura 110).",
+    // Tactic names (plain)
+    tac_batna: "BATNA / MAPAN",
+    tac_ancoragem: "Ancoragem",
+    tac_espelhamento: "Espelhamento",
+    tac_bom_mau: "Policial Bom/Mau",
+    tac_concessao: "Concessão com Troca",
+    tac_concessao_sem: "Concessão sem Troca",
+    tac_cortina: "Cortina de Fumaça",
+    tac_reacao: "Reação Estratégica",
+    tac_silencio: "Silêncio Estratégico",
+    tac_ultimato: "Ultimato",
+    // Manager profile
+    manager_summary: "Caio é ENFJ-A (Protagonista) com DISC Thinker (Pensador, ritmo ponderado) e um Big Five marcante: Amabilidade altíssima (101), Consciência alta (96), Extroversão alta (82), Abertura moderada (74) e Neuroticismo baixo (40). É um líder que une empatia e estrutura — o ENFJ inspira e cuida das pessoas, enquanto a Consciência 96 garante processo, follow-up e previsibilidade. O Neuroticismo 40 o mantém calmo sob pressão. O DISC Thinker adiciona um traço deliberativo: ele planeja antes de agir e valoriza o trabalho em equipe. Ele é o contraponto do próprio time: lidera uma equipe com dois ENTJ-A (Comandante) e um ENFP (Ativista) sendo ele mesmo um Protagonista orientado a pessoas — e é justamente a Amabilidade 101 que mantém esse grupo de perfis fortes funcionando junto.",
+    manager_superpower: "Conectar, inspirar e estruturar ao mesmo tempo. A Amabilidade 101 + ENFJ fazem cada BD sentir que tem um líder que se importa de verdade — o engajamento vem de lealdade, não de medo. E a Consciência 96 garante que essa empatia venha acompanhada de organização, rituais e follow-up. É um líder que acolhe E entrega.",
+    manager_blindspot: "A combinação Amabilidade 101 + ENFJ + Thinker pode gerar evitação de conflito. Ele tende a adiar conversas difíceis (feedback duro, cobrança firme de meta, decisões de desligamento) para preservar a harmonia. O Thinker reforça o padrão: em vez de agir decididamente, ele pode 'pensar mais um pouco' e perder a janela de ação.",
+    manager_style_1: "Liderança por conexão e confiança. ENFJ + Amabilidade 101 fazem cada BD se sentir visto e valorizado. O time rende mais por lealdade ao líder do que por pressão — o que gera engajamento de longo prazo e baixa rotatividade.",
+    manager_style_2: "Gestão com estrutura. Consciência 96 + Thinker = processos, rituais e follow-up bem organizados. O time trabalha num ambiente previsível, o que reduz ansiedade e aumenta a consistência.",
+    manager_style_3: "Calma sob pressão. Neuroticismo 40 faz dele uma âncora de estabilidade em semanas de meta apertada. O time não herda o pânico do líder — um ativo raro e valioso em vendas.",
+    manager_style_4: "Amabilidade 101 pode virar 'chefe bonzinho demais'. O risco de suavizar feedbacks que precisavam ser duros, de tolerar performance mediana para não gerar desconforto, e de cobrar menos do que a meta exige.",
+    manager_style_5: "Thinker + ENFJ = decisão lenta em situações que exigem rapidez. A tendência a 'considerar e planejar' pode atrasar decisões que deveriam ser imediatas (pivotar abordagem, cortar um lead frio, realocar um BD).",
+    manager_style_6: "Instale um 'gatilho de decisão': ao notar que está adiando uma conversa difícil, agende-a em até 24h. Treinar 'clareza gentil' — ser direto COM cuidado — é o músculo que ele mais precisa desenvolver.",
+    manager_self_1: "Proteja blocos de reflexão estratégica. Thinker + ENFJ rendem mais com tempo reservado para pensar (revisar funil, preparar 1:1s, planejar o desenvolvimento de cada BD). Sem isso, ele vira 'bombeiro' apagando incêndio.",
+    manager_self_2: "Transforme o cuidado em ritual. Use a Consciência 96 para criar rotinas fixas (1:1 semanal, revisão de CRM, follow-up de leads) que tornem a atenção às pessoas algo sistemático, não um esforço hercúleo ocasional.",
+    manager_self_3: "Delegue a cobrança técnica e use sua força no desenvolvimento. Você não precisa ser o 'carrasco': use o peer accountability entre BDs (Natalia para processo, Vinicius para estratégia) e reserve sua energia para coaching e crescimento.",
+    manager_self_4: "Risco do 'super-herói emocional': Amabilidade 101 + ENFJ fazem ele absorver o estresse de todo o time. Sem válvula de escape (mentor, pares, reflexão), acumula a carga emocional dos outros sem processar a própria.",
+    manager_self_5: "O Thinker pode virar 'análise-paralisia' em gestão de pessoas. Quando um BD claramente não performa, ele pode adiar a conversa esperando 'mais dados' em vez de agir.",
+    manager_self_6: "Agende um check-in quinzenal com seu gestor ou um par de confiança para calibrar conversas difíceis antes de tê-las. Um 'ensaio' reduz a ansiedade e aumenta a clareza.",
+    manager_risk_1: "Burnout por 'cuidar de todo mundo'. ENFJ + Amabilidade 101 + a responsabilidade de gerir uma equipe de perfis fortes = ele coloca as necessidades do time acima das próprias. O desgaste emocional é o maior risco.",
+    manager_risk_2: "Desequilíbrio entre firmeza e empatia. Se pender demais para a empatia, a meta sofre; se forçar uma dureza artificial, pode soar inautêntico e perder a confiança do time. O meio-termo é o desafio central.",
+    manager_risk_3: "Decisão lenta em janelas que fecham rápido. O Thinker quer dados antes de agir, mas em vendas há momentos que não esperam. Adiar pode custar fechamentos ou a credibilidade do time.",
+    manager_risk_4: "Mantenha uma 'lista de conversas adiadas' visível e resolva pelo menos UMA por semana. Conversas difíceis frequentes, em doses pequenas, tornam cada uma delas mais leve.",
+    // Vinicius
+    vini_summary: "Vinicius é ENTJ-A (Comandante Assertivo) com Big Five mapeado e DISC Finalizador (S+C — Ritmo Ponderado, Perspectiva Detalhes, Foco Eventos). É uma combinação rara: o arquétipo do líder natural (ENTJ-A + extroversão 88) com uma camada de ponderação, cautela e fidelidade ao processo (Finalizador). A amabilidade 89 (Big Five) e os traços solidário/paciente/fidedigno do Finalizador fazem dele um ENTJ mais caloroso e confiável que o estereótipo. Ao mesmo tempo, a consciência 66 moderada e o foco em 'eventos' do Finalizador indicam que ele prioriza execução e resultado em vez de burocracia — é detalhista quando necessário, mas não obcecado por processo. É uma versão mais equilibrada e menos extrema que o Victor (Técnico + abertura 110).",
     vini_superpower: "Combinar presença comercial com conexão e confiabilidade. ENTJ-A + extroversão 88 + amabilidade 89 fazem dele alguém que transmite autoridade E simpatia. O Finalizador adiciona um diferencial raro para um ENTJ: paciência e fidedigno. Donos de restaurante confiam não só na energia dele, mas na sensação de que ele vai seguir o processo até o fim — não é só charme, é comprometimento.",
     vini_blindspot: "O conflito ENTJ-A (ação rápida) vs. Finalizador (ponderação cautelosa). A consciência 66 moderada reforça a tensão: ele VALORIZA cautela e detalhes (Finalizador), mas o ENTJ-A empurra para velocidade e resultado. Isso pode gerar inconsistência — às vezes ele é super detalhista (quando o Finalizador domina), às vezes pula etapas (quando o ENTJ-A domina). O risco clássico de soar impositivo é atenuado pela amabilidade 89 e pelo traço solidário do Finalizador, mas ainda aparece sob pressão.",
     vini_com1: "Prospecção direta, com autoridade E calor. A amabilidade 89 + Finalizador (solidário, fidedigno) fazem dele um ENTJ que cria confiança rápida — o dono sente que está falando com alguém que vai cumprir o que promete.",
@@ -398,24 +359,26 @@ const translations = {
     vini_risk1: "A abertura 76 é moderada-alta: tolera rotina mas sem novidade completa o engajamento cai. Menos intenso que o Victor, mas ainda presente.",
     vini_risk2: "A consciência 66 é o ponto central. O Finalizador valoriza processo, mas o ENTJ-A quer velocidade. A inconsistência na gestão de follow-up/CRM é o risco principal.",
     vini_risk3: "Check-in rápido 1x por semana (5 min) focado em pipeline e follow-up. Pergunte 'o que está travando o fechamento?' — ele prefere resolver problemas concretos.",
+    // Natalia
     nat_summary: "Natalia é ENTJ-A (Comandante Assertivo) com DISC Thinker (Analítico) — uma combinação rara e poderosa. O ENTJ traz liderança natural, visão estratégica e assertividade. O Thinker adiciona meticulosidade, orientação a dados e cuidado com detalhes. No Big Five, a Consciência recorde (116) mostra alguém extremamente organizada, responsável e orientada a processo. O Neuroticismo muito baixo (38) a torna a mais emocionalmente estável do time. Extroversão alta (93) + Afabilidade alta (93) criam uma líder que é ao mesmo tempo assertiva e agradável — ela conduz sem ser rude.",
     nat_superpower: "Consegue liderar com precisão. A combinação de visão estratégica (ENTJ) + meticulosidade (Thinker) + Consciência 116 faz dela alguém que não só define onde ir, mas também garante que cada passo seja dado corretamente. É a BD mais confiável para processos complexos.",
-    nat_blindspot: "A abertura moderada (65) combinada com o Thinker pode fazer dela alguém menos flexível a abordagens novas ou improvisações. Ela pode preferer o método testado ao experimento inédito. Em situações que exigem pivotar rápido, ela pode hesitar.",
+    nat_blindspot: "A abertura moderada (65) combinada com o Thinker pode fazer dela alguém menos flexível a abordagens novas ou improvisações. Ela pode preferir o método testado ao experimento inédito. Em situações que exigem pivotar rápido, ela pode hesitar.",
     nat_com1: "Prospecção estruturada. Ela prepara argumentos com dados e antecipa objeções. O Thinker + Consciência 116 faz dela uma máquina de preparação.",
     nat_com2: "Execução impecável de processo. Checklists, follow-ups, CRM atualizado — ela não deixa passar nada. O dono do restaurante sente que está falando com alguém profissional.",
     nat_com3: "Pode parecer fria ou excessivamente racional. A afabilidade 93 ameniza, mas o ENTJ + Thinker + foco em dados pode soar como 'robô' para donos mais emocionais.",
     nat_com4: "Tendência a querer ter todas as respostas antes de agir. O Thinker + Consciência 116 pode gerar paralisia por análise em semanas de alta velocidade.",
     nat_com5: "Dê a ela tempo de preparação. Se for uma visita complexa, avise com antecedência. O Thinker precisa de tempo para processar e estruturar.",
+    nat_com6: "Treine improvisação: role-plays em que o dono muda de assunto inesperadamente. Pratique pivotar do técnico para o emocional e vice-versa.",
     nat_ldr1: "Reconhecimento de execução. Ela precisa sentir que a qualidade do trabalho é notada. Celebre a precisão, não só os resultados.",
     nat_ldr2: "Clareza de prioridades. O ENTJ + Thinker + Consciência 116 quer saber exatamente o que é mais importante agora. Ambiguidade de prioridade gera ansiedade.",
     nat_ldr3: "Autonomia com responsabilidade. Ela quer controle sobre COMO fazer, mas também quer ser responsabilizada pelo resultado. Microgerenciamento é desnecessário — ela já se cobra muito.",
     nat_ldr4: "Evite mudanças de última hora sem explicação. O Thinker + Consciência 116 precisa de tempo para recalibração. Mudanças abruptas são estressantes.",
     nat_ldr5: "Não a force a improvisar. Ela pode fazer, mas não é natural. Dê espaço para preparação mesmo em cenários imprevisíveis.",
-    nat_ldr6: "Use-a como referência de processo para o time. Ela é a BD mais organizada — deixe ela mentorar os novos em CRM e follow-up.",
     nat_ldr6_timebox: "Estabeleça um 'timebox' para análise: 'você tem 30 min para revisar esse contrato, depois envia'. Isso liberta ela da busca pela perfeição infinita.",
     nat_risk1: "Consciência 116 é um superpoder, mas pode virar obsessão por controle. Se o processo mudar sem aviso, ela pode se frustrar profundamente.",
     nat_risk2: "Abertura 65 + Thinker = resistência natural a experimentos. Em um mercado que muda rápido (como delivery), isso pode atrasar adaptações.",
     nat_risk3: "Check-in semanal curto (10 min) focado em prioridades e bloqueios. Pergunte 'o que precisa de clareza?' — ela valoriza precisão sobre empatia vaga.",
+    // Marcelo
     mar_summary: "Marcelo é ENFP (Ativista) com DISC Equilibrado — o perfil mais energético e adaptável do time. O ENFP traz entusiasmo, criatividade e genuína preocupação com as pessoas. O DISC Equilibrado significa que ele não tem um estilo dominante fixo: consegue alternar entre abordagens diretas, persuasivas, analíticas ou de apoio conforme a situação exige. No Big Five, a Extroversão muito alta (104) + Abertura alta (95) + Neuroticismo alto (84) criam alguém intensamente social, criativo e emocionalmente expressivo. É o BD que vai 'sentir' o restaurante antes de vender para ele.",
     mar_superpower: "Adaptabilidade social e criatividade. Consegue ler o ambiente em segundos e ajustar o tom da conversa instantaneamente. O DISC Equilibrado + ENFP faz dele um 'camaleão comercial' — funciona com todo tipo de dono de restaurante.",
     mar_blindspot: "Neuroticismo alto (84) + Consciência moderada (74) = pode oscilar muito de humor e produtividade. Dias bons são excelentes; dias ruins podem ser muito ruins. Sem estrutura externa, a consistência sofre.",
@@ -424,6 +387,7 @@ const translations = {
     mar_com3: "Tendência a falar demais. Extroversão 104 + ENFP = pode se perder em conversa e esquecer o objetivo comercial da visita. Precisa de um 'north star' claro.",
     mar_com4: "Sob rejeição, pode levar para o lado pessoal. Neuroticismo 84 = a frustração do 'não' afeta o humor e a performance do dia seguinte.",
     mar_com5: "Dê a ele liberdade criativa, mas com estrutura leve. Um checklist simples de 3 pontos por visita mantém o foco sem sufocar a espontaneidade.",
+    mar_com6: "Crie um ritual diário de 10 min para atualização de CRM — façam juntos no começo do dia. Não deixe para 'depois', porque o 'depois' nunca chega.",
     mar_ldr1: "Energia e entusiasmo contagiantes. Ele levanta o astral do time só com a presença. Celebre isso — ele precisa sentir que sua energia é valorizada.",
     mar_ldr2: "Reconhecimento emocional. O ENFP + Neuroticismo 84 precisa de validação constante. Um 'bom trabalho' sincero vale mais que qualquer bônus.",
     mar_ldr3: "Rotina flexível. Não o prenda em processos rígidos. O ENFP + Equilibrado precisa de variedade. Alterne tarefas, rotas, desafios.",
@@ -433,6 +397,143 @@ const translations = {
     mar_risk1: "Neuroticismo 84 é o maior ponto de atenção. Sem apoio emocional, o turnover de humor pode afetar relacionamentos com restaurantes e com o time.",
     mar_risk2: "Consciência 74 + ausência de estrutura = follow-up inconsistente. Ele pode esquecer de atualizar o CRM ou de fazer o retorno prometido.",
     mar_risk3: "Check-in 2x por semana (curto, 5 min) focado em sentimento e energia. Pergunte 'como você está se sentindo hoje?' — ele precisa ser visto como pessoa, não só como performer.",
+    mar_risk4: "Em dias de muita rejeição, mande uma mensagem curta: 'vi que hoje foi pesado. Amanhã é outro dia.' Neuroticismo alto precisa saber que o líder está de olho sem julgar.",
+    // Victor
+    vic_summary: "Victor é o clássico perfil de líder natural com mente analítica. O ENTJ-A traz visão estratégica e assertividade máximas. O DISC Técnico adiciona uma camada rara: ele não quer só liderar, quer entender profundamente os sistemas antes de agir. No Big Five, a combinação de extroversão muito alta (100) com abertura recorde (110) e neuroticismo baixo (51) mostra alguém que mergulha em situações novas com confiança e sem medo.",
+    vic_superpower: "Consegue entender o produto tecnicamente E vender a visão estratégica para o dono do restaurante ao mesmo tempo. Poucos BDs fazem os dois.",
+    vic_blindspot: "Modéstia muito baixa (8) + raiva alta (13) = quando frustrado, pode ser impositivo ou parecer arrogante com o restaurante. Não lida bem com contrariedade.",
+    vic_com1: "Na prospecção, vai direto ao ponto e transmite autoridade. Donos de restaurante confiam rápido nele porque fala com segurança e domínio técnico.",
+    vic_com2: "Na explicação técnica (comissão, logística, app), é o melhor do time. O DISC Técnico faz ele querer entender antes de explicar, então não enrola.",
+    vic_com3: "No convencimento, pode pressionar demais. Se o dono resiste, Victor tende a insistir com mais pressão em vez de mudar a abordagem. A raiva alta faz ele perder a paciência com objeções repetidas.",
+    vic_com4: "Treine com ele: quando o dono disser 'não' pela 2ª vez, mude os argumentos em vez de repetir mais alto. Role-plays de objeção semanais.",
+    vic_ldr1: "Feedback direto e objetivo. Não precisa de rodeios — prefere saber exatamente o que está errado e o que precisa mudar. Perde respeito por líderes que 'passam a mão na cabeça'.",
+    vic_ldr2: "Dê autonomia com metas claras. O ENTJ-A precisa sentir controle. Microgerenciar o Victor frustra rápido. Defina o resultado esperado e deixe ele escolher o caminho.",
+    vic_ldr3: "Desafie-o intelectualmente. Com intelecto 20/20 no Big Five, ele precisa sentir que está aprendendo e crescendo. Envolva-o em discussões de estratégia da operação.",
+    vic_ldr4: "Não o corrija na frente de outros BDs. Autoconsciência baixa (5) não significa que ele não se importa — significa que ele não demonstra. Com modéstia baixa, correção pública vira confronto.",
+    vic_ldr5: "Ele pode tentar 'liderar' outros BDs mesmo sem ser BDM. Assertividade 20/20 faz ele assumir o controle naturalmente. Use isso a seu favor delegando responsabilidades, não brigando.",
+    vic_ldr6: "Faça do Victor o 'padrinho' técnico dos BDs novos. Ele se sente valorizado e você canaliza a liderança natural dele de forma construtiva.",
+    vic_risk1: "Se sentir que não está sendo desafiado ou que o trabalho é repetitivo, desmotiva rápido. Abertura 110 = precisa de novidade. Rotina pura mata o Victor.",
+    vic_risk2: "Em dias ruins (muita rejeição), a raiva alta pode deixá-lo ríspido com restaurantes ou colegas. Monitore o humor em semanas de meta apertada.",
+    vic_risk3: "Check-in rápido 1x por semana (5 min, não precisa ser formal). Pergunte: 'O que está te travando?' — ele prefere resolver problemas a falar de sentimentos.",
+    // Rafael
+    raf_summary: "Rafael é o BD mais 'humano' do time. O ENFJ-A é o perfil que naturalmente se importa com as pessoas e cria conexões genuínas. No Big Five, a combinação de simpatia máxima (20), emoções positivas máximas (20) e moralidade muito alta (19) cria alguém que vence pela empatia. Amabilidade alta (92) + neuroticismo muito baixo (46) = emocionalmente estável e agradável de estar por perto.",
+    raf_superpower: "Cria rapport instantâneo. É o BD que o dono do restaurante vai chamar no WhatsApp fora do horário porque gosta dele. Relacionamentos de longo prazo são o forte dele.",
+    raf_blindspot: "Modéstia baixa (8) combinada com cooperação muito alta (18) cria tensão: ele sabe que é bom, mas evita conflito. Pode ceder demais na negociação para manter a relação boa.",
+    raf_com1: "Na prospecção, aquece leads como ninguém. Donos de restaurante se abrem rápido com ele. Entende a dor do negócio porque escuta de verdade.",
+    raf_com2: "No convencimento, usa storytelling natural. O ENFJ-A conecta os benefícios do produto com a realidade emocional do dono ('imagina seu restaurante aparecendo para 50 mil pessoas nessa região').",
+    raf_com3: "Na explicação técnica, pode simplificar demais. Intelecto neutro (12) e imaginação baixa (11) no Big Five = prefere falar de pessoas, não de sistemas. Se o dono pedir detalhes técnicos complexos, o Rafael pode travar.",
+    raf_com4: "Cooperação 18/20 = pode aceitar condições ruins para não 'estragar' a relação. Cuidado com descontos ou concessões excessivos.",
+    raf_com5: "Crie um 'cheat sheet' técnico para ele. 5 perguntas técnicas mais comuns + respostas prontas. Ele não precisa dominar tudo, só ter segurança nas respostas mais frequentes.",
+    raf_ldr1: "Reconhecimento público funciona muito bem. Emoções positivas 20/20 = ele se alimenta de energia positiva. Elogie na frente do time quando ele fechar uma boa negociação.",
+    raf_ldr2: "Feedback construtivo, nunca destrutivo. O ENFJ-A processa a crítica internamente mesmo parecendo aceitar bem. Seja específico: 'na negociação X, tente Y na próxima' em vez de 'você precisa melhorar em negociação'.",
+    raf_ldr3: "Envolva-o no onboarding de BDs novos. Ele é o mentor natural do time — se realiza ajudando os outros (altruísmo 15) e melhora a cultura.",
+    raf_ldr4: "Não confunda simpatia com falta de ambição. Esforço por realização 15 e atividade 13 = ele quer crescer, mas no ritmo dele. Pressão excessiva por resultado seco sem contexto humano desmotiva.",
+    raf_ldr5: "Nos 1:1s, comece perguntando como ele está se sentindo com o time antes de entrar nos números. Ele rende melhor quando se sente cuidado como pessoa.",
+    raf_risk1: "Pode virar 'amigo' do restaurante em vez de parceiro comercial. A linha é tênue — se ele evitar cobrar resultado ou renegociar termos com medo de afetar a relação, o resultado sofre.",
+    raf_risk2: "Cautela baixa (11) = pode tomar decisões rápidas na negociação sem pensar nas consequências. Aceitar coisas que depois são difíceis de reverter.",
+    raf_risk3: "Revise com ele as 3 primeiras negociações fechadas. Identifiquem juntos se ele cedeu demais em algum ponto e criem um 'piso' claro de condições mínimas aceitáveis.",
+    // Milena
+    mil_summary: "Milena é ENFJ-A como o Rafael, mas com uma configuração de Big Five bem diferente. Extroversão mais moderada (80 contra 96 do Rafael), abertura menor (74) e neuroticismo um pouco maior (59). Isso cria uma BD mais cautelosa, metódica e consistente. Cooperação muito alta (18) + moralidade alta (18) = pessoa extremamente confiável e ética.",
+    mil_superpower: "Consistência e confiabilidade. Não é quem fecha mais rápido, mas é quem nunca queima um lead nem cria problema com restaurante. Dever alto (16) = cumpre o que promete.",
+    mil_blindspot: "Imaginação baixa (11) + cautela baixa (11) é uma combinação curiosa: ela não é muito criativa nas abordagens E ao mesmo tempo pode agir sem pensar muito. Precisa de scripts e processos claros.",
+    mil_com1: "Na prospecção, transmite confiança e seriedade. Donos de restaurante mais conservadores ou desconfiados se sentem seguros com ela. Não é agressiva, é consistente.",
+    mil_com2: "No convencimento, a cooperação alta faz dela excelente em negociações ganha-ganha. Ela naturalmente encontra o ponto que funciona para os dois lados.",
+    mil_com3: "Na explicação técnica, abertura e intelecto mais moderados significam que ela pode não ter a mesma fluência do Victor. Se a conversa ficar muito técnica ou abstrata, ela pode perder confiança.",
+    mil_com4: "Gregarismo baixo (11) combinado com extroversão menor sugere que visitas em alto volume podem ser mais desgastantes para ela. Monitore fadiga.",
+    mil_com5: "Dê à Milena contas que exigem relacionamento de longo prazo e confiança — restaurantes de bairro, negócios familiares. Ela brilha no follow-up, não na 'conquista relâmpago'.",
+    mil_ldr1: "Feedback estruturado e previsível. Agende 1:1s fixos com pauta clara. Ela rende melhor quando sabe o que esperar. Surpresas a desestabilizam mais que aos outros (neuroticismo 59 = o mais alto do time).",
+    mil_ldr2: "Valorize consistência, não só picos. Ela pode se sentir invisível se você só elogia quem fecha mais. Reconheça: 'Milena, nenhum dos seus restaurantes reclamou esse mês — isso é raro e vale muito'.",
+    mil_ldr3: "Delegue tarefas de processo e organização para ela. Dever 16 + cooperação 18 = ela vai criar os controles que o time precisa e vai gostar de fazer.",
+    mil_ldr4: "Neuroticismo mais alto que o resto do time. Em semanas de pressão, verifique se ela não está internalizando estresse. Ela não vai te contar — autoconsciência baixa (11) faz ela subestimar o próprio burnout.",
+    mil_ldr5: "Coloque-a em dupla com o Victor nas primeiras semanas em contas mais técnicas. Ela aprende por observação e ele gosta de ensinar. Funciona para os dois.",
+    mil_risk1: "Se a meta for agressiva demais sem suporte, o neuroticismo mais alto pode virar ansiedade (12 neutro). Ela é a mais suscetível do time a pressão mal calibrada.",
+    mil_risk2: "Imaginação baixa = pode ficar 'presa' numa abordagem que não funciona sem conseguir pivotar sozinha. Precisa de coaching mais ativo que os outros.",
+    mil_risk3: "Na primeira semana, faça pelo menos 2 visitas acompanhadas com ela. Não para avaliar — para ela te ver negociando e absorver abordagens que possa replicar.",
+    // Lucas
+    luc_summary: "Lucas é o perfil mais complexo do time. O ENTP-T (Turbulento) é radicalmente diferente dos outros 3 — é o único T (turbulento em vez de assertivo) e o único P (percepção em vez de julgamento). Isso significa que ele questiona mais, duvida mais de si e é mais flexível/improvisador. No Big Five, neuroticismo maior (68) com vulnerabilidade alta (15) e imoderação alta (15) mostram alguém com muita energia, mas que pode desregular sob pressão.",
+    luc_superpower: "Criatividade e adaptabilidade. ENTP + imaginação 20/20 + intelecto 17 = ele inventa abordagens novas que ninguém pensou. É o BD que vai achar um jeito diferente de convencer aquele restaurante que todo mundo já tentou.",
+    luc_blindspot: "O -T (turbulento) significa que ele duvida de si. Combinado com vulnerabilidade 15 e imoderação 15, dias de muita rejeição podem gerar uma espiral: desânimo → impulsividade → decisões ruins → mais desânimo.",
+    luc_com1: "Na prospecção, é o mais criativo. Vai achar leads que os outros não pensaram, vai abordar de formas inusitadas, vai adaptar o pitch em tempo real. Imaginação 20 + aventurança 13 = nunca faz a mesma coisa duas vezes.",
+    luc_com2: "No convencimento, usa argumentação lógica sofisticada. O ENTP adora debater — se o dono trouxer objeções, o Lucas vai gostar do desafio e construir contra-argumentos elaborados.",
+    luc_com3: "Organização neutra (12) + autodisciplina baixa (10) = a parte burocrática do processo pode ser negligenciada. Relatórios, follow-ups estruturados, atualização de CRM — ele vai procrastinar.",
+    luc_com4: "Confiança baixa no Big Five (8/20) = pode ser excessivamente desconfiado dos donos de restaurante, o que atrasa o fechamento. Pode interpretar hesitação como má-fé.",
+    luc_com5: "Crie checkpoints obrigatórios de processo (ex.: 'antes de sair do restaurante, atualize o status no CRM'). Ele precisa de gatilhos externos porque a autodisciplina interna é limitada.",
+    luc_ldr1: "Debate intelectual. O ENTP precisa questionar para engajar. Se você disser 'faça assim', ele resiste. Se você disser 'o que você acha que funciona aqui?', ele engaja e executa melhor.",
+    luc_ldr2: "Feedback frequente e honesto, mas cuidado com o tom. O -T (turbulento) já é autocrítico demais. Reforce primeiro o que está bom antes de corrigir. Proporção 3:1 (3 elogios para 1 correção).",
+    luc_ldr3: "Dê espaço para ele propor ideias novas. Se ele sugerir uma abordagem diferente para um restaurante, deixe testar (dentro do razoável). ENTPs que não podem inovar ficam apáticos.",
+    luc_ldr4: "Não o compare publicamente com o Victor. São perfis opostos — o Victor é o executor confiante, o Lucas é o criativo inseguro. Comparação vai destruir a autoconfiança do Lucas.",
+    luc_ldr5: "Cooperação muito alta (20) + amabilidade menor que os outros (76) = ele quer harmonia mas pode ser mais seco/direto. Pode parecer 'frio' mas na verdade está tentando ajudar do jeito dele.",
+    luc_ldr6: "Em dias de muita rejeição, mande uma mensagem curta: 'vi que hoje foi pesado. Amanhã é outro dia.' O -T precisa saber que o líder está de olho sem julgar.",
+    luc_risk1: "Vulnerabilidade 15 + Imoderação 15 = em momentos de estresse, pode tomar decisões impulsivas (prometer algo ao restaurante que não consegue cumprir, desistir de um bom lead cedo demais).",
+    luc_risk2: "Maior risco de burnout entre os BDs. Neuroticismo 68 (o mais alto do time) + turbulência ENTP-T = ele se cobra muito e esconde. Se ficar quieto demais, é sinal de alerta.",
+    luc_risk3: "Autodisciplina 10/20 é a mais baixa do time. Sem processo estruturado, a produtividade oscila muito de um dia para o outro.",
+    luc_risk4: "Estruture a semana dele mais que a dos outros: segunda = planejamento conjunto, quarta = check-in rápido, sexta = revisão. Ele precisa de 'guardrails', não de microgerenciamento.",
+    // Notes — Caio
+    m_nat1: "Thinker + Consciência 96 = mapeia alternativas com precisão e estrutura",
+    m_nat2: "ENFJ + Amabilidade 101 = empatia genuína, espelha naturalmente",
+    m_nat3: "Amabilidade 101 + Thinker = troca justa, win-win bem articulado",
+    m_dev1: "ENFJ + Extroversão 82 = preenche o vazio. Treinar 'contar até 7'",
+    m_dev2: "Amabilidade 101 + evitação de conflito = difícil traçar limite firme. Treinar clareza gentil",
+    m_dev3: "Neuroticismo 40 mantém calmo, mas prefere dialogar a ficar em silêncio espantado",
+    m_risk1: "O 'mau' pode soar inautêntico — Amabilidade 101 dificulta postura dura",
+    m_risk2: "Se usar sem convicção genuína, desautoriza por soar 'bonzinho demais'",
+    // Notes — Vinicius
+    v_nat1: "Visão estratégica + autoridade natural",
+    v_nat2: "Excelente — ancorar em valor, não em comissão",
+    v_nat3: "Presença + autoridade fazem o espanto soar genuíno",
+    v_nat4: "Confortável no poder, sustenta o vazio",
+    v_nat5: "Confiança para traçar limites, mas cuidado com blefe",
+    v_dev1: "Precisa treinar contenção — tende a querer resolver com mais pressão",
+    v_dev2: "Pode soar autoritário demais; precisa suavizar o tom",
+    v_risk1: "Se usar como blefe, destrói a credibilidade para sempre",
+    // Notes — Natalia
+    n_nat1: "Thinker + dados = mapeia alternativas com precisão",
+    n_nat2: "Excelente com dados — ancorar em números reais",
+    n_nat3: "Lógica + estrutura = troca justa e bem articulada",
+    n_nat4: "Disciplina + controle emocional = sustenta silêncio sem sofrer",
+    n_nat5: "Planejamento estratégico perfeito para isso",
+    n_dev1: "Precisa soltar o controle e deixar o dono falar",
+    n_dev2: "Precisa treinar expressividade emocional",
+    n_risk1: "Pode soar muito técnica; o dono precisa sentir aliado, não script",
+    // Notes — Marcelo
+    ma_nat1: "Empatia genuína + espontaneidade = espelha sem parecer forçado",
+    ma_nat2: "Cria sensação de aliado genuíno",
+    ma_nat3: "Criativo nas trocas, mas precisa de script para não ceder de graça",
+    ma_nat4: "Improvisador nato — o dono nunca sente manipulação",
+    ma_nat5: "Expressividade emocional genuína",
+    ma_dev1: "Neuroticismo alto + extroversão alta = silêncio é doloroso. Treinar 'contar até 10'",
+    ma_dev2: "Receio de rejeição + neuroticismo alto = arriscado. Usar só com muito treino",
+    ma_risk1: "Cooperativo demais (ENFP + Afabilidade 78). Pode ceder para manter relação",
+    ma_risk2: "Risco de desautorização se não estiver genuinamente disposto a ir embora",
+    // Notes — Victor
+    vic_nat1: "ENTJ-A + Técnico = entende o jogo de poder",
+    vic_nat2: "Visão estratégica + autoridade",
+    vic_nat3: "Presença e assertividade máximas",
+    vic_nat4: "Confiança natural para traçar limites",
+    vic_dev1: "Tende a insistir com mais pressão em vez de ouvir",
+    vic_dev2: "Pode ser impaciente; precisa treinar contenção",
+    vic_risk1: "Raiva alta (13) + modéstia baixa = se frustrado, pode usar ultimato como blefe",
+    // Notes — Rafael
+    raf_nat1: "Empatia máxima + simpatia = rapport instantâneo",
+    raf_nat2: "Cria aliado genuíno naturalmente",
+    raf_nat3: "Negociação ganha-ganha é o forte",
+    raf_dev1: "Tende a simplificar demais; precisa ancorar em valor, não em simpatia",
+    raf_dev2: "Evita conflito (cooperação 18) — difícil traçar limites finais",
+    raf_risk1: "Pode ceder demais para não estragar relacionamento",
+    // Notes — Milena
+    mil_nat1: "Cooperação alta = encontra ponto ganha-ganha",
+    mil_nat2: "Estabilidade emocional + cautela",
+    mil_dev1: "Precisa de suporte para ancorar em valor",
+    mil_dev2: "Expressividade moderada = precisa treinar",
+    mil_risk1: "Imaginação baixa (11) = pode não criar pacotes convincentes",
+    // Notes — Lucas
+    luc_nat1: "Criatividade + improvisação = pacotes inusitados",
+    luc_nat2: "Expressividade natural",
+    luc_nat3: "Gosta de construir contra-argumentos elaborados",
+    luc_dev1: "Autodisciplina baixa = difícil sustentar",
+    luc_dev2: "Turbulência + vulnerabilidade = medo de rejeição",
+    luc_risk1: "Impulsividade sob estresse = pode prometer algo irreal"
+  },
 
   en: {
     // Header / Nav
@@ -441,7 +542,6 @@ const translations = {
     subtitle_profiles: "How to lead each BD and which negotiation tactics to use — MBTI + DISC + Big Five",
     kicker_playbook: "Keeta Delivery · SMBX Santos · Commercial Playbook",
     kicker_profiles: "Keeta Delivery · SMBX Santos · Profile Analysis",
-    kicker_analysis: "Keeta Delivery · SMBX Santos · Profile Analysis",
     footer_playbook: "Keeta Delivery · SMBX Santos · Commercial Playbook",
     footer_gestao: "Keeta Delivery · SMBX Santos · Commercial Management",
     updated: "Updated August 2026",
@@ -452,28 +552,34 @@ const translations = {
     sec_manager: "Management · BDM / Team Manager",
     sec_current: "Current Team · from July 2026",
     sec_previous: "Previous Team (until June 2026) — Victor, Rafael, Milena, Lucas, Douglas",
+    lbl_playbook_title: "B2B Negotiation Playbook",
+    lbl_taticas: "Negotiation Tactics",
+    lbl_playbook_desc: "9 door-to-door negotiation tactics for the SMBX Santos team",
     // Labels
-    lbl_role_manager: "BDM / Commercial Manager",
-    lbl_role_bd: "Business Development",
-    lbl_mbti: "MBTI",
-    lbl_disc: "DISC",
-    lbl_bigfive: "Big Five",
     lbl_superpoder: "Superpower",
     lbl_pontocego: "Blind Spot",
-    lbl_comercial: "Commercial",
-    lbl_lideranca: "Leadership",
-    lbl_riscos: "Risks",
-    lbl_perfil: "Profile",
-    lbl_resumo: "Summary",
-    lbl_self: "Self-Perception",
-    lbl_gestor: "Manager",
-    lbl_taticas: "Negotiation Tactics",
-    lbl_mapa: "Summary: Tactics Map by BD",
-    lbl_playbook_title: "B2B Negotiation Playbook",
-    lbl_playbook_desc: "9 door-to-door negotiation tactics for the SMBX Santos team",
-    lbl_natural: "Natural for this profile",
-    lbl_develop: "Develop / Train",
-    lbl_risk: "Risk / Watch out",
+    lbl_role_manager: "BDM / Commercial Manager",
+    // Static UI
+    sec_comercial: "Commercial Cycle Performance",
+    sec_comercial_desc: "Prospecting → Persuasion → Technical Explanation",
+    sec_lideranca: "How to Lead This BD",
+    sec_lideranca_desc: "Feedback, motivation, delegation, and follow-up",
+    sec_riscos: "Risks and Preventive Actions",
+    sec_riscos_desc: "Warning signs and what to do before it becomes a problem",
+    sec_bigfive: "Big Five (total scores by domain)",
+    sec_bigfive_short: "Big Five",
+    sec_estilo: "Leadership Style",
+    sec_estilo_desc: "How he naturally leads — strengths and pitfalls",
+    sec_self: "How to Manage Himself",
+    sec_self_desc: "Self-management, rituals, and rest",
+    sec_riscos_lider: "Risks and Watch-Outs as a Leader",
+    pendente: "Pending",
+    fonte: "Source:",
+    pendente_prefix: "Pending:",
+    bigfive_pending: "Result not submitted. The full triangulation (MBTI + DISC + Big Five) will be available once the test is submitted.",
+    role_bd_line: "BD · SMBX Santos",
+    sem_testes: "No tests",
+    pending_text_name: "has not submitted the profile tests yet. Follow up to complete the team mapping and generate the individual analysis.",
     // Types
     funciona: "Works",
     cuidado: "Caution",
@@ -481,82 +587,38 @@ const translations = {
     risco: "Risk",
     natural: "Natural",
     desenvolvedor: "Develop",
-    excelente: "Excellent",
-    bom: "Good",
-    precisa_treinar: "Needs training",
-    precisa_muito: "Needs a lot of training",
-    pode_sonar: "May sound",
-    criativo: "Creative",
-    planejada: "Planned",
-    improvisada: "Improvised",
-    genuina: "Genuine",
-    calculado: "Only when calculated",
-    blefe: "Watch out for bluff",
-    desautorizacao: "Risk of loss of authority",
-    evita_conflito: "Risk (avoids conflict)",
-    precisa_soltar: "Needs to let go of control",
-    estrutura: "Needs structure",
-    ceder: "Creative, but watch out for giving too much",
-    expressao: "Needs to train expression",
-    autoritario: "May sound authoritarian",
-    // Pending card
-    pending_title: "Incomplete Profile",
-    pending_text: "This profile does not yet have complete MBTI, DISC, and Big Five data. Complete the tests and update this card.",
-    pending_tag1: "Pending: MBTI",
-    pending_tag2: "Pending: DISC",
-    pending_tag3: "Pending: Big Five",
-    // Tactic names
-    t_batna: "1. BATNA / MAPAN",
-    t_ancoragem: "2. Anchoring",
-    t_espelhamento: "3. Mirroring",
-    t_bom_mau: "4. Good Cop / Bad Cop",
-    t_concessao: "5. Concession with Trade",
-    t_cortina: "6. Smoke Screen",
-    t_reacao: "7. Strategic Reaction",
-    t_silencio: "8. Strategic Silence",
-    t_ultimato: "9. Ultimatum",
-    // Tactic subtitles
-    ts_batna: "Best Alternative to a Negotiated Agreement — what the restaurant owner gains if they don't close with Keeta.",
-    ts_ancoragem: "Whoever gives the first number anchors the conversation. Use this to your advantage.",
-    ts_espelhamento: "Repeating back what the other person said — creates empathy and disarmament.",
-    ts_bom_mau: "One BD plays the 'good cop' (empathy, welcoming) and the other the 'bad cop' (demands, risk).",
-    ts_concessao: "Never concede without asking for something in return — this maintains the value of the proposal.",
-    ts_cortina: "Strategically changing the subject when the other side is gaining ground.",
-    ts_reacao: "Reacting in a controlled way to a provocation — surprises and disarms the other side.",
-    ts_silencio: "Stopping talking after an offer or objection — silence generates psychological pressure.",
-    ts_ultimato: "Drawing a clear final line — use with caution and only when it's real.",
-    // BD chips prefix
-    bd_chip_warn: "watch out",
-    // Misc
-    star_natural: "⭐⭐⭐ Natural",
-    star_excelente: "⭐⭐⭐⭐⭐ Excellent",
-    star_excelente_dados: "⭐⭐⭐⭐⭐ Excellent (with data)",
-    star_bom: "⭐⭐⭐⭐ Good",
-    star_precisa: "⭐⭐⭐ Needs training",
-    star_precisa_muito: "⭐⭐ Needs a lot of training",
-    star_pode: "⭐⭐ May sound authoritarian",
-    star_criativo: "⭐⭐⭐⭐ Creative, but watch out for giving too much",
-    star_planejada: "⭐⭐⭐⭐⭐ Excellent (planned)",
-    star_improvisada: "⭐⭐⭐⭐⭐ Excellent (improvised)",
-    star_genuina: "⭐⭐⭐⭐⭐ Excellent (genuine)",
-    star_calculado: "⭐⭐⭐⭐⭐ Excellent (only when calculated)",
-    star_blefe: "⭐⭐⭐⭐⭐ Excellent (watch out for bluff)",
-    star_desautoriza: "⭐⭐ Risk of loss of authority",
-    star_soltar: "⭐⭐⭐ Needs to let go of control",
-    star_estrutura: "⭐⭐⭐ Needs structure",
-    star_evita: "⭐⭐ Risk (avoids conflict)",
-    star_expressao: "⭐⭐⭐ Needs to train expression",
-    star_ceder: "⭐⭐⭐⭐ Creative, but watch out for giving too much",
-    // Manager specific
-    manager_summary: "Caio is ENFJ-A (Assertive Protagonist) with DISC Thinker (C+S) and mapped Big Five. He is the archetype of a leader who leads through closeness, not distance. The ENFJ + Thinker combination is rare: he thinks with depth (C+S of Thinker + openness 82), but acts with human warmth (agreeableness 101 + extroversion 86). Conscientiousness 96 and the meticulous/caring trait of Thinker make him a manager who demands results with consistency and structure. Low neuroticism 40 keeps a cool head even under pressure. As a BDM, he needs to be careful not to absorb too much of the team's anxiety (agreeableness 101 = high sensitivity to others' emotions) and not to get lost in analytical perfectionism (Thinker + conscientiousness 96 can generate paralysis by analysis).",
-    manager_superpower: "Combining strategic vision with genuine care for the team. He is not just a manager who delivers numbers — he is someone who makes BDs feel seen. ENFJ + agreeableness 101 creates a bond of trust that makes the team run harder. Thinker + conscientiousness 96 ensures that the run has direction and method.",
-    manager_blindspot: "Paralysis by analysis. Thinker + conscientiousness 96 + openness 82 = tendency to want to understand EVERYTHING before deciding. In a B2B door-to-door scenario, this can delay important actions. Another point: emotional absorption. Agreeableness 101 + ENFJ = feels the team's frustration as if it were his own. Needs clear emotional boundaries to avoid burnout.",
-    manager_self_1: "Leading through closeness and purpose. He wants the team to feel part of something bigger, not just employees meeting targets.",
-    manager_self_2: "Structure and clarity. Thinks before speaking and values well-designed processes.",
-    manager_self_3: "Results with consistency. Does not seek spikes — seeks predictability and continuous improvement.",
-    manager_management_1: "Give context, not just tasks. The ENFJ needs to understand the WHY. Explain the strategy behind the target and he engages on his own.",
-    manager_management_2: "Maintain 1:1 rhythm. ENFJ + Thinker needs space to verbalize what he is thinking. Regular 1:1s are essential.",
-    manager_management_3: "Don't let him get lost in analysis. When you see paralysis by analysis, intervene with clear decision and deadline.",
+    // Tactic names (plain)
+    tac_batna: "BATNA / MAPAN",
+    tac_ancoragem: "Anchoring",
+    tac_espelhamento: "Mirroring",
+    tac_bom_mau: "Good Cop / Bad Cop",
+    tac_concessao: "Concession with Trade",
+    tac_concessao_sem: "Concession without Trade",
+    tac_cortina: "Smoke Screen",
+    tac_reacao: "Strategic Reaction",
+    tac_silencio: "Strategic Silence",
+    tac_ultimato: "Ultimatum",
+    // Manager profile
+    manager_summary: "Caio is ENFJ-A (Protagonist) with DISC Thinker (Thinker, measured pace) and a striking Big Five: very high Agreeableness (101), high Conscientiousness (96), high Extraversion (82), moderate Openness (74), and low Neuroticism (40). He is a leader who unites empathy and structure — the ENFJ inspires and cares for people, while Conscientiousness 96 ensures process, follow-up, and predictability. Neuroticism 40 keeps him calm under pressure. The DISC Thinker adds a deliberative trait: he plans before acting and values teamwork. He is the counterpoint to his own team: he leads a team with two ENTJ-A (Commander) and one ENFP (Campaigner) while being a people-oriented Protagonist himself — and it is precisely Agreeableness 101 that keeps this group of strong personalities working together.",
+    manager_superpower: "Connecting, inspiring, and structuring at the same time. Agreeableness 101 + ENFJ make each BD feel they have a leader who genuinely cares — engagement comes from loyalty, not fear. And Conscientiousness 96 ensures that empathy is accompanied by organization, rituals, and follow-up. He is a leader who welcomes AND delivers.",
+    manager_blindspot: "The combination of Agreeableness 101 + ENFJ + Thinker can generate conflict avoidance. He tends to postpone difficult conversations (hard feedback, firm target enforcement, termination decisions) to preserve harmony. The Thinker reinforces the pattern: instead of acting decisively, he may 'think a little more' and miss the window for action.",
+    manager_style_1: "Leadership through connection and trust. ENFJ + Agreeableness 101 make each BD feel seen and valued. The team performs more out of loyalty to the leader than out of pressure — which generates long-term engagement and low turnover.",
+    manager_style_2: "Management with structure. Conscientiousness 96 + Thinker = well-organized processes, rituals, and follow-up. The team works in a predictable environment, which reduces anxiety and increases consistency.",
+    manager_style_3: "Calm under pressure. Neuroticism 40 makes him an anchor of stability in tight-target weeks. The team does not inherit the leader's panic — a rare and valuable asset in sales.",
+    manager_style_4: "Agreeableness 101 can turn into 'too-nice boss'. The risk of softening feedback that needed to be hard, of tolerating mediocre performance to avoid discomfort, and of demanding less than the target requires.",
+    manager_style_5: "Thinker + ENFJ = slow decision in situations that require speed. The tendency to 'consider and plan' can delay decisions that should be immediate (pivoting approach, cutting a cold lead, reallocating a BD).",
+    manager_style_6: "Install a 'decision trigger': when you notice you are postponing a difficult conversation, schedule it within 24h. Training 'gentle clarity' — being direct WITH care — is the muscle he most needs to develop.",
+    manager_self_1: "Protect blocks of strategic reflection. Thinker + ENFJ perform better with reserved time to think (review the funnel, prepare 1:1s, plan each BD's development). Without it, he turns into a 'firefighter' putting out fires.",
+    manager_self_2: "Turn care into ritual. Use Conscientiousness 96 to create fixed routines (weekly 1:1, CRM review, lead follow-up) that make attention to people systematic, not an occasional herculean effort.",
+    manager_self_3: "Delegate technical enforcement and use your strength in development. You don't need to be the 'executioner': use peer accountability among BDs (Natalia for process, Vinicius for strategy) and reserve your energy for coaching and growth.",
+    manager_self_4: "Risk of the 'emotional superhero': Agreeableness 101 + ENFJ make him absorb the whole team's stress. Without a release valve (mentor, peers, reflection), he accumulates others' emotional load without processing his own.",
+    manager_self_5: "The Thinker can turn into 'analysis paralysis' in people management. When a BD clearly underperforms, he may postpone the conversation waiting for 'more data' instead of acting.",
+    manager_self_6: "Schedule a biweekly check-in with your manager or a trusted peer to calibrate difficult conversations before having them. A 'rehearsal' reduces anxiety and increases clarity.",
+    manager_risk_1: "Burnout from 'taking care of everyone'. ENFJ + Agreeableness 101 + the responsibility of managing a team of strong personalities = he puts the team's needs above his own. Emotional wear is the biggest risk.",
+    manager_risk_2: "Imbalance between firmness and empathy. If he leans too much toward empathy, the target suffers; if he forces artificial toughness, he may sound inauthentic and lose the team's trust. The middle ground is the central challenge.",
+    manager_risk_3: "Slow decisions in windows that close fast. The Thinker wants data before acting, but in sales there are moments that don't wait. Delaying can cost deals or the team's credibility.",
+    manager_risk_4: "Keep a visible 'list of postponed conversations' and resolve at least ONE per week. Frequent difficult conversations, in small doses, make each one lighter.",
+    // Vinicius
     vini_summary: "Vinicius is ENTJ-A (Assertive Commander) with mapped Big Five and DISC Finisher (S+C — Steady Pace, Detail Perspective, Event Focus). It's a rare combination: the natural leader archetype (ENTJ-A + extroversion 88) with a layer of thoughtfulness, caution, and loyalty to process (Finisher). Agreeableness 89 (Big Five) and the supportive/patient/dependable traits of the Finisher make him a warmer and more reliable ENTJ than the stereotype. At the same time, moderate conscientiousness 66 and the Finisher's focus on 'events' indicate that he prioritizes execution and results over bureaucracy — detail-oriented when necessary, but not obsessed with process. A more balanced and less extreme version than Victor (Technical + openness 110).",
     vini_superpower: "Combining commercial presence with connection and reliability. ENTJ-A + extroversion 88 + agreeableness 89 make him someone who conveys authority AND likability. The Finisher adds a rare differential for an ENTJ: patience and dependability. Restaurant owners trust not only his energy, but the feeling that he will follow the process through to the end — it's not just charm, it's commitment.",
     vini_blindspot: "The conflict ENTJ-A (fast action) vs. Finisher (cautious deliberation). Moderate conscientiousness 66 reinforces the tension: he VALUES caution and details (Finisher), but ENTJ-A pushes for speed and results. This can generate inconsistency — sometimes he is super detail-oriented (when Finisher dominates), sometimes he skips steps (when ENTJ-A dominates). The classic risk of sounding imposing is mitigated by agreeableness 89 and the Finisher's supportive trait, but still appears under pressure.",
@@ -574,6 +636,7 @@ const translations = {
     vini_risk1: "Openness 76 is moderately high: tolerates routine but without novelty engagement drops. Less intense than Victor, but still present.",
     vini_risk2: "Conscientiousness 66 is the central point. Finisher values process, but ENTJ-A wants speed. Inconsistency in follow-up/CRM management is the main risk.",
     vini_risk3: "Quick check-in 1x per week (5 min) focused on pipeline and follow-up. Ask 'what's blocking the close?' — he prefers solving concrete problems.",
+    // Natalia
     nat_summary: "Natalia is ENTJ-A (Assertive Commander) with DISC Thinker (Analytical) — a rare and powerful combination. ENTJ brings natural leadership, strategic vision, and assertiveness. Thinker adds meticulousness, data orientation, and attention to detail. In Big Five, record Conscientiousness (116) shows someone extremely organized, responsible, and process-oriented. Very low Neuroticism (38) makes her the most emotionally stable on the team. High Extroversion (93) + High Agreeableness (93) create a leader who is simultaneously assertive and pleasant — she leads without being rude.",
     nat_superpower: "Can lead with precision. The combination of strategic vision (ENTJ) + meticulousness (Thinker) + Conscientiousness 116 makes her someone who not only defines where to go, but also ensures each step is taken correctly. The most reliable BD for complex processes.",
     nat_blindspot: "Moderate openness (65) combined with Thinker can make her less flexible to new approaches or improvisations. She may prefer the tested method over the untested experiment. In situations requiring quick pivoting, she may hesitate.",
@@ -582,16 +645,17 @@ const translations = {
     nat_com3: "May seem cold or overly rational. Agreeableness 93 mitigates, but ENTJ + Thinker + data focus can sound like a 'robot' to more emotional owners.",
     nat_com4: "Tendency to want all answers before acting. Thinker + Conscientiousness 116 can generate analysis paralysis in high-speed weeks.",
     nat_com5: "Give her preparation time. If it's a complex visit, notify in advance. Thinker needs time to process and structure.",
+    nat_com6: "Train improvisation: role-plays where the owner changes subject unexpectedly. Practice pivoting from technical to emotional and vice versa.",
     nat_ldr1: "Execution recognition. She needs to feel that work quality is noticed. Celebrate precision, not just results.",
     nat_ldr2: "Priority clarity. ENTJ + Thinker + Conscientiousness 116 wants to know exactly what is most important now. Priority ambiguity generates anxiety.",
     nat_ldr3: "Autonomy with responsibility. She wants control over HOW to do it, but also wants to be held accountable for results. Micromanagement is unnecessary — she already pushes herself hard.",
     nat_ldr4: "Avoid last-minute changes without explanation. Thinker + Conscientiousness 116 needs time for recalibration. Abrupt changes are stressful.",
     nat_ldr5: "Don't force her to improvise. She can do it, but it's not natural. Give space for preparation even in unpredictable scenarios.",
-    nat_ldr6: "Use her as a process reference for the team. She is the most organized BD — let her mentor new ones in CRM and follow-up.",
     nat_ldr6_timebox: "Establish a 'timebox' for analysis: 'you have 30 min to review this contract, then send it.' This frees her from the search for infinite perfection.",
     nat_risk1: "Conscientiousness 116 is a superpower, but can turn into obsession with control. If process changes without notice, she can get deeply frustrated.",
     nat_risk2: "Openness 65 + Thinker = natural resistance to experiments. In a fast-changing market (like delivery), this can delay adaptations.",
     nat_risk3: "Short weekly check-in (10 min) focused on priorities and blockers. Ask 'what needs clarity?' — she values precision over vague empathy.",
+    // Marcelo
     mar_summary: "Marcelo is ENFP (Campaigner) with DISC Balanced — the most energetic and adaptable profile on the team. ENFP brings enthusiasm, creativity, and genuine concern for people. DISC Balanced means he doesn't have a fixed dominant style: he can alternate between direct, persuasive, analytical, or supportive approaches as the situation demands. In Big Five, very high Extroversion (104) + high Openness (95) + high Neuroticism (84) create someone intensely social, creative, and emotionally expressive. He is the BD who will 'feel' the restaurant before selling to it.",
     mar_superpower: "Social adaptability and creativity. Can read the environment in seconds and adjust the conversation tone instantly. DISC Balanced + ENFP makes him a 'commercial chameleon' — works with every type of restaurant owner.",
     mar_blindspot: "High Neuroticism (84) + moderate Conscientiousness (74) = can oscillate a lot in mood and productivity. Good days are excellent; bad days can be very bad. Without external structure, consistency suffers.",
@@ -600,6 +664,7 @@ const translations = {
     mar_com3: "Tendency to talk too much. Extroversion 104 + ENFP = can get lost in conversation and forget the commercial objective of the visit. Needs a clear 'north star'.",
     mar_com4: "Under rejection, can take it personally. Neuroticism 84 = the frustration of 'no' affects mood and next-day performance.",
     mar_com5: "Give him creative freedom, but with light structure. A simple 3-point checklist per visit keeps focus without suffocating spontaneity.",
+    mar_com6: "Create a daily 10-min ritual for CRM update — do it together at the start of the day. Don't leave it for 'later', because later never comes.",
     mar_ldr1: "Contagious energy and enthusiasm. He lifts the team's spirits just with his presence. Celebrate this — he needs to feel his energy is valued.",
     mar_ldr2: "Emotional recognition. ENFP + Neuroticism 84 needs constant validation. A sincere 'good job' is worth more than any bonus.",
     mar_ldr3: "Flexible routine. Don't bind him to rigid processes. ENFP + Balanced needs variety. Alternate tasks, routes, challenges.",
@@ -609,9 +674,8 @@ const translations = {
     mar_risk1: "Neuroticism 84 is the biggest watch-out. Without emotional support, mood turnover can affect relationships with restaurants and the team.",
     mar_risk2: "Conscientiousness 74 + lack of structure = inconsistent follow-up. He may forget to update CRM or make the promised return call.",
     mar_risk3: "Check-in 2x per week (short, 5 min) focused on feeling and energy. Ask 'how are you feeling today?' — he needs to be seen as a person, not just a performer.",
-    nat_com6: "Train improvisation: role-plays where the owner changes subject unexpectedly. Practice pivoting from technical to emotional and vice versa.",
-    mar_com6: "Create a daily 10-min ritual for CRM update — do it together at the start of the day. Don't leave it for 'later', because later never comes.",
     mar_risk4: "On high-rejection days, send a short message: 'I see today's tough. Tomorrow is another day.' High Neuroticism needs to know the leader is watching without judging.",
+    // Victor
     vic_summary: "Victor is the classic natural leader profile with an analytical mind. ENTJ-A brings maximum strategic vision and assertiveness. DISC Technical adds a rare layer: he not only wants to lead, but wants to deeply understand systems before acting. In Big Five, the combination of very high extroversion (100) with record openness (110) and low neuroticism (51) shows someone who dives into new situations with confidence and without fear.",
     vic_superpower: "Can understand the product technically AND sell the strategic vision to the restaurant owner at the same time. Few BDs do both.",
     vic_blindspot: "Very low modesty (8) + high anger (13) = when frustrated, can be imposing or seem arrogant with the restaurant. Doesn't take contradiction well.",
@@ -628,6 +692,7 @@ const translations = {
     vic_risk1: "If he feels he's not being challenged or that work is repetitive, he will demotivate quickly. Openness 110 = needs novelty. Pure routine kills Victor.",
     vic_risk2: "On bad days (lots of rejection), high anger can make him harsh with restaurants or colleagues. Monitor his mood in tight-target weeks.",
     vic_risk3: "Quick check-in 1x per week (5 min, doesn't need to be formal). Ask: 'What's blocking you?' — he prefers solving problems to talking about feelings.",
+    // Rafael
     raf_summary: "Rafael is the most 'human' BD on the team. ENFJ-A is the profile that naturally cares about people and creates genuine connections. In Big Five, the combination of maximum sympathy (20), maximum positive emotions (20), and very high morality (19) creates someone who wins through empathy. High agreeableness (92) + very low neuroticism (46) = emotionally stable and pleasant to be around.",
     raf_superpower: "Creates instant rapport. He is the BD that the restaurant owner will WhatsApp after hours because they like him. Long-term relationships are his strength.",
     raf_blindspot: "Low modesty (8) combined with very high cooperation (18) creates tension: he knows he's good, but avoids conflict. May concede too much in negotiation to keep the relationship good.",
@@ -644,6 +709,7 @@ const translations = {
     raf_risk1: "May become the restaurant's 'friend' instead of commercial partner. The line is thin — if he avoids demanding results or renegotiating terms for fear of affecting the relationship, results suffer.",
     raf_risk2: "Low caution (11) = may make quick decisions in negotiation without thinking about consequences. Accepting things that are later hard to reverse.",
     raf_risk3: "Review with him the first 3 closed negotiations. Identify together if he conceded too much at any point and create a clear 'floor' of minimum acceptable conditions.",
+    // Milena
     mil_summary: "Milena is ENFJ-A like Rafael, but with a very different Big Five configuration. More moderate extroversion (80 vs Rafael's 96), lower openness (74), and slightly higher neuroticism (59). This creates a more cautious, methodical, and consistent BD. Very high cooperation (18) + high morality (18) = extremely trustworthy and ethical person.",
     mil_superpower: "Consistency and reliability. Not the one who will close the deal fastest, but the one who will never burn a lead or create problems with a restaurant. High duty (16) = delivers on promises.",
     mil_blindspot: "Low imagination (11) + low caution (11) is a curious combination: she is not very creative in approaches AND at the same time may act without thinking much. Needs clear scripts and processes.",
@@ -660,6 +726,7 @@ const translations = {
     mil_risk1: "If the target is too aggressive without support, higher neuroticism can turn into anxiety (12 neutral). She is the most susceptible on the team to poorly calibrated pressure.",
     mil_risk2: "Low imagination = may get 'stuck' in an approach that doesn't work without being able to pivot alone. Needs more active coaching than the others.",
     mil_risk3: "In the first week, do at least 2 accompanied visits with her. Not to evaluate — for her to see you negotiating and absorb approaches she can replicate.",
+    // Lucas
     luc_summary: "Lucas is the most complex profile on the team. ENTP-T (Turbulent) is radically different from the other 3 — he is the only T (turbulent instead of assertive) and the only P (perceiving instead of judging). This means he questions more, doubts himself more, and is more flexible/improvisational. In Big Five, higher neuroticism (68) with high vulnerability (15) and high immoderation (15) show someone with a lot of energy but who can dysregulate under pressure.",
     luc_superpower: "Creativity and adaptability. ENTP + imagination 20/20 + intellect 17 = he invents new approaches no one thought of. He is the BD who will find a different way to convince that restaurant everyone already tried.",
     luc_blindspot: "The -T (turbulent) means he doubts himself. Combined with vulnerability 15 and immoderation 15, days of heavy rejection can generate a spiral: discouragement → impulsivity → bad decisions → more discouragement.",
@@ -678,12 +745,79 @@ const translations = {
     luc_risk2: "Highest burnout risk among BDs. Neuroticism 68 (highest on the team) + ENTP-T turbulence = he pushes himself hard and hides. If he gets too quiet, it's a warning sign.",
     luc_risk3: "Self-discipline 10/20 is the lowest on the team. Without structured process, productivity oscillates a lot from day to day.",
     luc_risk4: "Structure his week more than the others': Monday = joint planning, Wednesday = quick check-in, Friday = review. He needs 'guardrails', not micromanagement.",
+    // Notes — Caio
+    m_nat1: "Thinker + Conscientiousness 96 = maps alternatives with precision and structure",
+    m_nat2: "ENFJ + Agreeableness 101 = genuine empathy, mirrors naturally",
+    m_nat3: "Agreeableness 101 + Thinker = fair trade, well-articulated win-win",
+    m_dev1: "ENFJ + Extraversion 82 = fills the void. Train 'counting to 7'",
+    m_dev2: "Agreeableness 101 + conflict avoidance = hard to draw a firm line. Train gentle clarity",
+    m_dev3: "Neuroticism 40 keeps him calm, but he prefers dialogue over stunned silence",
+    m_risk1: "The 'bad cop' can sound inauthentic — Agreeableness 101 makes a tough stance hard",
+    m_risk2: "If used without genuine conviction, he loses authority by sounding 'too nice'",
+    // Notes — Vinicius
+    v_nat1: "Strategic vision + natural authority",
+    v_nat2: "Excellent — anchor on value, not on commission",
+    v_nat3: "Presence + authority make the surprise sound genuine",
+    v_nat4: "Comfortable in power, sustains the silence",
+    v_nat5: "Confidence to draw limits, but watch out for bluffing",
+    v_dev1: "Needs to train restraint — tends to want to solve with more pressure",
+    v_dev2: "Can sound too authoritarian; needs to soften the tone",
+    v_risk1: "If used as a bluff, destroys credibility forever",
+    // Notes — Natalia
+    n_nat1: "Thinker + data = maps alternatives with precision",
+    n_nat2: "Excellent with data — anchor on real numbers",
+    n_nat3: "Logic + structure = fair and well-articulated trade",
+    n_nat4: "Discipline + emotional control = sustains silence without suffering",
+    n_nat5: "Perfect strategic planning for this",
+    n_dev1: "Needs to let go of control and let the owner talk",
+    n_dev2: "Needs to train emotional expressiveness",
+    n_risk1: "Can sound too technical; the owner needs to feel an ally, not a script",
+    // Notes — Marcelo
+    ma_nat1: "Genuine empathy + spontaneity = mirrors without seeming forced",
+    ma_nat2: "Creates a sense of genuine ally",
+    ma_nat3: "Creative in trades, but needs a script to avoid giving for free",
+    ma_nat4: "Born improviser — the owner never feels manipulation",
+    ma_nat5: "Genuine emotional expressiveness",
+    ma_dev1: "High neuroticism + high extraversion = silence is painful. Train 'counting to 10'",
+    ma_dev2: "Fear of rejection + high neuroticism = risky. Use only with a lot of training",
+    ma_risk1: "Too cooperative (ENFP + Agreeableness 78). Can give in to keep the relationship",
+    ma_risk2: "Risk of losing authority if not genuinely willing to walk away",
+    // Notes — Victor
+    vic_nat1: "ENTJ-A + Technical = understands the power game",
+    vic_nat2: "Strategic vision + authority",
+    vic_nat3: "Maximum presence and assertiveness",
+    vic_nat4: "Natural confidence to draw limits",
+    vic_dev1: "Tends to insist with more pressure instead of listening",
+    vic_dev2: "Can be impatient; needs to train restraint",
+    vic_risk1: "High anger (13) + low modesty = if frustrated, may use ultimatum as a bluff",
+    // Notes — Rafael
+    raf_nat1: "Maximum empathy + sympathy = instant rapport",
+    raf_nat2: "Creates a genuine ally naturally",
+    raf_nat3: "Win-win negotiation is his strength",
+    raf_dev1: "Tends to oversimplify; needs to anchor on value, not sympathy",
+    raf_dev2: "Avoids conflict (cooperation 18) — hard to draw final lines",
+    raf_risk1: "Can give in too much to not spoil the relationship",
+    // Notes — Milena
+    mil_nat1: "High cooperation = finds the win-win point",
+    mil_nat2: "Emotional stability + caution",
+    mil_dev1: "Needs support to anchor on value",
+    mil_dev2: "Moderate expressiveness = needs training",
+    mil_risk1: "Low imagination (11) = may not create convincing packages",
+    // Notes — Lucas
+    luc_nat1: "Creativity + improvisation = unusual packages",
+    luc_nat2: "Natural expressiveness",
+    luc_nat3: "Likes building elaborate counter-arguments",
+    luc_dev1: "Low self-discipline = hard to sustain",
+    luc_dev2: "Turbulence + vulnerability = fear of rejection",
+    luc_risk1: "Impulsivity under stress = may promise something unrealistic"
   }
 };
 
 function t(key) {
   const tr = translations[currentLang];
-  return tr && tr[key] !== undefined ? tr[key] : (translations.pt[key] !== undefined ? translations.pt[key] : key);
+  if (tr && tr[key] !== undefined) return tr[key];
+  if (translations.pt[key] !== undefined) return translations.pt[key];
+  return key;
 }
 
 function setLang(lang) {
@@ -696,6 +830,7 @@ function setLang(lang) {
   const saved = localStorage.getItem('keeta-lang');
   if (saved === 'pt' || saved === 'en') currentLang = saved;
 })();
+
 /* ========================= */
 
 const P = {
@@ -704,14 +839,14 @@ const P = {
   green: "#4A7C59", greenBg: "#EDF3EF", greenLight: "#C6DDD0",
   red: "#B05555", redBg: "#F5ECEC",
   amber: "#B8813A", amberBg: "#F5EFE4",
-  blue: "#4A6899", blueBg: "#EBF0F8",
+  blue: "#4A6899", blueBg: "#EBF0F8"
 };
 
 const INSIGHT_META = {
-  funciona: { label: t("funciona"), color: P.green, bg: P.greenBg },
-  cuidado:  { label: t("cuidado"),  color: P.amber, bg: P.amberBg },
-  acao:     { label: t("acao"),    color: P.blue,  bg: P.blueBg },
-  risco:    { label: t("risco"),   color: P.red,   bg: P.redBg },
+  funciona: { label: "funciona", color: P.green, bg: P.greenBg },
+  cuidado:  { label: "cuidado",  color: P.amber, bg: P.amberBg },
+  acao:     { label: "acao",    color: P.blue,  bg: P.blueBg },
+  risco:    { label: "risco",   color: P.red,   bg: P.redBg }
 };
 
 // ============ GESTÃO — BDM / GERENTE DO TIME ============
@@ -720,7 +855,6 @@ const manager = {
   name: "Caio Guijarro",
   initials: "CG",
   color: P.text,
-  role: "BDM / Gerente",
   mbti: "ENFJ-A",
   mbtiLabel: "Protagonista",
   disc: "Thinker",
@@ -729,46 +863,46 @@ const manager = {
   source: "16personalities.com + myDISCprofile + bigfive-test.com",
   playbook: {
     natural: [
-      { tactic: "BATNA / MAPAN", note: "Thinker + Consciência 96 = mapeia alternativas com precisão e estrutura" },
-      { tactic: "Espelhamento", note: "ENFJ + Amabilidade 101 = empatia genuína, espelha naturalmente" },
-      { tactic: "Concessão com Troca", note: "Amabilidade 101 + Thinker = troca justa, win-win bem articulado" }
+      { tactic: "tac_batna", note: "m_nat1" },
+      { tactic: "tac_espelhamento", note: "m_nat2" },
+      { tactic: "tac_concessao", note: "m_nat3" }
     ],
     develop: [
-      { tactic: "Silêncio Estratégico", note: "ENFJ + Extroversão 82 = preenche o vazio. Treinar 'contar até 7'" },
-      { tactic: "Ultimato", note: "Amabilidade 101 + evitação de conflito = difícil traçar limite firme. Treinar clareza gentil" },
-      { tactic: "Reação Estratégica", note: "Neuroticismo 40 mantém calmo, mas prefere dialogar a ficar em silêncio espantado" }
+      { tactic: "tac_silencio", note: "m_dev1" },
+      { tactic: "tac_ultimato", note: "m_dev2" },
+      { tactic: "tac_reacao", note: "m_dev3" }
     ],
     risk: [
-      { tactic: "Policial Bom/Mau", note: "O 'mau' pode soar inautêntico — Amabilidade 101 dificulta postura dura" },
-      { tactic: "Ultimato", note: "Se usar sem convicção genuína, desautoriza por soar 'bonzinho demais'" }
+      { tactic: "tac_bom_mau", note: "m_risk1" },
+      { tactic: "tac_ultimato", note: "m_risk2" }
     ]
   },
   profile: {
-    summary: "Caio é ENFJ-A (Protagonista) com DISC Thinker (Pensador, ritmo ponderado) e um Big Five marcante: Amabilidade altíssima (101), Consciência alta (96), Extroversão alta (82), Abertura moderada (74) e Neuroticismo baixo (40). É um líder que une empatia e estrutura — o ENFJ inspira e cuida das pessoas, enquanto a Consciência 96 garante processo, follow-up e previsibilidade. O Neuroticismo 40 o mantém calmo sob pressão. O DISC Thinker adiciona um traço deliberativo: ele planeja antes de agir e valoriza o trabalho em equipe. Ele é o contraponto do próprio time: lidera uma equipe com dois ENTJ-A (Comandante) e um ENFP (Ativista) sendo ele mesmo um Protagonista orientado a pessoas — e é justamente a Amabilidade 101 que mantém esse grupo de perfis fortes funcionando junto.",
-    superpower: "Conectar, inspirar e estruturar ao mesmo tempo. A Amabilidade 101 + ENFJ fazem cada BD sentir que tem um líder que se importa de verdade — o engajamento vem de lealdade, não de medo. E a Consciência 96 garante que essa empatia venha acompanhada de organização, rituais e follow-up. É um líder que acolhe E entrega.",
-    blindspot: "A combinação Amabilidade 101 + ENFJ + Thinker pode gerar evitação de conflito. Ele tende a adiar conversas difíceis (feedback duro, cobrança firme de meta, decisões de desligamento) para preservar a harmonia. O Thinker reforça o padrão: em vez de agir decididamente, ele pode 'pensar mais um pouco' e perder a janela de ação."
+    summary: "manager_summary",
+    superpower: "manager_superpower",
+    blindspot: "manager_blindspot"
   },
   style: [
-    { type: "funciona", text: "Liderança por conexão e confiança. ENFJ + Amabilidade 101 fazem cada BD se sentir visto e valorizado. O time rende mais por lealdade ao líder do que por pressão — o que gera engajamento de longo prazo e baixa rotatividade." },
-    { type: "funciona", text: "Gestão com estrutura. Consciência 96 + Thinker = processos, rituais e follow-up bem organizados. O time trabalha num ambiente previsível, o que reduz ansiedade e aumenta a consistência." },
-    { type: "funciona", text: "Calma sob pressão. Neuroticismo 40 faz dele uma âncora de estabilidade em semanas de meta apertada. O time não herda o pânico do líder — um ativo raro e valioso em vendas." },
-    { type: "cuidado", text: "Amabilidade 101 pode virar 'chefe bonzinho demais'. O risco de suavizar feedbacks que precisavam ser duros, de tolerar performance mediana para não gerar desconforto, e de cobrar menos do que a meta exige." },
-    { type: "cuidado", text: "Thinker + ENFJ = decisão lenta em situações que exigem rapidez. A tendência a 'considerar e planejar' pode atrasar decisões que deveriam ser imediatas (pivotar abordagem, cortar um lead frio, realocar um BD)." },
-    { type: "acao", text: "Instale um 'gatilho de decisão': ao notar que está adiando uma conversa difícil, agende-a em até 24h. Treinar 'clareza gentil' — ser direto COM cuidado — é o músculo que ele mais precisa desenvolver." }
+    { type: "funciona", text: "manager_style_1" },
+    { type: "funciona", text: "manager_style_2" },
+    { type: "funciona", text: "manager_style_3" },
+    { type: "cuidado", text: "manager_style_4" },
+    { type: "cuidado", text: "manager_style_5" },
+    { type: "acao", text: "manager_style_6" }
   ],
   self: [
-    { type: "funciona", text: "Proteja blocos de reflexão estratégica. Thinker + ENFJ rendem mais com tempo reservado para pensar (revisar funil, preparar 1:1s, planejar o desenvolvimento de cada BD). Sem isso, ele vira 'bombeiro' apagando incêndio." },
-    { type: "funciona", text: "Transforme o cuidado em ritual. Use a Consciência 96 para criar rotinas fixas (1:1 semanal, revisão de CRM, follow-up de leads) que tornem a atenção às pessoas algo sistemático, não um esforço hercúleo ocasional." },
-    { type: "funciona", text: "Delegue a cobrança técnica e use sua força no desenvolvimento. Você não precisa ser o 'carrasco': use o peer accountability entre BDs (Natalia para processo, Vinicius para estratégia) e reserve sua energia para coaching e crescimento." },
-    { type: "cuidado", text: "Risco do 'super-herói emocional': Amabilidade 101 + ENFJ fazem ele absorver o estresse de todo o time. Sem válvula de escape (mentor, pares, reflexão), acumula a carga emocional dos outros sem processar a própria." },
-    { type: "cuidado", text: "O Thinker pode virar 'análise-paralisia' em gestão de pessoas. Quando um BD claramente não performa, ele pode adiar a conversa esperando 'mais dados' em vez de agir." },
-    { type: "acao", text: "Agende um check-in quinzenal com seu gestor ou um par de confiança para calibrar conversas difíceis antes de tê-las. Um 'ensaio' reduz a ansiedade e aumenta a clareza." }
+    { type: "funciona", text: "manager_self_1" },
+    { type: "funciona", text: "manager_self_2" },
+    { type: "funciona", text: "manager_self_3" },
+    { type: "cuidado", text: "manager_self_4" },
+    { type: "cuidado", text: "manager_self_5" },
+    { type: "acao", text: "manager_self_6" }
   ],
   risks: [
-    { type: "risco", text: "Burnout por 'cuidar de todo mundo'. ENFJ + Amabilidade 101 + a responsabilidade de gerir uma equipe de perfis fortes = ele coloca as necessidades do time acima das próprias. O desgaste emocional é o maior risco." },
-    { type: "risco", text: "Desequilíbrio entre firmeza e empatia. Se pender demais para a empatia, a meta sofre; se forçar uma dureza artificial, pode soar inautêntico e perder a confiança do time. O meio-termo é o desafio central." },
-    { type: "risco", text: "Decisão lenta em janelas que fecham rápido. O Thinker quer dados antes de agir, mas em vendas há momentos que não esperam. Adiar pode custar fechamentos ou a credibilidade do time." },
-    { type: "acao", text: "Mantenha uma 'lista de conversas adiadas' visível e resolva pelo menos UMA por semana. Conversas difíceis frequentes, em doses pequenas, tornam cada uma delas mais leve." }
+    { type: "risco", text: "manager_risk_1" },
+    { type: "risco", text: "manager_risk_2" },
+    { type: "risco", text: "manager_risk_3" },
+    { type: "acao", text: "manager_risk_4" }
   ]
 };
 
@@ -786,45 +920,45 @@ const currentTeam = [
     pending: [],
     source: "16personalities.com + myDISCprofile + bigfive-test.com",
     playbook: {
-    natural: [
-      { tactic: "BATNA / MAPAN", note: "Visão estratégica + autoridade natural" },
-      { tactic: "Ancoragem", note: "Excelente — ancorar em valor, não em comissão" },
-      { tactic: "Reação Estratégica", note: "Presença + autoridade fazem o espanto soar genuíno" },
-      { tactic: "Silêncio Estratégico", note: "Confortável no poder, sustenta o vazio" },
-      { tactic: "Ultimato", note: "Confiança para traçar limites, mas cuidado com blefe" }
-    ],
-    develop: [
-      { tactic: "Espelhamento", note: "Precisa treinar contenção — tende a querer resolver com mais pressão" },
-      { tactic: "Policial Bom/Mau", note: "Pode soar autoritário demais; precisa suavizar o tom" }
-    ],
-    risk: [
-      { tactic: "Ultimato", note: "Se usar como blefe, destrói a credibilidade para sempre" }
-    ]
-  },
+      natural: [
+        { tactic: "tac_batna", note: "v_nat1" },
+        { tactic: "tac_ancoragem", note: "v_nat2" },
+        { tactic: "tac_reacao", note: "v_nat3" },
+        { tactic: "tac_silencio", note: "v_nat4" },
+        { tactic: "tac_ultimato", note: "v_nat5" }
+      ],
+      develop: [
+        { tactic: "tac_espelhamento", note: "v_dev1" },
+        { tactic: "tac_bom_mau", note: "v_dev2" }
+      ],
+      risk: [
+        { tactic: "tac_ultimato", note: "v_risk1" }
+      ]
+    },
     profile: {
-      summary: t("vini_summary"),
-      superpower: t("vini_superpower"),
-      blindspot: t("vini_blindspot")
+      summary: "vini_summary",
+      superpower: "vini_superpower",
+      blindspot: "vini_blindspot"
     },
     commercial: [
-      { type: "funciona", text: t("vini_com1") },
-      { type: "funciona", text: t("vini_com2") },
-      { type: "cuidado", text: t("vini_com3") },
-      { type: "cuidado", text: t("vini_com4") },
-      { type: "acao", text: t("vini_com5") }
+      { type: "funciona", text: "vini_com1" },
+      { type: "funciona", text: "vini_com2" },
+      { type: "cuidado", text: "vini_com3" },
+      { type: "cuidado", text: "vini_com4" },
+      { type: "acao", text: "vini_com5" }
     ],
     leadership: [
-      { type: "funciona", text: t("vini_ldr1") },
-      { type: "funciona", text: t("vini_ldr2") },
-      { type: "funciona", text: t("vini_ldr3") },
-      { type: "cuidado", text: t("vini_ldr4") },
-      { type: "cuidado", text: t("vini_ldr5") },
-      { type: "acao", text: t("vini_ldr6") }
+      { type: "funciona", text: "vini_ldr1" },
+      { type: "funciona", text: "vini_ldr2" },
+      { type: "funciona", text: "vini_ldr3" },
+      { type: "cuidado", text: "vini_ldr4" },
+      { type: "cuidado", text: "vini_ldr5" },
+      { type: "acao", text: "vini_ldr6" }
     ],
     risks: [
-      { type: "risco", text: t("vini_risk1") },
-      { type: "risco", text: t("vini_risk2") },
-      { type: "acao", text: t("vini_risk3") }
+      { type: "risco", text: "vini_risk1" },
+      { type: "risco", text: "vini_risk2" },
+      { type: "acao", text: "vini_risk3" }
     ]
   },
   {
@@ -839,46 +973,46 @@ const currentTeam = [
     pending: [],
     source: "16personalities.com + myDISCprofile + bigfive-test.com",
     playbook: {
-    natural: [
-      { tactic: "BATNA / MAPAN", note: "Thinker + dados = mapeia alternativas com precisão" },
-      { tactic: "Ancoragem", note: "Excelente com dados — ancorar em números reais" },
-      { tactic: "Concessão com Troca", note: "Lógica + estrutura = troca justa e bem articulada" },
-      { tactic: "Silêncio Estratégico", note: "Disciplina + controle emocional = sustenta silêncio sem sofrer" },
-      { tactic: "Cortina de Fumaça", note: "Planejamento estratégico perfeito para isso" }
-    ],
-    develop: [
-      { tactic: "Espelhamento", note: "Precisa soltar o controle e deixar o dono falar" },
-      { tactic: "Reação Estratégica", note: "Precisa treinar expressividade emocional" }
-    ],
-    risk: [
-      { tactic: "Policial Bom/Mau", note: "Pode soar muito técnica; o dono precisa sentir aliado, não script" }
-    ]
-  },
+      natural: [
+        { tactic: "tac_batna", note: "n_nat1" },
+        { tactic: "tac_ancoragem", note: "n_nat2" },
+        { tactic: "tac_concessao", note: "n_nat3" },
+        { tactic: "tac_silencio", note: "n_nat4" },
+        { tactic: "tac_cortina", note: "n_nat5" }
+      ],
+      develop: [
+        { tactic: "tac_espelhamento", note: "n_dev1" },
+        { tactic: "tac_reacao", note: "n_dev2" }
+      ],
+      risk: [
+        { tactic: "tac_bom_mau", note: "n_risk1" }
+      ]
+    },
     profile: {
-      summary: t("nat_summary"),
-      superpower: t("nat_superpower"),
-      blindspot: t("nat_blindspot")
+      summary: "nat_summary",
+      superpower: "nat_superpower",
+      blindspot: "nat_blindspot"
     },
     commercial: [
-      { type: "funciona", text: t("nat_com1") },
-      { type: "funciona", text: t("nat_com2") },
-      { type: "funciona", text: t("nat_com3") },
-      { type: "cuidado", text: t("nat_com4") },
-      { type: "cuidado", text: t("nat_com5") },
-      { type: "acao", text: t("nat_com6") }
+      { type: "funciona", text: "nat_com1" },
+      { type: "funciona", text: "nat_com2" },
+      { type: "funciona", text: "nat_com3" },
+      { type: "cuidado", text: "nat_com4" },
+      { type: "cuidado", text: "nat_com5" },
+      { type: "acao", text: "nat_com6" }
     ],
     leadership: [
-      { type: "funciona", text: t("nat_ldr1") },
-      { type: "funciona", text: t("nat_ldr2") },
-      { type: "funciona", text: t("nat_ldr3") },
-      { type: "cuidado", text: t("nat_ldr4") },
-      { type: "cuidado", text: t("nat_ldr5") },
-      { type: "acao", text: t("nat_ldr6_timebox") }
+      { type: "funciona", text: "nat_ldr1" },
+      { type: "funciona", text: "nat_ldr2" },
+      { type: "funciona", text: "nat_ldr3" },
+      { type: "cuidado", text: "nat_ldr4" },
+      { type: "cuidado", text: "nat_ldr5" },
+      { type: "acao", text: "nat_ldr6_timebox" }
     ],
     risks: [
-      { type: "risco", text: t("nat_risk1") },
-      { type: "risco", text: t("nat_risk2") },
-      { type: "acao", text: t("nat_risk3") }
+      { type: "risco", text: "nat_risk1" },
+      { type: "risco", text: "nat_risk2" },
+      { type: "acao", text: "nat_risk3" }
     ]
   },
   {
@@ -893,48 +1027,48 @@ const currentTeam = [
     pending: [],
     source: "16personalities.com + myDISCprofile + bigfive-test.com",
     playbook: {
-    natural: [
-      { tactic: "Espelhamento", note: "Empatia genuína + espontaneidade = espelha sem parecer forçado" },
-      { tactic: "Policial Bom/Mau", note: "Cria sensação de aliado genuíno" },
-      { tactic: "Concessão com Troca", note: "Criativo nas trocas, mas precisa de script para não ceder de graça" },
-      { tactic: "Cortina de Fumaça", note: "Improvisador nato — o dono nunca sente manipulação" },
-      { tactic: "Reação Estratégica", note: "Expressividade emocional genuína" }
-    ],
-    develop: [
-      { tactic: "Silêncio Estratégico", note: "Neuroticismo alto + extroversão alta = silêncio é doloroso. Treinar 'contar até 10'" },
-      { tactic: "Ultimato", note: "Receio de rejeição + neuroticismo alto = arriscado. Usar só com muito treino" }
-    ],
-    risk: [
-      { tactic: "Concessão sem Troca", note: "Cooperativo demais (ENFP + Afabilidade 78). Pode ceder para manter relação" },
-      { tactic: "Ultimato", note: "Risco de desautorização se não estiver genuinamente disposto a ir embora" }
-    ]
-  },
+      natural: [
+        { tactic: "tac_espelhamento", note: "ma_nat1" },
+        { tactic: "tac_bom_mau", note: "ma_nat2" },
+        { tactic: "tac_concessao", note: "ma_nat3" },
+        { tactic: "tac_cortina", note: "ma_nat4" },
+        { tactic: "tac_reacao", note: "ma_nat5" }
+      ],
+      develop: [
+        { tactic: "tac_silencio", note: "ma_dev1" },
+        { tactic: "tac_ultimato", note: "ma_dev2" }
+      ],
+      risk: [
+        { tactic: "tac_concessao_sem", note: "ma_risk1" },
+        { tactic: "tac_ultimato", note: "ma_risk2" }
+      ]
+    },
     profile: {
-      summary: t("mar_summary"),
-      superpower: t("mar_superpower"),
-      blindspot: t("mar_blindspot")
+      summary: "mar_summary",
+      superpower: "mar_superpower",
+      blindspot: "mar_blindspot"
     },
     commercial: [
-      { type: "funciona", text: t("mar_com1") },
-      { type: "funciona", text: t("mar_com2") },
-      { type: "funciona", text: t("mar_com3") },
-      { type: "cuidado", text: t("mar_com4") },
-      { type: "cuidado", text: t("mar_com5") },
-      { type: "acao", text: t("mar_com6") }
+      { type: "funciona", text: "mar_com1" },
+      { type: "funciona", text: "mar_com2" },
+      { type: "funciona", text: "mar_com3" },
+      { type: "cuidado", text: "mar_com4" },
+      { type: "cuidado", text: "mar_com5" },
+      { type: "acao", text: "mar_com6" }
     ],
     leadership: [
-      { type: "funciona", text: t("mar_ldr1") },
-      { type: "funciona", text: t("mar_ldr2") },
-      { type: "funciona", text: t("mar_ldr3") },
-      { type: "cuidado", text: t("mar_ldr4") },
-      { type: "cuidado", text: t("mar_ldr5") },
-      { type: "acao", text: t("mar_ldr6") }
+      { type: "funciona", text: "mar_ldr1" },
+      { type: "funciona", text: "mar_ldr2" },
+      { type: "funciona", text: "mar_ldr3" },
+      { type: "cuidado", text: "mar_ldr4" },
+      { type: "cuidado", text: "mar_ldr5" },
+      { type: "acao", text: "mar_ldr6" }
     ],
     risks: [
-      { type: "risco", text: t("mar_risk1") },
-      { type: "risco", text: t("mar_risk2") },
-      { type: "acao", text: t("mar_risk3") },
-      { type: "acao", text: t("mar_risk4") }
+      { type: "risco", text: "mar_risk1" },
+      { type: "risco", text: "mar_risk2" },
+      { type: "acao", text: "mar_risk3" },
+      { type: "acao", text: "mar_risk4" }
     ]
   }
 ];
@@ -951,44 +1085,44 @@ const previousTeam = [
     disc: "Técnico",
     bigfive: { Neuroticismo: 51, Extroversão: 100, Abertura: 110, Amabilidade: 94, Consciência: 97 },
     pending: [],
-        playbook: {
-    natural: [
-      { tactic: "BATNA / MAPAN", note: "ENTJ-A + Técnico = entende o jogo de poder" },
-      { tactic: "Ancoragem", note: "Visão estratégica + autoridade" },
-      { tactic: "Reação Estratégica", note: "Presença e assertividade máximas" },
-      { tactic: "Ultimato", note: "Confiança natural para traçar limites" }
-    ],
-    develop: [
-      { tactic: "Espelhamento", note: "Tende a insistir com mais pressão em vez de ouvir" },
-      { tactic: "Silêncio Estratégico", note: "Pode ser impaciente; precisa treinar contenção" }
-    ],
-    risk: [
-      { tactic: "Ultimato", note: "Raiva alta (13) + modéstia baixa = se frustrado, pode usar ultimato como blefe" }
-    ]
-  },
+    playbook: {
+      natural: [
+        { tactic: "tac_batna", note: "vic_nat1" },
+        { tactic: "tac_ancoragem", note: "vic_nat2" },
+        { tactic: "tac_reacao", note: "vic_nat3" },
+        { tactic: "tac_ultimato", note: "vic_nat4" }
+      ],
+      develop: [
+        { tactic: "tac_espelhamento", note: "vic_dev1" },
+        { tactic: "tac_silencio", note: "vic_dev2" }
+      ],
+      risk: [
+        { tactic: "tac_ultimato", note: "vic_risk1" }
+      ]
+    },
     profile: {
-      summary: t("vic_summary"),
-      superpower: t("vic_superpower"),
-      blindspot: t("vic_blindspot")
+      summary: "vic_summary",
+      superpower: "vic_superpower",
+      blindspot: "vic_blindspot"
     },
     commercial: [
-      { type: "funciona", text: t("vic_com1") },
-      { type: "funciona", text: t("vic_com2") },
-      { type: "cuidado", text: t("vic_com3") },
-      { type: "acao", text: t("vic_com4") }
+      { type: "funciona", text: "vic_com1" },
+      { type: "funciona", text: "vic_com2" },
+      { type: "cuidado", text: "vic_com3" },
+      { type: "acao", text: "vic_com4" }
     ],
     leadership: [
-      { type: "funciona", text: t("vic_ldr1") },
-      { type: "funciona", text: t("vic_ldr2") },
-      { type: "funciona", text: t("vic_ldr3") },
-      { type: "cuidado", text: t("vic_ldr4") },
-      { type: "cuidado", text: t("vic_ldr5") },
-      { type: "acao", text: t("vic_ldr6") }
+      { type: "funciona", text: "vic_ldr1" },
+      { type: "funciona", text: "vic_ldr2" },
+      { type: "funciona", text: "vic_ldr3" },
+      { type: "cuidado", text: "vic_ldr4" },
+      { type: "cuidado", text: "vic_ldr5" },
+      { type: "acao", text: "vic_ldr6" }
     ],
     risks: [
-      { type: "risco", text: t("vic_risk1") },
-      { type: "risco", text: t("vic_risk2") },
-      { type: "acao", text: t("vic_risk3") }
+      { type: "risco", text: "vic_risk1" },
+      { type: "risco", text: "vic_risk2" },
+      { type: "acao", text: "vic_risk3" }
     ]
   },
   {
@@ -1001,43 +1135,43 @@ const previousTeam = [
     disc: "A confirmar",
     bigfive: { Neuroticismo: 46, Extroversão: 96, Abertura: 98, Amabilidade: 92, Consciência: 86 },
     pending: [],
-        playbook: {
-    natural: [
-      { tactic: "Espelhamento", note: "Empatia máxima + simpatia = rapport instantâneo" },
-      { tactic: "Policial Bom/Mau", note: "Cria aliado genuíno naturalmente" },
-      { tactic: "Concessão com Troca", note: "Negociação ganha-ganha é o forte" }
-    ],
-    develop: [
-      { tactic: "Ancoragem", note: "Tende a simplificar demais; precisa ancorar em valor, não em simpatia" },
-      { tactic: "Ultimato", note: "Evita conflito (cooperação 18) — difícil traçar limites finais" }
-    ],
-    risk: [
-      { tactic: "Concessão sem Troca", note: "Pode ceder demais para não estragar relacionamento" }
-    ]
-  },
+    playbook: {
+      natural: [
+        { tactic: "tac_espelhamento", note: "raf_nat1" },
+        { tactic: "tac_bom_mau", note: "raf_nat2" },
+        { tactic: "tac_concessao", note: "raf_nat3" }
+      ],
+      develop: [
+        { tactic: "tac_ancoragem", note: "raf_dev1" },
+        { tactic: "tac_ultimato", note: "raf_dev2" }
+      ],
+      risk: [
+        { tactic: "tac_concessao_sem", note: "raf_risk1" }
+      ]
+    },
     profile: {
-      summary: t("raf_summary"),
-      superpower: t("raf_superpower"),
-      blindspot: t("raf_blindspot")
+      summary: "raf_summary",
+      superpower: "raf_superpower",
+      blindspot: "raf_blindspot"
     },
     commercial: [
-      { type: "funciona", text: t("raf_com1") },
-      { type: "funciona", text: t("raf_com2") },
-      { type: "cuidado", text: t("raf_com3") },
-      { type: "cuidado", text: t("raf_com4") },
-      { type: "acao", text: t("raf_com5") }
+      { type: "funciona", text: "raf_com1" },
+      { type: "funciona", text: "raf_com2" },
+      { type: "cuidado", text: "raf_com3" },
+      { type: "cuidado", text: "raf_com4" },
+      { type: "acao", text: "raf_com5" }
     ],
     leadership: [
-      { type: "funciona", text: t("raf_ldr1") },
-      { type: "funciona", text: t("raf_ldr2") },
-      { type: "funciona", text: t("raf_ldr3") },
-      { type: "cuidado", text: t("raf_ldr4") },
-      { type: "acao", text: t("raf_ldr5") }
+      { type: "funciona", text: "raf_ldr1" },
+      { type: "funciona", text: "raf_ldr2" },
+      { type: "funciona", text: "raf_ldr3" },
+      { type: "cuidado", text: "raf_ldr4" },
+      { type: "acao", text: "raf_ldr5" }
     ],
     risks: [
-      { type: "risco", text: t("raf_risk1") },
-      { type: "risco", text: t("raf_risk2") },
-      { type: "acao", text: t("raf_risk3") }
+      { type: "risco", text: "raf_risk1" },
+      { type: "risco", text: "raf_risk2" },
+      { type: "acao", text: "raf_risk3" }
     ]
   },
   {
@@ -1050,42 +1184,42 @@ const previousTeam = [
     disc: "A confirmar",
     bigfive: { Neuroticismo: 59, Extroversão: 80, Abertura: 74, Amabilidade: 92, Consciência: 86 },
     pending: [],
-        playbook: {
-    natural: [
-      { tactic: "Concessão com Troca", note: "Cooperação alta = encontra ponto ganha-ganha" },
-      { tactic: "Silêncio Estratégico", note: "Estabilidade emocional + cautela" }
-    ],
-    develop: [
-      { tactic: "Ancoragem", note: "Precisa de suporte para ancorar em valor" },
-      { tactic: "Reação Estratégica", note: "Expressividade moderada = precisa treinar" }
-    ],
-    risk: [
-      { tactic: "Cortina de Fumaça", note: "Imaginação baixa (11) = pode não criar pacotes convincentes" }
-    ]
-  },
+    playbook: {
+      natural: [
+        { tactic: "tac_concessao", note: "mil_nat1" },
+        { tactic: "tac_silencio", note: "mil_nat2" }
+      ],
+      develop: [
+        { tactic: "tac_ancoragem", note: "mil_dev1" },
+        { tactic: "tac_reacao", note: "mil_dev2" }
+      ],
+      risk: [
+        { tactic: "tac_cortina", note: "mil_risk1" }
+      ]
+    },
     profile: {
-      summary: t("mil_summary"),
-      superpower: t("mil_superpower"),
-      blindspot: t("mil_blindspot")
+      summary: "mil_summary",
+      superpower: "mil_superpower",
+      blindspot: "mil_blindspot"
     },
     commercial: [
-      { type: "funciona", text: t("mil_com1") },
-      { type: "funciona", text: t("mil_com2") },
-      { type: "cuidado", text: t("mil_com3") },
-      { type: "cuidado", text: t("mil_com4") },
-      { type: "acao", text: t("mil_com5") }
+      { type: "funciona", text: "mil_com1" },
+      { type: "funciona", text: "mil_com2" },
+      { type: "cuidado", text: "mil_com3" },
+      { type: "cuidado", text: "mil_com4" },
+      { type: "acao", text: "mil_com5" }
     ],
     leadership: [
-      { type: "funciona", text: t("mil_ldr1") },
-      { type: "funciona", text: t("mil_ldr2") },
-      { type: "funciona", text: t("mil_ldr3") },
-      { type: "cuidado", text: t("mil_ldr4") },
-      { type: "acao", text: t("mil_ldr5") }
+      { type: "funciona", text: "mil_ldr1" },
+      { type: "funciona", text: "mil_ldr2" },
+      { type: "funciona", text: "mil_ldr3" },
+      { type: "cuidado", text: "mil_ldr4" },
+      { type: "acao", text: "mil_ldr5" }
     ],
     risks: [
-      { type: "risco", text: t("mil_risk1") },
-      { type: "risco", text: t("mil_risk2") },
-      { type: "acao", text: t("mil_risk3") }
+      { type: "risco", text: "mil_risk1" },
+      { type: "risco", text: "mil_risk2" },
+      { type: "acao", text: "mil_risk3" }
     ]
   },
   {
@@ -1098,45 +1232,45 @@ const previousTeam = [
     disc: "A confirmar",
     bigfive: { Neuroticismo: 68, Extroversão: 87, Abertura: 86, Amabilidade: 76, Consciência: 95 },
     pending: [],
-        playbook: {
-    natural: [
-      { tactic: "Cortina de Fumaça", note: "Criatividade + improvisação = pacotes inusitados" },
-      { tactic: "Reação Estratégica", note: "Expressividade natural" },
-      { tactic: "Concessão com Troca", note: "Gosta de construir contra-argumentos elaborados" }
-    ],
-    develop: [
-      { tactic: "Silêncio Estratégico", note: "Autodisciplina baixa = difícil sustentar" },
-      { tactic: "Ultimato", note: "Turbulência + vulnerabilidade = medo de rejeição" }
-    ],
-    risk: [
-      { tactic: "Ultimato", note: "Impulsividade sob estresse = pode prometer algo irreal" }
-    ]
-  },
+    playbook: {
+      natural: [
+        { tactic: "tac_cortina", note: "luc_nat1" },
+        { tactic: "tac_reacao", note: "luc_nat2" },
+        { tactic: "tac_concessao", note: "luc_nat3" }
+      ],
+      develop: [
+        { tactic: "tac_silencio", note: "luc_dev1" },
+        { tactic: "tac_ultimato", note: "luc_dev2" }
+      ],
+      risk: [
+        { tactic: "tac_ultimato", note: "luc_risk1" }
+      ]
+    },
     profile: {
-      summary: t("luc_summary"),
-      superpower: t("luc_superpower"),
-      blindspot: t("luc_blindspot")
+      summary: "luc_summary",
+      superpower: "luc_superpower",
+      blindspot: "luc_blindspot"
     },
     commercial: [
-      { type: "funciona", text: t("luc_com1") },
-      { type: "funciona", text: t("luc_com2") },
-      { type: "cuidado", text: t("luc_com3") },
-      { type: "cuidado", text: t("luc_com4") },
-      { type: "acao", text: t("luc_com5") }
+      { type: "funciona", text: "luc_com1" },
+      { type: "funciona", text: "luc_com2" },
+      { type: "cuidado", text: "luc_com3" },
+      { type: "cuidado", text: "luc_com4" },
+      { type: "acao", text: "luc_com5" }
     ],
     leadership: [
-      { type: "funciona", text: t("luc_ldr1") },
-      { type: "funciona", text: t("luc_ldr2") },
-      { type: "funciona", text: t("luc_ldr3") },
-      { type: "cuidado", text: t("luc_ldr4") },
-      { type: "cuidado", text: t("luc_ldr5") },
-      { type: "acao", text: t("luc_ldr6") }
+      { type: "funciona", text: "luc_ldr1" },
+      { type: "funciona", text: "luc_ldr2" },
+      { type: "funciona", text: "luc_ldr3" },
+      { type: "cuidado", text: "luc_ldr4" },
+      { type: "cuidado", text: "luc_ldr5" },
+      { type: "acao", text: "luc_ldr6" }
     ],
     risks: [
-      { type: "risco", text: t("luc_risk1") },
-      { type: "risco", text: t("luc_risk2") },
-      { type: "risco", text: t("luc_risk3") },
-      { type: "acao", text: t("luc_risk4") }
+      { type: "risco", text: "luc_risk1" },
+      { type: "risco", text: "luc_risk2" },
+      { type: "risco", text: "luc_risk3" },
+      { type: "acao", text: "luc_risk4" }
     ]
   },
   {
@@ -1156,7 +1290,7 @@ const previousTeam = [
 // ============ STATE ============
 let currentTab = "vinicius";
 let prevTab = "victor";
-let globalView = "gestao"; // "gestao" | "playbook"
+let globalView = "gestao";
 
 function esc(s) {
   return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -1170,8 +1304,8 @@ function tag(label, color, bg) {
 function insight(item) {
   const m = INSIGHT_META[item.type] || INSIGHT_META.cuidado;
   return `<div class="insight ${item.type}">
-    ${tag(m.label, m.color)}
-    <div class="i-text">${esc(item.text)}</div>
+    ${tag(t(m.label), m.color, m.bg)}
+    <div class="i-text">${esc(t(item.text))}</div>
   </div>`;
 }
 
@@ -1190,14 +1324,13 @@ function bigfiveBars(bigfive) {
 }
 
 function pendingCard(bd) {
-  const testNames = bd.pending.map(t => {
-    const color = P.red, bg = P.redBg;
-    return `<span class="tag" style="color:${color};background:${bg}">${esc(t)} Pendente</span>`;
+  const testNames = bd.pending.map(testName => {
+    return `<span class="tag" style="color:${P.red};background:${P.redBg}">${esc(testName)}</span>`;
   }).join(" ");
   return `<div class="card pending-card">
     <div class="icon">🧩</div>
-    <div class="t">${esc(bd.name)} — Sem testes</div>
-    <div class="d">${esc(bd.name.split(" ")[0])} ainda não enviou os testes de perfil. Cobrar o envio para completar o mapeamento do time e gerar a análise individual.</div>
+    <div class="t">${esc(bd.name)} — ${t("sem_testes")}</div>
+    <div class="d">${esc(bd.name.split(" ")[0])} ${t("pending_text_name")}</div>
     <div class="pending-tags">${testNames}</div>
   </div>`;
 }
@@ -1210,20 +1343,20 @@ function profileCard(bd) {
 
   const bigfiveSection = bd.bigfive
     ? `<div>
-        <div class="section-title">Big Five (scores totais por domínio)</div>
+        <div class="section-title">${t("sec_bigfive")}</div>
         ${bigfiveBars(bd.bigfive)}
       </div>`
     : `<div>
-        <div class="section-title">Big Five</div>
-        <div style="font-size:11px;color:${P.sub};line-height:1.6">${tag("Pendente", P.red, P.redBg)} Resultado não enviado. A triangulação completa (MBTI + DISC + Big Five) ficará disponível quando o teste for enviado.</div>
+        <div class="section-title">${t("sec_bigfive_short")}</div>
+        <div style="font-size:11px;color:${P.sub};line-height:1.6">${tag(t("pendente"), P.red, P.redBg)} ${t("bigfive_pending")}</div>
       </div>`;
 
   const sourceNote = bd.source
-    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">Fonte: ${esc(bd.source)}</div>`
+    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">${t("fonte")} ${esc(bd.source)}</div>`
     : "";
 
   const pendingNote = bd.pending && bd.pending.length
-    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">Pendente: ${bd.pending.map(esc).join(", ")}</div>`
+    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">${t("pendente_prefix")} ${bd.pending.map(esc).join(", ")}</div>`
     : "";
 
   return `
@@ -1231,44 +1364,44 @@ function profileCard(bd) {
       <div class="profile-row">
         <div>
           <h2 class="name">${esc(bd.name)}</h2>
-          <p class="role-line">BD · SMBX Santos</p>
+          <p class="role-line">${t("role_bd_line")}</p>
         </div>
         <div class="badges">${badges.join("")}</div>
       </div>
 
       <div class="grid2">
-        <div class="summary-text">${esc(bd.profile.summary)}</div>
+        <div class="summary-text">${esc(t(bd.profile.summary))}</div>
         ${bigfiveSection}
       </div>
 
       <div class="grid2" style="margin-top:12px">
         <div class="callout super">
-          <div class="ct-label">Superpoder</div>
-          <div class="ct-text">${esc(bd.profile.superpower)}</div>
+          <div class="ct-label">${t("lbl_superpoder")}</div>
+          <div class="ct-text">${esc(t(bd.profile.superpower))}</div>
         </div>
         <div class="callout blind">
-          <div class="ct-label">Ponto Cego</div>
-          <div class="ct-text">${esc(bd.profile.blindspot)}</div>
+          <div class="ct-label">${t("lbl_pontocego")}</div>
+          <div class="ct-text">${esc(t(bd.profile.blindspot))}</div>
         </div>
       </div>
       ${sourceNote}${pendingNote}
     </div>
 
     <div class="section">
-      <div class="section-head"><span>📊</span> Performance no Ciclo Comercial</div>
-      <p class="section-desc">Prospecção → Convencimento → Explicação Técnica</p>
+      <div class="section-head"><span>📊</span> ${t("sec_comercial")}</div>
+      <p class="section-desc">${t("sec_comercial_desc")}</p>
       ${bd.commercial.map(insight).join("")}
     </div>
 
     <div class="section">
-      <div class="section-head"><span>🎯</span> Como Liderar Este BD</div>
-      <p class="section-desc">Feedback, motivação, delegação e acompanhamento</p>
+      <div class="section-head"><span>🎯</span> ${t("sec_lideranca")}</div>
+      <p class="section-desc">${t("sec_lideranca_desc")}</p>
       ${bd.leadership.map(insight).join("")}
     </div>
 
     <div class="section">
-      <div class="section-head"><span>⚡</span> Riscos e Ações Preventivas</div>
-      <p class="section-desc">Sinais de alerta e o que fazer antes que vire problema</p>
+      <div class="section-head"><span>⚡</span> ${t("sec_riscos")}</div>
+      <p class="section-desc">${t("sec_riscos_desc")}</p>
       ${bd.risks.map(insight).join("")}
     </div>
     ${playbookSection(bd)}`;
@@ -1282,13 +1415,13 @@ function managerCard(bd) {
 
   const bigfiveSection = bd.bigfive
     ? `<div>
-        <div class="section-title">Big Five (scores totais por domínio)</div>
+        <div class="section-title">${t("sec_bigfive")}</div>
         ${bigfiveBars(bd.bigfive)}
       </div>`
     : "";
 
   const sourceNote = bd.source
-    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">Fonte: ${esc(bd.source)}</div>`
+    ? `<div style="font-size:10px;color:${P.muted};margin-top:10px">${t("fonte")} ${esc(bd.source)}</div>`
     : "";
 
   return `
@@ -1296,44 +1429,44 @@ function managerCard(bd) {
       <div class="profile-row">
         <div>
           <h2 class="name">${esc(bd.name)}</h2>
-          <p class="role-line">${esc(bd.role)} · SMBX Santos</p>
+          <p class="role-line">${t("lbl_role_manager")} · SMBX Santos</p>
         </div>
         <div class="badges">${badges.join("")}</div>
       </div>
 
       <div class="grid2">
-        <div class="summary-text">${esc(bd.profile.summary)}</div>
+        <div class="summary-text">${esc(t(bd.profile.summary))}</div>
         ${bigfiveSection}
       </div>
 
       <div class="grid2" style="margin-top:12px">
         <div class="callout super">
-          <div class="ct-label">Superpoder</div>
-          <div class="ct-text">${esc(bd.profile.superpower)}</div>
+          <div class="ct-label">${t("lbl_superpoder")}</div>
+          <div class="ct-text">${esc(t(bd.profile.superpower))}</div>
         </div>
         <div class="callout blind">
-          <div class="ct-label">Ponto Cego</div>
-          <div class="ct-text">${esc(bd.profile.blindspot)}</div>
+          <div class="ct-label">${t("lbl_pontocego")}</div>
+          <div class="ct-text">${esc(t(bd.profile.blindspot))}</div>
         </div>
       </div>
       ${sourceNote}
     </div>
 
     <div class="section">
-      <div class="section-head"><span>🧭</span> Estilo de Liderança</div>
-      <p class="section-desc">Como ele lidera naturalmente — pontos fortes e armadilhas</p>
+      <div class="section-head"><span>🧭</span> ${t("sec_estilo")}</div>
+      <p class="section-desc">${t("sec_estilo_desc")}</p>
       ${bd.style.map(insight).join("")}
     </div>
 
     <div class="section">
-      <div class="section-head"><span>🪞</span> Como Gerenciar a Si Mesmo</div>
-      <p class="section-desc">Autogestão, rituais e descanso</p>
+      <div class="section-head"><span>🪞</span> ${t("sec_self")}</div>
+      <p class="section-desc">${t("sec_self_desc")}</p>
       ${bd.self.map(insight).join("")}
     </div>
 
     <div class="section">
-      <div class="section-head"><span>⚠️</span> Riscos e Pontos de Atenção como Líder</div>
-      <p class="section-desc">Sinais de alerta e o que fazer antes que vire problema</p>
+      <div class="section-head"><span>⚠️</span> ${t("sec_riscos_lider")}</div>
+      <p class="section-desc">${t("sec_riscos_desc")}</p>
       ${bd.risks.map(insight).join("")}
     </div>
     ${playbookSection(bd)}`;
@@ -1342,13 +1475,13 @@ function managerCard(bd) {
 function playbookSection(bd) {
   if (!bd.playbook) return "";
   const natural = bd.playbook.natural.map(n =>
-    `<div class="insight funciona"><span class="tag" style="color:${P.green};background:${P.greenBg}">${t("natural")}</span><div class="i-text"><strong>${esc(n.tactic)}</strong> — ${esc(n.note)}</div></div>`
+    `<div class="insight funciona"><span class="tag" style="color:${P.green};background:${P.greenBg}">${t("natural")}</span><div class="i-text"><strong>${esc(t(n.tactic))}</strong> — ${esc(t(n.note))}</div></div>`
   ).join("");
   const develop = bd.playbook.develop.map(n =>
-    `<div class="insight cuidado"><span class="tag" style="color:${P.amber};background:${P.amberBg}">${t("desenvolvedor")}</span><div class="i-text"><strong>${esc(n.tactic)}</strong> — ${esc(n.note)}</div></div>`
+    `<div class="insight cuidado"><span class="tag" style="color:${P.amber};background:${P.amberBg}">${t("desenvolvedor")}</span><div class="i-text"><strong>${esc(t(n.tactic))}</strong> — ${esc(t(n.note))}</div></div>`
   ).join("");
   const risk = bd.playbook.risk.map(n =>
-    `<div class="insight risco"><span class="tag" style="color:${P.red};background:${P.redBg}">${t("risco")}</span><div class="i-text"><strong>${esc(n.tactic)}</strong> — ${esc(n.note)}</div></div>`
+    `<div class="insight risco"><span class="tag" style="color:${P.red};background:${P.redBg}">${t("risco")}</span><div class="i-text"><strong>${esc(t(n.tactic))}</strong> — ${esc(t(n.note))}</div></div>`
   ).join("");
   return `
     <div class="section">
@@ -1369,18 +1502,15 @@ function globalNav() {
   const gestaoCls = globalView === "gestao" ? "active" : "";
   const playbookCls = globalView === "playbook" ? "active" : "";
   return `<div class="tabbar" style="margin-bottom:16px;border-bottom:none">
-    <button class="${gestaoCls}" onclick="globalView='gestao';render();">Gestão Individual</button>
-    <button class="${playbookCls}" onclick="globalView='playbook';render();">Playbook Completo</button>
+    <button class="${gestaoCls}" onclick="globalView='gestao';render();">${t("tab_gestao")}</button>
+    <button class="${playbookCls}" onclick="globalView='playbook';render();">${t("tab_playbook")}</button>
   </div>`;
 }
-
 function renderPlaybook() {
-  return `<span class="kicker">${t("kicker_playbook")}</span>
-  </div>
-  <h1 class="title">Playbook de Negociação B2B</h1>
-  <p class="subtitle">Venda porta a porta de software de Food Delivery — 9 táticas aplicadas ao contexto Keeta</p>
-</div>
+  return currentLang === "en" ? PLAYBOOK_EN : PLAYBOOK_PT;
+}
 
+const PLAYBOOK_PT = `
 <div class="toc">
   <div class="toc-title">Índice</div>
   <ul>
@@ -1393,8 +1523,7 @@ function renderPlaybook() {
   </ul>
 </div>
 
-<!-- INTRO -->
-<div class="card card-accent" style="--accent:#4A6899">
+<div id="contexto" class="card card-accent" style="--accent:#4A6899">
   <h2 style="font-size:18px;font-weight:800;font-family:'Playfair Display',serif;margin-bottom:10px">O que muda quando o produto é delivery?</h2>
   <p style="font-size:12px;color:var(--text);line-height:1.7;margin-bottom:10px">
     A negociação B2B de software de Food Delivery não é como vender um SaaS genérico. O restaurante já conhece o problema (entregas, comissões, apps), já conhece os competidores (iFood, Uber Eats, Rappi) e já tem uma posição emocional formada sobre o tema. Isso muda tudo:
@@ -1410,7 +1539,6 @@ function renderPlaybook() {
   </p>
 </div>
 
-<!-- MÓDULO 1 -->
 <div id="m1" class="section">
   <div class="section-head">🏛️ Módulo 1: Preparo e Base do Poder</div>
   <p class="section-desc">Antes de falar de comissão, você precisa estabelecer quem manda na mesa. Essas duas táticas definem o poder antes do primeiro número.</p>
@@ -1475,7 +1603,6 @@ function renderPlaybook() {
   </div>
 </div>
 
-<!-- MÓDULO 2 -->
 <div id="m2" class="section">
   <div class="section-head">🕵️ Módulo 2: Coleta de Informações</div>
   <p class="section-desc">Antes de vender, você precisa saber o que vender. O restaurante não vai te contar suas dores de graça — você precisa extrair sem parecer um interrogatório.</p>
@@ -1549,7 +1676,6 @@ function renderPlaybook() {
   </div>
 </div>
 
-<!-- MÓDULO 3 -->
 <div id="m3" class="section">
   <div class="section-head">⚖️ Módulo 3: Avançando Valores e Condições</div>
   <p class="section-desc">A proposta está na mesa. O pedido de desconto apareceu. É aqui que a maioria dos BDs perde dinheiro. Essas 4 táticas impedem que você deixe valor na mesa.</p>
@@ -1704,7 +1830,6 @@ function renderPlaybook() {
   </div>
 </div>
 
-<!-- MÓDULO 4 -->
 <div id="m4" class="section">
   <div class="section-head">🔒 Módulo 4: Fechamento</div>
   <p class="section-desc">A tática mais arriscada. Use apenas quando todas as outras falharam e quando você está genuinamente preparado para perder a venda.</p>
@@ -1753,7 +1878,6 @@ function renderPlaybook() {
   </div>
 </div>
 
-<!-- CONEXÃO COM PERFIS -->
 <div id="perfis" class="section" style="border-top:3px solid var(--text)">
   <div class="section-head">🎯 Conexão com os Perfis dos BDs</div>
   <p class="section-desc">Cada BD do time SMBX Santos tem um perfil natural que o predispõe a usar algumas táticas com mais facilidade e outras com mais dificuldade. Abaixo, o mapa de quem usa o que melhor — e o que cada um precisa desenvolver.</p>
@@ -1766,7 +1890,7 @@ function renderPlaybook() {
       </div>
       <div class="tactic-body">
         <strong>Táticas naturais:</strong> Ancoragem, Reação Estratégica, Ultimato, BATNA (visão estratégica). Vinicius transmite autoridade naturalmente. O dono do restaurante sente que está falando com quem manda — e isso é o ideal para ancorar valores, reagir com espanto, e traçar limites finais.<br><br>
-        <strong>Ponto de desenvolvimento:</strong> Espelhamento, Silêncio Estratégico, Policial Bom/Mau. O ENTJ-A tende a querer resolver o problema com mais pressão (falar mais, argumentar mais, insistir mais). O espelhamento e o silêncio exigem contencão — e isso não é natural para ele. Precisa treinar: calar, ouvir, e deixar o dono falar.<br><br>
+        <strong>Ponto de desenvolvimento:</strong> Espelhamento, Silêncio Estratégico, Policial Bom/Mau. O ENTJ-A tende a querer resolver o problema com mais pressão (falar mais, argumentar mais, insistir mais). O espelhamento e o silêncio exigem contenção — e isso não é natural para ele. Precisa treinar: calar, ouvir, e deixar o dono falar.<br><br>
         <strong>Tática de risco:</strong> Ultimato. Vinicius tem a confiança para usar, mas precisa ter certeza absoluta de que está disposto a ir embora. Se usar como blefe, destrói a credibilidade.
       </div>
     </div>
@@ -1876,13 +2000,499 @@ function renderPlaybook() {
       </table>
     </div>
   </div>
+</div>`;
+
+const PLAYBOOK_EN = `
+<div class="toc">
+  <div class="toc-title">Table of Contents</div>
+  <ul>
+    <li><a href="#contexto">Keeta Context</a> <span>— What changes when the product is delivery?</span></li>
+    <li><a href="#m1">Module 1: Preparation and the Base of Power</a> <span>— BATNA + Anchoring</span></li>
+    <li><a href="#m2">Module 2: Gathering Information</a> <span>— Mirroring + Good Cop / Bad Cop</span></li>
+    <li><a href="#m3">Module 3: Advancing Value</a> <span>— Concession, Smoke Screen, Reaction, Silence</span></li>
+    <li><a href="#m4">Module 4: Closing</a> <span>— Ultimatum</span></li>
+    <li><a href="#perfis">Connecting to the BD Profiles</a> <span>— Who uses what best?</span></li>
+  </ul>
 </div>
 
-<div class="footer">
-  <span>${t("footer_playbook")}</span>
-  <span>${t("updated")}</span>
+<div id="contexto" class="card card-accent" style="--accent:#4A6899">
+  <h2 style="font-size:18px;font-weight:800;font-family:'Playfair Display',serif;margin-bottom:10px">What changes when the product is delivery?</h2>
+  <p style="font-size:12px;color:var(--text);line-height:1.7;margin-bottom:10px">
+    B2B negotiation of Food Delivery software is not like selling a generic SaaS. The restaurant already knows the problem (deliveries, commissions, apps), already knows the competitors (iFood, Uber Eats, Rappi), and already has an emotional position formed on the subject. That changes everything:
+  </p>
+  <ul style="font-size:12px;color:var(--text);line-height:1.7;margin-left:18px;margin-bottom:10px">
+    <li><strong>The owner already has an anchor.</strong> He knows how much commission he pays on iFood. His first question is "how much do you charge?" — and that is a trap.</li>
+    <li><strong>The owner already has a BATNA.</strong> iFood is the default. Delivery itself is an alternative. You need to change the game, not play his game.</li>
+    <li><strong>The decision is emotional, but rationalized.</strong> The owner decides out of fear ("what if it goes wrong?") or greed ("what if I earn more?"), but justifies it with numbers. Your tactics must operate on both levels.</li>
+    <li><strong>The cycle is short and repetitive.</strong> You don't have 3 meetings. You have 15 minutes at the counter. The technique must be fast and natural.</li>
+  </ul>
+  <p style="font-size:11px;color:var(--sub);line-height:1.6">
+    This playbook adapts 9 classic negotiation tactics (based on Thiago Concer's training) to the specific context of door-to-door sales of a delivery platform to restaurants. Each tactic includes: what it is, how it works, an example applied to Keeta, and which BD from the SMBX Santos team executes it most naturally.
+  </p>
+</div>
+
+<div id="m1" class="section">
+  <div class="section-head">🏛️ Module 1: Preparation and the Base of Power</div>
+  <p class="section-desc">Before talking about commission, you need to establish who is in charge at the table. These two tactics define the power before the first number.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">1</span> BATNA / MAPAN — The Golden Tactic</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Power</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Preparation</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> BATNA = "Best Alternative to a Negotiated Agreement". It's your plan B if this negotiation fails. The better your plan B, the more power you have to say no.<br><br>
+      <strong>In the Keeta context:</strong> The restaurant's BATNA is iFood. The BD's BATNA is the next restaurant down the street. But the real BATNA is about <em>perceived value</em>, not about existing or not existing. If the owner believes "iFood is the only way", his BATNA is weak (he doesn't know alternatives). If the owner already knows Keeta delivers more orders in his neighborhood, his BATNA has changed.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li>Before knocking on the door, map 3 pieces of data: how many restaurants in that neighborhood are already on Keeta? What is their average ticket? What is the order growth rate over the last 30 days? That is your bargaining power.</li>
+        <li>Never go in without knowing the owner's alternative. If he's already on iFood, ask: "How is their commission treating you?" — find out if he's unsatisfied (weak BATNA on his side) or satisfied (you need to change the game).</li>
+        <li>Your minimum limit is not commission. It's the minimum number of orders you need to generate for the account to be profitable for the restaurant. If he can't do X orders/month, he's not a customer. Know that number beforehand.</li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — The BD's BATNA</div>
+      "Owner, I was here last week at Mr. Zé's on the corner. They came in at 12% commission and are already at 340 orders in the first month. Their neighbor, João's Bar, came in the week before and has already doubled. If you want, I'll come back in 15 days — but I only have room for 3 more restaurants in this neighborhood this month."<br><br>
+      <em>→ The BD created an artificial BATNA (limited slots) and social proof (neighbors who succeeded). The owner now feels he loses something if he doesn't join.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Natalia (Thinker + data)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + strategy)</span>
+      <span class="bd-chip">Caio (Thinker + Conscientiousness 96)</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">2</span> Anchoring — Whoever Says the First Number Wins</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Opening</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Psychology</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> The human brain uses the first information received as a reference for everything else. If the owner says "I pay 12% on iFood", he anchored the negotiation at 12%. Everything above seems expensive; everything below seems cheap.<br><br>
+      <strong>In the Keeta context:</strong> The owner will try to anchor on commission. You need to anchor on <em>value</em>. Don't let the conversation start with "how much do you charge?". Start with "how much do you bill per month in delivery?" — now the anchor is revenue, not commission.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li><strong>Anchor upward on value:</strong> "Restaurants your size in the region usually bill between 8 and 12 thousand per month in delivery. We've already seen cases of 20 thousand in the first quarter." Now the 15% commission is on 10 thousand (1,500), not on 3 thousand (450). The commission number got small.</li>
+        <li><strong>Anchor on the problem:</strong> "We've seen that restaurants that stay only on iFood lose on average 30% of margin in commission + delivery fee. With Keeta, we give part of that back." Now the anchor is loss, not price.</li>
+        <li><strong>If the owner anchors first:</strong> "I pay 12% on iFood." Respond with a reframe: "And how much do you <em>profit</em> from every 100 reais that comes in there?" De-anchor from commission and anchor on profitability.</li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Value Anchoring</div>
+      Owner: "How much commission do you charge?"<br>
+      BD: "It depends on how much we can make you sell. Restaurants similar to yours in the region bill between 8 and 12 thousand per month in delivery alone. If we deliver 10 thousand, and you pay 15%, that's 1,500 reais. iFood charges 12% plus delivery fee — and how much do they deliver for you today?"<br><br>
+      <em>→ The BD anchored on 10 thousand in revenue (not on 12% vs 15%). Now the commission difference is irrelevant compared to the volume difference.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + vision)</span>
+      <span class="bd-chip">Natalia (data + structure)</span>
+      <span class="bd-chip">Caio (anchor on value + empathy)</span>
+    </div>
+  </div>
+</div>
+
+<div id="m2" class="section">
+  <div class="section-head">🕵️ Module 2: Gathering Information</div>
+  <p class="section-desc">Before selling, you need to know what to sell. The restaurant won't tell you its pains for free — you need to extract them without sounding like an interrogation.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">3</span> Mirroring — His Last Word Is the Question</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Discovery</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Emotional</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> Repeat the last words the customer said, with a tone of slight doubt/question. Human beings hate gaps in communication and tend to explain themselves. While he explains, he delivers the real reason for the objection, the hidden bottleneck, and the real limit.<br><br>
+      <strong>In the Keeta context:</strong> The restaurant will say generic things: "I don't have time", "I already use iFood", "I don't have a delivery rider". Mirroring turns surface objection into real pain.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li>Owner: "I don't have time for this right now." → BD: "You don't have time right now?" (silence) → Owner: "Yeah, my kitchen is already full with iFood orders and I still have to run the dining room." <em>→ Discovery: the problem isn't time, it's kitchen capacity.</em></li>
+        <li>Owner: "I already use iFood." → BD: "You already use iFood?" → Owner: "Yeah, but the commission is killing me. And there are still the cancellations they don't refund." <em>→ Discovery: the problem isn't "I already have an app", it's dissatisfaction with commission and cancellation policy.</em></li>
+        <li>Owner: "I don't have a delivery rider." → BD: "You don't have a rider?" → Owner: "Yeah, hiring is expensive and firing is even more expensive. And if there are no orders, I'm paying a salary for nothing." <em>→ Discovery: the problem is fixed-cost risk, not lack of a delivery person.</em></li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Mirroring + Real Discovery</div>
+      Owner: "Your commission is high."<br>
+      BD: "It's high?" (silence)<br>
+      Owner: "Yeah, I pay 12% on iFood and the delivery fee still comes out. If I pay 15% here, it'll eat my profit."<br>
+      BD: "It'll eat your profit?"<br>
+      Owner: "Yeah, because my delivery profit is low. In-store delivery is profitable, but on the app the average ticket is small and the commission eats everything."<br><br>
+      <em>→ Real discovery: the problem isn't the commission itself, it's the low average ticket. Solution: show how Keeta raises the average ticket (promotions, combos, upsell in the app).</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Marcelo (ENFP + empathy + spontaneity)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + active listening)</span>
+      <span class="bd-chip">Caio (ENFJ + Agreeableness 101)</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">4</span> Good Cop and Bad Cop — The Ally vs. The System</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Emotional</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Relationship</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> Create an authority figure who is the "villain" (manager, committee, company policy). You position yourself as the customer's ally. "The system didn't allow it, but I'll fight for you." This generates reciprocity and empathy — the customer feels grateful to you, not annoyed at the condition.<br><br>
+      <strong>In the Keeta context:</strong> The restaurant owner needs to feel that you're on his side against the bureaucracy. Keeta (as a company) can be the "bad cop" — you're the "good cop" who builds the bridge.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li>"The standard policy is 15% commission + delivery fee. But I'll talk to my manager — you're the third restaurant on the street to join this month and we have a goal to occupy the neighborhood. I'll see if I can get a launch plan for new partners." <em>→ You're the ally; the "standard policy" is the bad cop.</em></li>
+        <li>"The onboarding system requires the restaurant to have at least 2 days of testing at zero fee. I know you want to start now, but the quality committee doesn't approve without it. I'll speed up your process to tomorrow." <em>→ The "quality committee" is the bad cop; you're the hero who speeds things up.</em></li>
+        <li>"The minimum contract term is 6 months. But I saw your restaurant has potential — I'll ask for an exception for 3 months, with review. I can't promise, but I'll fight for it." <em>→ The contract is the bad cop; you're his advocate.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Caution</div>
+        Never create a "villain" that doesn't exist. If you say "I'll talk to my manager" and come back with a discount that was already planned, the owner will feel manipulated. Use it only for conditions that really need approval or for rules that actually exist.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Good Cop / Bad Cop</div>
+      Owner: "But 15% is too much. iFood charges 12."<br>
+      BD: "I know, owner. If it were up to me, we'd charge everyone 10%. But the commission policy is set by the revenue team — and they won't budge on 15% for new restaurants. <em>But</em>... I saw we have a launch program for new neighborhoods. Your neighborhood is new to us. I'll submit your registration there. If it's approved, it could be 12% for the first 3 months. I can't guarantee, but I'll fight."<br><br>
+      <em>→ The owner now sees you as an ally, not a salesperson. The 15% commission stopped being "your price" and became "a company rule you're helping him get around".</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Marcelo (ENFP + genuine empathy)</span>
+      <span class="bd-chip">Natalia (Thinker + technical credibility)</span>
+      <span class="bd-chip">Caio (ENFJ + natural ally)</span>
+      <span class="bd-chip warn">Vinicius needs care — ENTJ-A can seem too authoritarian</span>
+    </div>
+  </div>
+</div>
+
+<div id="m3" class="section">
+  <div class="section-head">⚖️ Module 3: Advancing Value and Conditions</div>
+  <p class="section-desc">The proposal is on the table. The discount request has appeared. This is where most BDs lose money. These 4 tactics stop you from leaving value on the table.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">5</span> Concession with Trade — Never Give Away for Free</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Value</span>
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Negotiation</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> The golden rule: never concede anything for free. Every move of yours must cost a move from the customer. If you give a discount without asking for anything in return, the customer learns that objection = reward.<br><br>
+      <strong>In the Keeta context:</strong> The owner will ask for a commission discount, a longer term, a lower delivery fee, or exclusivity. Every time you concede, demand something proportional in return.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li>"You want 12% instead of 15%? Perfect. Then I need you to use Keeta as your exclusive delivery channel for 90 days. If we don't beat iFood's volume in that period, you go back there and I don't charge anything. If we do, you stay and we talk about the commission." <em>→ Trade: discount for exclusivity + result commitment.</em></li>
+        <li>"You want a 30-day payment term instead of 15? I can do it. But I need you to sign the contract today and start onboarding tomorrow. The term only applies to those who join this week." <em>→ Trade: term for closing speed.</em></li>
+        <li>"You want a lower delivery fee? We can reduce it from 3 reais to 2 reais. But you need to accept that orders below 25 reais come with a 4-real fee. We compensate the low volume." <em>→ Trade: lower fee for big orders, higher fee for small orders.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Common Mistake</div>
+        "Okay, I'll do 12% for you." Without a trade. The owner learns that all he has to do is cry. Next time, he'll ask for 10%. And the time after, 8%. You taught the customer to negotiate against you.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Concession with Trade</div>
+      Owner: "If you do 12% commission, I'll close today."<br>
+      BD: "12% I can do. But then I need two things: first, you join with 90-day delivery exclusivity — no iFood, no Rappi. Second, if in 90 days we don't deliver at least 300 orders, I refund the commission difference and you leave with no penalty. If we deliver, we talk renewal. Deal?"<br><br>
+      <em>→ The BD didn't give a discount. He sold a shared-risk package. The owner feels he's making a deal, not receiving charity.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Natalia (Thinker + logic + structure)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + control)</span>
+      <span class="bd-chip">Marcelo (ENFP + creativity in trades)</span>
+      <span class="bd-chip">Caio (Agreeableness 101 + win-win)</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">6</span> Smoke Screen — Ask Big to Win the Medium</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Strategy</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Psychology</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> Ask for something bigger than necessary, knowing the other side will probably refuse. When they refuse, offer what you really wanted from the start. The person feels embarrassed for having said "no" once, and interprets your second offer as a concession from you. They feel obligated to accept.<br><br>
+      <strong>In the Keeta context:</strong> Useful for conditions the owner naturally resists: long contract, exclusivity, advance payment, onboarding fee.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li>"For Keeta, the ideal model is full exclusivity for 12 months. No other apps. That's how we can invest in marketing for the restaurant. Do you agree?" <em>→ The owner probably says no. You wait.</em> "Okay, then let's go with 6 months of exclusivity, with review in month 4. That's the minimum we need to justify the local SEO investment." <em>→ The owner accepts 6 months thinking you conceded. In fact, 6 months was your target.</em></li>
+        <li>"The onboarding fee is 500 reais — it includes professional photography, menu setup, and team training." <em>→ Owner: "500 reais? I don't have that right now."</em> "I understand. I can do a courtesy: we absorb the 500 reais, but then the minimum term is 6 months instead of 3. Does that work?" <em>→ The owner accepts 6 months (your real target) in exchange for "winning" 500 reais.</em></li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Smoke Screen</div>
+      BD: "Owner, Keeta has a premium partnership model: 12 months of exclusivity, 15% commission, and we invest in a digital marketing campaign for the restaurant. It's the package we use for the guys who bill the most. Do you want to join that one?"<br>
+      Owner: "Wow, 12 months is a lot. And I can't leave iFood."<br>
+      BD: "Fair. Look, I can't give up full exclusivity — it's premium package policy. But what I can do is a transition plan: 6 months of exclusivity, and then we review. The commission drops to 12% if you hit 200 orders in the first month. And I can still include the marketing campaign. That's the most I can do without going up to the committee."<br><br>
+      <em>→ The "premium package" was the smoke screen. The real transition plan (6 months + 12% + campaign) was the goal from the start. The owner accepts because he feels you made a concession and he "won" against the company.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Natalia (Thinker + strategic planning)</span>
+      <span class="bd-chip">Marcelo (ENFP + creativity + improvisation)</span>
+      <span class="bd-chip">Caio (Thinker + plans well, but prefers transparency)</span>
+      <span class="bd-chip warn">Vinicius can use it, but watch out for assertiveness — may sound like imposition</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">7</span> Strategic Reaction — The Expression That Planted Doubt</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Emotional</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Non-verbal</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> When the customer throws out a value or objection that's too low, don't argue immediately. Just react physically — a surprised expression, a startle, a pause. Plant a seed of doubt in their head. They start justifying the value or backing down, without you saying a word.<br><br>
+      <strong>In the Keeta context:</strong> The owner will underestimate the value of the platform, underestimate the order potential, or propose an absurdly low commission. Strategic reaction is more powerful than any argument.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li>Owner: "I only pay commission if we do more than 5 thousand a month. Below that, I pay nothing." → BD: (surprised expression, 3-second silence, raises an eyebrow) → Owner: "...or, I don't know, at least a lower fixed fee." <em>→ The owner already backed down on his own.</em></li>
+        <li>Owner: "iFood gives me 10% commission and still gives me marketing credit." → BD: (looks down, sighs lightly, shakes head) → Owner: "...but it's true their commission went up this month. And the credit is only for the first 3 months." <em>→ The owner started deconstructing his own argument.</em></li>
+        <li>Owner: "My restaurant has no demand for delivery." → BD: (looks at the full dining room, looks back at the owner, says nothing) → Owner: "...well, the dining room is full, but delivery is different. I don't know if the neighborhood orders." <em>→ The owner already admits there's potential demand.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Caution</div>
+        The reaction must be genuine, not theatrical. If the owner feels you're "putting on a show", the tactic becomes manipulation and breaks trust. Practice in the mirror — the reaction is micro (half a second of surprise) and immediately followed by silence. It's not a grimace.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Strategic Reaction</div>
+      Owner: "So, I pay 8% commission, and Keeta pays the delivery. Otherwise, no deal."<br>
+      BD: (pause, looks at the owner, raises an eyebrow, takes a deep breath, looks at the phone)<br>
+      Owner: "...okay, maybe 8% is low. But 10% is the most I pay in delivery."<br>
+      BD: "I understand. 10% is the most you pay in delivery today. <em>(silence)</em> And how much do you bill in delivery today?"<br>
+      Owner: "About 2, 3 thousand a month."<br>
+      BD: "2 to 3 thousand. And how much do you bill in-store?"<br>
+      Owner: "About 15, 20 thousand."<br>
+      BD: "So you're leaving 85% of revenue outside delivery. With 10% commission, we can get you to bill 8 thousand in delivery in the first quarter. Would you rather pay 10% of 3 thousand, or 15% of 8 thousand?"<br><br>
+      <em>→ The strategic reaction made the owner back down from 8% to 10% on his own. Then, the BD used anchoring to reframe: it's not about commission, it's about volume.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + presence + authority)</span>
+      <span class="bd-chip">Marcelo (ENFP + genuine emotional expressiveness)</span>
+      <span class="bd-chip">Caio (Neuroticism 40 = calm, but prefers dialogue)</span>
+      <span class="bd-chip warn">Natalia can seem too controlled — needs to practice "silence with surprise"</span>
+    </div>
+  </div>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">8</span> Strategic Silence — The Void That Sells</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Closing</span>
+      <span class="tag" style="color:var(--blue);background:var(--blueBg)">Discipline</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> Immediately after presenting your price or condition proposal, shut up. Don't justify, don't pad, don't try to convince. Just wait. The discomfort of silence will make the customer talk — and often he "negotiates against himself", accepting the proposal or revealing valuable information to break the tension.<br><br>
+      <strong>In the Keeta context:</strong> The most critical moment is after presenting the commission + conditions. Most BDs destroy the close because they can't bear 5 seconds of silence and start justifying, discounting, conceding.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li>Present the full proposal: "So, the proposal is: 15% commission, 3-real delivery fee, 6-month contract with review in month 4. We start tomorrow with onboarding and photos. Do you agree?" → <strong>Shut up. Count to 10.</strong></li>
+        <li>If the owner says "I'll think about it", don't accept immediately. Respond: "Fair. What specifically do you want to think about?" → <strong>Shut up.</strong></li>
+        <li>If the owner says "it's expensive", don't justify. Respond: "It's expensive." (mirroring) → <strong>Shut up.</strong></li>
+        <li>If the owner says "I need to talk to my partner", respond: "Of course. When do you think you can get an answer?" → <strong>Shut up.</strong></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">Fatal Mistake</div>
+        "The commission is 15%, but look, we have a launch discount, and we can do installments, and I can talk to my manager, and we can include marketing, and..." <em>→ You destroyed the silence and showed that the proposal was flexible. The owner now knows that 15% was only the starting point.</em>
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Strategic Silence</div>
+      BD: "Owner, the proposal is this: 15% commission, 3-real delivery fee, 6-month contract. We start tomorrow with photos and menu setup. Do you agree?"<br>
+      (Silence. The BD says nothing. Looks at the owner. Maintains eye contact. Doesn't move his hand. Doesn't look at the phone.)<br>
+      Owner: "...15% is a bit above what I pay."<br>
+      (Silence.)<br>
+      Owner: "...but if we hit 200 orders in the first month, we talk about the commission, right?"<br>
+      BD: "We talk."<br>
+      (Silence.)<br>
+      Owner: "Okay, then. Let's start tomorrow."<br><br>
+      <em>→ The owner negotiated against himself. The BD conceded nothing. The silence created the discomfort that forced the owner to seek a way out — and the way out was "yes".</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Natalia (Thinker + discipline + emotional control)</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + authority + comfortable in power)</span>
+      <span class="bd-chip warn">Caio (ENFJ + Extraversion 82) — fills the void. Train "counting to 7".</span>
+      <span class="bd-chip warn">Marcelo (ENFP) suffers — high neuroticism + high extraversion make silence painful. Needs training.</span>
+    </div>
+  </div>
+</div>
+
+<div id="m4" class="section">
+  <div class="section-head">🔒 Module 4: Closing</div>
+  <p class="section-desc">The riskiest tactic. Use it only when all others have failed and when you are genuinely prepared to lose the sale.</p>
+
+  <div class="tactic-card">
+    <h4><span class="tactic-number">9</span> Ultimatum — The Final Line</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--red);background:var(--redBg)">Risk</span>
+      <span class="tag" style="color:var(--amber);background:var(--amberBg)">Last Resort</span>
+    </div>
+    <div class="tactic-body">
+      <strong>What it is:</strong> Draw a clear, non-negotiable final line: "I've really reached my limit. Unfortunately the decision is in your hands, I can't change anything more." The ultimatum forces the other side to make a decision. But it's the riskiest tactic: if you give an ultimatum and then back down, you lose all credibility forever.<br><br>
+      <strong>In the Keeta context:</strong> Use it only in very specific situations: (1) the owner has decided but is stalling, (2) you've already made every possible concession, (3) the owner is testing your limits, (4) you are genuinely willing to walk away.<br><br>
+      <strong>How to use:</strong>
+      <ul>
+        <li><strong>Time ultimatum:</strong> "This zero onboarding fee is valid only until Friday. After that, it goes back to 500 reais. It's not marketing, it's quality control — we can only onboard 3 restaurants per week. If you don't start this week, the next slot is in 15 days." <em>→ True, specific, with real consequence.</em></li>
+        <li><strong>Condition ultimatum:</strong> "Owner, I've gone to the limit of what I can approve without going to the committee: 12% commission, 6-month contract, 3-real delivery fee. If you won't accept that, I really can't do anything more. I'll have to leave the proposal with you and move on to the next restaurant." <em>→ You're willing to walk away. And you will.</em></li>
+        <li><strong>Value ultimatum:</strong> "With 15% commission, we can keep the restaurant profitable and invest in marketing. Below 15%, the numbers don't work for Keeta — and we don't open accounts that don't work. I'd really like to have you with us, but if 15% doesn't work, there's no way." <em>→ Ultimatum based on business logic, not on the salesperson's power.</em></li>
+      </ul>
+      <div class="warning-box">
+        <div class="label">The Golden Rule of the Ultimatum</div>
+        NEVER use it as a bluff. If you say "this is my limit" and the owner says "okay, then no deal", you need to be ready to stand up and walk away. If you come back with "wait, let me check one more thing", you destroyed your credibility forever. The owner will never believe any of your limits again.
+      </div>
+      <div class="warning-box">
+        <div class="label">When NOT to use</div>
+        Don't use an ultimatum on the first contact. Don't use it with owners who already showed interest but need time. Don't use it with restaurants that are strategic for the neighborhood (neighbor of a big account). Don't use it when you're desperate for the sale. The ultimatum only works when you genuinely don't need that sale.
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="label">Keeta Example — Ultimatum Well Applied</div>
+      (After 3 visits, 2 counter-proposals, and all concessions made.)<br><br>
+      BD: "Owner, I've already done everything I could: 12% commission for the first 3 months, zero onboarding fee, marketing campaign included, and we start on Monday. I took this up to my manager and he approved it as an exception. If you won't accept now, I need to move on to the next restaurant down the street — they're already waiting. I really wanted it to be you, but the decision is yours."<br>
+      (Silence. The BD starts putting away the tablet.)<br>
+      Owner: "Wait. Okay, 12% for the first 3 months. But if we hit 300 orders, we drop to 10%."<br>
+      BD: "If we hit 300 orders in the first month, we talk about the commission. That's the most I can do. Do you accept or not?"<br>
+      Owner: "I accept. Let's start Monday."<br><br>
+      <em>→ The BD used the ultimatum as the close of a long negotiation, not as an opening. He was genuinely willing to walk away (started putting away the tablet). The owner felt the opportunity slipping and closed.</em>
+    </div>
+    <div class="bd-match">
+      <span class="tag" style="color:var(--sub);background:var(--bg)">Natural for:</span>
+      <span class="bd-chip">Vinicius (ENTJ-A + confidence + assertiveness)</span>
+      <span class="bd-chip">Natalia (Thinker + planning + only uses when calculated)</span>
+      <span class="bd-chip warn">Caio (ENFJ + Agreeableness 101) — avoids conflict. Only use if genuinely willing to walk away.</span>
+      <span class="bd-chip warn">Marcelo (ENFP) — high neuroticism + fear of rejection makes the ultimatum risky. Use only with a lot of training.</span>
+    </div>
+  </div>
+</div>
+
+<div id="perfis" class="section" style="border-top:3px solid var(--text)">
+  <div class="section-head">🎯 Connecting to the BD Profiles</div>
+  <p class="section-desc">Each BD on the SMBX Santos team has a natural profile that predisposes them to use some tactics more easily and others with more difficulty. Below, the map of who uses what best — and what each one needs to develop.</p>
+
+  <div class="grid2">
+    <div class="tactic-card" style="border-top:3px solid var(--amber)">
+      <h4>Vinicius Guimarães — ENTJ-A</h4>
+      <div class="tactic-meta">
+        <span class="tag" style="color:var(--green);background:var(--greenBg)">Superpower</span>
+      </div>
+      <div class="tactic-body">
+        <strong>Natural tactics:</strong> Anchoring, Strategic Reaction, Ultimatum, BATNA (strategic vision). Vinicius conveys authority naturally. The restaurant owner feels he's talking to someone in charge — and that's ideal for anchoring values, reacting with surprise, and drawing final lines.<br><br>
+        <strong>Development area:</strong> Mirroring, Strategic Silence, Good Cop / Bad Cop. ENTJ-A tends to want to solve the problem with more pressure (talk more, argue more, insist more). Mirroring and silence require restraint — and that's not natural for him. He needs to train: shut up, listen, and let the owner talk.<br><br>
+        <strong>Risk tactic:</strong> Ultimatum. Vinicius has the confidence to use it, but needs absolute certainty that he's willing to walk away. If used as a bluff, it destroys credibility.
+      </div>
+    </div>
+    <div class="tactic-card" style="border-top:3px solid var(--blue)">
+      <h4>Natalia Almeida — ENTJ-A + Thinker</h4>
+      <div class="tactic-meta">
+        <span class="tag" style="color:var(--green);background:var(--greenBg)">Superpower</span>
+      </div>
+      <div class="tactic-body">
+        <strong>Natural tactics:</strong> BATNA, Anchoring with data, Concession with Trade, Strategic Silence, Smoke Screen. Natalia is the most complete negotiator on the team. Thinker + Conscientiousness 116 + low Neuroticism (38) create someone who plans, controls emotions, and sustains silence without suffering. She's ideal for complex negotiations with analytical owners.<br><br>
+        <strong>Development area:</strong> Mirroring, Strategic Reaction. The Thinker can seem too controlled — mirroring requires spontaneity, and strategic reaction requires emotional expressiveness. Natalia needs to practice letting go of control for a few seconds.<br><br>
+        <strong>Risk tactic:</strong> Good Cop / Bad Cop. Can sound too technical. The owner needs to feel she's an ally, not that she's using a script. Use with care in tone.
+      </div>
+    </div>
+  </div>
+
+  <div class="tactic-card" style="border-top:3px solid var(--green); margin-top:16px">
+    <h4>Marcelo Evangelista — ENFP + Balanced</h4>
+    <div class="tactic-meta">
+      <span class="tag" style="color:var(--green);background:var(--greenBg)">Superpower</span>
+    </div>
+    <div class="tactic-body">
+      <strong>Natural tactics:</strong> Mirroring, Good Cop / Bad Cop, Concession with Trade (creative), Smoke Screen. Marcelo is the master of social adaptation. ENFP + DISC Balanced + Extraversion 104 make him a natural chameleon: he reads the owner in seconds, mirrors without seeming forced, and creates the feeling of a genuine ally. The Smoke Screen is perfect for him — creative, improvisational, and the owner never feels manipulated.<br><br>
+      <strong>Development area:</strong> Strategic Silence, Ultimatum, Strategic Reaction. High neuroticism (84) + very high extraversion (104) + ENFP make silence painful for Marcelo. He needs to talk, fill the void, justify. The ultimatum is even harder — ENFP hates rejection and high neuroticism amplifies the fear of losing the sale. Intensive training in "counting to 10" and "standing up and walking away" are essential.<br><br>
+      <strong>Risk tactic:</strong> Concession without Trade. Marcelo is too cooperative (ENFP + Agreeableness 78). Can give in to keep the relationship good. Needs a clear script: before conceding, always ask "and what do you give me in return?"
+    </div>
+  </div>
+
+  <div class="tactic-card" style="margin-top:16px">
+    <h4>Summary: Tactics Map by BD</h4>
+    <div class="tactic-body">
+      <table style="width:100%;font-size:11px;border-collapse:collapse;margin-top:8px">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border)">
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Tactic</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Vinicius (ENTJ-A)</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Natalia (ENTJ-A + Thinker)</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Marcelo (ENFP + Balanced)</th>
+            <th style="text-align:left;padding:6px 4px;font-weight:700;color:var(--sub)">Caio (ENFJ-A + Thinker)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">1. BATNA</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Natural</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Needs structure</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">2. Anchoring</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent (with data)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Good</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Good (anchor on value)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">3. Mirroring</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Needs training</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Needs to let go of control</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">4. Good/Bad Cop</td>
+            <td style="padding:6px 4px">⭐⭐ May sound authoritarian</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Good</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Good (watch the 'bad cop')</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">5. Concession</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Good</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Creative, but watch out for giving too much</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">6. Smoke Screen</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Good</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent (planned)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent (improvised)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Good (prefers transparency)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">7. Reaction</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Needs to train expression</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent (genuine)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐ Good (prefers dialogue)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border2)">
+            <td style="padding:6px 4px">8. Silence</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent</td>
+            <td style="padding:6px 4px">⭐⭐ Needs a lot of training</td>
+            <td style="padding:6px 4px">⭐⭐⭐ Needs training</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px">9. Ultimatum</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent (watch out for bluff)</td>
+            <td style="padding:6px 4px">⭐⭐⭐⭐⭐ Excellent (only when calculated)</td>
+            <td style="padding:6px 4px">⭐⭐ Risk of loss of authority</td>
+            <td style="padding:6px 4px">⭐⭐ Risk (avoids conflict)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>`;
-}
 
 function render() {
   const app = document.getElementById("app");
@@ -1898,13 +2508,13 @@ function render() {
             <button class="${currentLang==='en'?'active':''}" onclick="setLang('en')">EN 🇺🇸</button>
           </div>
         </div>
-        <h1 class="title">${t("title")}</h1>
+        <h1 class="title">${t("lbl_playbook_title")}</h1>
         <p class="subtitle">${t("subtitle_playbook")}</p>
       </div>
       ${globalNav()}
       ${renderPlaybook()}
       <div class="footer">
-        <span>${t("footer_gestao")}</span>
+        <span>${t("footer_playbook")}</span>
         <span>${t("updated")}</span>
       </div>`;
     return;
@@ -1932,16 +2542,16 @@ function render() {
 
     ${globalNav()}
 
-    <div class="tab-group-label">Gestão · BDM / Gerente do time</div>
+    <div class="tab-group-label">${t("sec_manager")}</div>
     ${managerCard(manager)}
 
-    <div class="tab-group-label">Time atual · julho 2026 em diante</div>
+    <div class="tab-group-label">${t("sec_current")}</div>
     ${tabbar(currentTeam, currentTab)}
 
     ${curContent}
 
     <details class="history">
-      <summary>Equipe anterior (até junho 2026) — Victor, Rafael, Milena, Lucas, Douglas</summary>
+      <summary>${t("sec_previous")}</summary>
       <div class="hist-inner">
         ${tabbar(previousTeam, prevTab)}
         ${prevContent}
@@ -1966,6 +2576,7 @@ function render() {
 }
 
 render();
+
 </script>
 </body>
 </html>
